@@ -11,7 +11,8 @@ public class EnemyAddObject : MonoBehaviour
     public int Enemynum;
 
     public Transform[] Enemyposition;
-
+    public int EnemyCountMax;
+    public int EnemyCount;
     [SerializeField]
     [Tooltip("生成する範囲A")]
     private Transform rangeA;
@@ -45,23 +46,28 @@ public class EnemyAddObject : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            //Destroy(GameObject.FindWithTag("Enemy"));
+                GameObject[] Enemys = GameObject.FindGameObjectsWithTag("Enemy");
 
-            GameObject[] Enemys = GameObject.FindGameObjectsWithTag("Enemy");
-
-            foreach (GameObject EnemyObjects in Enemys)
-            {
-                Destroy(EnemyObjects);
-            }
+                foreach (GameObject EnemyObjects in Enemys)
+                {
+                    Destroy(EnemyObjects);
+                }
+     
+             
         }
     }
 
     public void EnemySpown()
     {
-        for (int i = 0; i < Enemyposition.Length; i++)
+        EnemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        //Destroy(GameObject.FindWithTag("Enemy"));
+        if (EnemyCountMax > EnemyCount)
         {
-            Enemynum = Random.Range(0, EnemyObject.Length);
-            Instantiate(EnemyObject[Enemynum], Enemyposition[i].position ,Quaternion.identity);
+            for (int i = 0; i < Enemyposition.Length; i++)
+            {
+                Enemynum = Random.Range(0, EnemyObject.Length);
+                Instantiate(EnemyObject[Enemynum], Enemyposition[i].position, Quaternion.identity);
+            }
         }
     }
 

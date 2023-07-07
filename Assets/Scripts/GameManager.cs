@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -6,24 +6,25 @@ using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
-    [Header("ƒQ[ƒ€is‚É•K—v‚Èƒtƒ‰ƒO")]
-    public bool mainGame = false;    //ƒQ[ƒ€’†
-    public bool gameClear = false;    //ƒQ[ƒ€ƒNƒŠƒA
-    public bool gameOver = false;    //ƒQ[ƒ€ƒI[ƒo[
-    public bool error = false;            //–â‘è‚ğŠÔˆá‚¦‚½‚©
-    public bool stun = false;             //ƒXƒ^ƒ“’†
-    public bool deadLimit = false;     //ƒQ[ƒ€ƒI[ƒo[¡‘O
-    public bool pause = false;           //ˆê’â~
+    [Header("ã‚²ãƒ¼ãƒ é€²è¡Œã«å¿…è¦ãªãƒ•ãƒ©ã‚°")]
+    public bool mainGame = false;    //ã‚²ãƒ¼ãƒ ä¸­
+    public bool gameClear = false;    //ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢
+    public bool gameOver = false;    //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼
+    public bool error = false;            //å•é¡Œã‚’é–“é•ãˆãŸã‹
+    public bool stun = false;             //ã‚¹ã‚¿ãƒ³ä¸­
+    public bool deadLimit = false;     //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼å¯¸å‰
+    public bool pause = false;           //ä¸€æ™‚åœæ­¢
 
     [Header("PlayableDirector")]
     [SerializeField] PlayableDirector GameStart;
 
-    [Header("g—pCanvas")]
+    [Header("ä½¿ç”¨Canvas")]
     [SerializeField] GameObject MainGameUI;
     [SerializeField] GameObject StartUI;
     [SerializeField] GameObject PauseUI;
+    [SerializeField] GameObject GameOverUI;
 
-    [Header("–â‘è‚É•K—v‚È•Ï”")]
+    [Header("å•é¡Œã«å¿…è¦ãªå¤‰æ•°")]
     int qCurrent = 0;
     public int qMax = 5;
     int errorCurrent = 0;
@@ -34,6 +35,7 @@ public class GameManager : Singleton<GameManager>
         MainGameUI.SetActive(false);
         StartUI.SetActive(true);
         PauseUI.SetActive(false);
+        GameOverUI.SetActive(false);
     }
     void Start()
     {
@@ -51,6 +53,10 @@ public class GameManager : Singleton<GameManager>
         if(Input.GetKeyDown(KeyCode.P))
         {
             Pause();
+        }
+        if(gameOver == true)
+        {
+            GameOver();
         }
     }
 
@@ -86,5 +92,20 @@ public class GameManager : Singleton<GameManager>
             MainGameUI.SetActive(true);
             return;
         }
+    }
+
+    void GameClear()
+    {
+
+        gameClear = true;
+    }
+
+    void GameOver()
+    {
+        GameOverUI.SetActive(true);
+        MainGameUI.SetActive(false);
+        StartUI.SetActive(false);
+        PauseUI.SetActive(false);
+        
     }
 }
