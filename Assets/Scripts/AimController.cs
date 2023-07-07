@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AimController : Calculation
+public class AimController : MonoBehaviour
 {
-    bool firstHit = false;
-    bool secondHit = false;
+    public bool firstHit = false;
+    public bool secondHit = false;
 
     void Start()
     {
@@ -35,18 +35,25 @@ public class AimController : Calculation
 
         if(Physics.Raycast(ray, out hit, 50f))
         {
-            if(!firstHit)
+             switch (hit.collider.gameObject.tag)
             {
-                switch (gameObject.tag) {
-                    case "Enemy":
-                        Destroy(hit.collider.gameObject, 2f);
+                  case "Enemy":
+                    if (!firstHit)
+                    {
+                        Destroy(hit.collider.gameObject);
+                        firstHit = true;
                         break;
-                    case "+":
+                    }
+                    if (!secondHit)
+                    {
+                        Destroy(hit.collider.gameObject);
+                        secondHit = true;
                         break;
-                }
-               
-            }
-            
+                    }
+                    break;
+                  case "+":
+                     break;
+             }
         }
         Debug.DrawRay(ray.origin, ray.direction * 50, Color.red, 2);
     }
