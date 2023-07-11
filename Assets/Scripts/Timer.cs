@@ -22,9 +22,5 @@ public class Timer : MonoBehaviour
             countup += Time.deltaTime;
             timer.text = countup.ToString("000.0");
         }
-        if(GameManager.Instance.gameOver)
-        {
-            Time.timeScale = 0;
-        }
     }
 }

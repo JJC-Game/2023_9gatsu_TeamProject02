@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] GameObject MainGameUI;
     [SerializeField] GameObject StartUI;
     [SerializeField] GameObject PauseUI;
+    [SerializeField] GameObject GameClearUI;
     [SerializeField] GameObject GameOverUI;
 
     [Header("問題に必要な変数")]
@@ -35,6 +36,7 @@ public class GameManager : Singleton<GameManager>
         MainGameUI.SetActive(false);
         StartUI.SetActive(true);
         PauseUI.SetActive(false);
+        GameClearUI.SetActive(false);
         GameOverUI.SetActive(false);
     }
     void Start()
@@ -53,6 +55,10 @@ public class GameManager : Singleton<GameManager>
         if(Input.GetKeyDown(KeyCode.P))
         {
             Pause();
+        }
+        if(gameClear == true)
+        {
+            GameClear();
         }
         if(gameOver == true)
         {
@@ -96,16 +102,20 @@ public class GameManager : Singleton<GameManager>
 
     void GameClear()
     {
-
-        gameClear = true;
+        MainGameUI.SetActive(false);
+        StartUI.SetActive(false);
+        PauseUI.SetActive(false);
+        GameClearUI.SetActive(true);
+        mainGame = false;
     }
 
     void GameOver()
     {
-        GameOverUI.SetActive(true);
         MainGameUI.SetActive(false);
         StartUI.SetActive(false);
         PauseUI.SetActive(false);
+        GameOverUI.SetActive(true);
+        mainGame = false;
         
     }
 }

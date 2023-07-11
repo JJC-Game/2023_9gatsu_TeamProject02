@@ -55,6 +55,6 @@ public class AimController : MonoBehaviour
                      break;
              }
         }
-        Debug.DrawRay(ray.origin, ray.direction * 50, Color.red, 2);
+        Debug.DrawRay(ray.origin, ray.direction * 50, Color.red, 1.5f);
     }
 }
