@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
     bool inputOK = false;
     [Header("Playerのステータス")]
     public float moveSpeed = 10;   //移動スピード
+    public float gravity = 10;
 
     CharacterController characon;
     float hor;
     Vector3 moveDirection;
+    Vector3 gravityDirection;
 
     void Start()
     {
@@ -23,7 +25,7 @@ public class PlayerController : MonoBehaviour
         if(inputOK)
         {
             Move();
-
+            Gravity();
         }
        
     }
@@ -46,6 +48,16 @@ public class PlayerController : MonoBehaviour
         moveDirection.x = hor * moveSpeed;
 
         characon.Move(moveDirection * Time.deltaTime);
+    }
+    void Gravity()
+    {
+        gravityDirection.y -= gravity * Time.deltaTime;
+
+        characon.Move(gravityDirection * Time.deltaTime);
+        if(characon.isGrounded)
+        {
+            gravityDirection.y = -0.1f;
+        }
     }
     public void Squat()
     {
