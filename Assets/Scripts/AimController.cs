@@ -7,7 +7,7 @@ public class AimController : MonoBehaviour
 {
     public bool firstHit = false;
     public bool secondHit = false;
-
+    public bool hitEnemy = false;
     void Start()
     {
     }
@@ -42,17 +42,20 @@ public class AimController : MonoBehaviour
                     {
                         Destroy(hit.collider.gameObject);
                         firstHit = true;
+                        hitEnemy = true;
                         break;
                     }
                     if (!secondHit)
                     {
                         Destroy(hit.collider.gameObject);
                         secondHit = true;
+                        hitEnemy = true;
                         break;
                     }
                     break;
                   case "+":
-                     break;
+                    Destroy(hit.collider.gameObject);
+                    break;
              }
         }
         Debug.DrawRay(ray.origin, ray.direction * 50, Color.red, 1.5f);

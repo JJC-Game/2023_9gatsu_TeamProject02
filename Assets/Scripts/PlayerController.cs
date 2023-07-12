@@ -1,12 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     bool inputOK = false;
-    [Header("Player‚ÌƒXƒe[ƒ^ƒX")]
-    public float moveSpeed = 10;   //ˆÚ“®ƒXƒs[ƒh
+    [Header("Playerã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹")]
+    public float moveSpeed = 10;   //ç§»å‹•ã‚¹ãƒ”ãƒ¼ãƒ‰
 
     CharacterController characon;
     float hor;
@@ -46,5 +46,12 @@ public class PlayerController : MonoBehaviour
         moveDirection.x = hor * moveSpeed;
 
         characon.Move(moveDirection * Time.deltaTime);
+    }
+    public void Squat()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+
+        }
     }
 }

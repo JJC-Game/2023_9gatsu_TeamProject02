@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyNum : MonoBehaviour
 {
 
-    public float num;
+    public int num;
 
     Calculation calc;
 
@@ -21,7 +21,6 @@ public class EnemyNum : MonoBehaviour
     void OnDestroy()
     {
         calc.receiveNum = num;
-        calc.destroy = true;
         return;
     }
 }
