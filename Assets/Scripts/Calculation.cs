@@ -5,20 +5,23 @@ using TMPro;
 
 public class Calculation : MonoBehaviour
 {
-    public float receiveNum;
-    public float num1;
-    public float num2;
-    float ansnum;
+    public int receiveNum;
+    public int num1;
+    public int num2;
+    int ansnum;
+    int goalnum;
     float lagTime;
     float timer;
 
     public TextMeshProUGUI firNum;
     public TextMeshProUGUI secNum;
     public TextMeshProUGUI ansNum;
+    public TextMeshProUGUI goalNum;
 
     public bool calculation = false;
-    public bool destroy = false;
     public bool starthit = false;
+    bool challenge = false;      //問題挑戦中
+    public bool error = false;            //制限時間を超えたかを判定する
 
     public AimController aimcon;
 
@@ -30,10 +33,15 @@ public class Calculation : MonoBehaviour
 
     void Update()
     {
-       if(destroy)
+        if (GameManager.Instance.mainGame && !challenge)
+        {
+            Challenge();
+        }
+
+       if (aimcon.hitEnemy)
         {
             NumUpdate();
-            destroy = false;
+            aimcon.hitEnemy = false;
         }
 
         if (aimcon.firstHit && aimcon.secondHit)
@@ -44,10 +52,10 @@ public class Calculation : MonoBehaviour
             ansNum.text = ansnum.ToString("0");
             num1 = ansnum;
             firNum.text = num1.ToString("0");
-
+            Judgement();
         }
-
     }
+
     public void NumUpdate()
     {
         if (!starthit && aimcon.firstHit && !aimcon.secondHit)
@@ -63,5 +71,31 @@ public class Calculation : MonoBehaviour
             secNum.text = num2.ToString("0");
             return;
         }
+    }
+    public void Challenge()
+    {
+        challenge = true;
+        goalnum = Random.Range(2, 100);
+        goalNum.text = goalnum.ToString("0");
+    }
+    public void Judgement()  //合否の判定
+    {
+        if(goalnum == ansnum)
+        {
+            NumInit();
+            challenge = false;
+        }
+    }
+    public void NumInit() //数値初期化
+    {
+        num1 = 0;
+        num2 = 0;
+        ansnum = 0;
+        firNum.text = num1.ToString("0");
+        secNum.text = num2.ToString("0");
+        ansNum.text = ansnum.ToString("0");
+        aimcon.firstHit = false;
+        aimcon.secondHit = false;
+        starthit = false;
     }
 }

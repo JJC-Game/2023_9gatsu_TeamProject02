@@ -10,20 +10,15 @@ public class GameManager : Singleton<GameManager>
     public bool mainGame = false;    //ゲーム中
     public bool gameClear = false;    //ゲームクリア
     public bool gameOver = false;    //ゲームオーバー
-    public bool error = false;            //問題を間違えたか
     public bool stun = false;             //スタン中
-    public bool deadLimit = false;     //ゲームオーバー寸前
+    public bool deadLimit = false;     //ゲームオーバー条件
     public bool pause = false;           //一時停止
 
     [Header("PlayableDirector")]
     [SerializeField] PlayableDirector GameStart;
 
-    [Header("使用Canvas")]
-    [SerializeField] GameObject MainGameUI;
-    [SerializeField] GameObject StartUI;
-    [SerializeField] GameObject PauseUI;
-    [SerializeField] GameObject GameClearUI;
-    [SerializeField] GameObject GameOverUI;
+    [Header("Canvas( 0:main, 1:pause, 2:time, 3:start, 4:clear, 5:over)")]
+    [SerializeField] GameObject[] UI;
 
     [Header("問題に必要な変数")]
     int qCurrent = 0;
@@ -33,16 +28,12 @@ public class GameManager : Singleton<GameManager>
 
     void Awake()
     {
-        MainGameUI.SetActive(false);
-        StartUI.SetActive(true);
-        PauseUI.SetActive(false);
-        GameClearUI.SetActive(false);
-        GameOverUI.SetActive(false);
+        CanvasInit();
+        UI[3].SetActive(true);
     }
     void Start()
     {
        GameStart.Play();
-        PauseUI.SetActive(false);
     }
 
     void Update()
@@ -56,11 +47,11 @@ public class GameManager : Singleton<GameManager>
         {
             Pause();
         }
-        if(gameClear == true)
+        if(gameClear)
         {
             GameClear();
         }
-        if(gameOver == true)
+        if(gameOver)
         {
             GameOver();
         }
@@ -69,16 +60,17 @@ public class GameManager : Singleton<GameManager>
     public void MainGame()
     {
         mainGame = true;
-        StartUI.SetActive(false);
-        MainGameUI.SetActive(true);
+        CanvasInit();
+        UI[0].SetActive(true);
+        UI[2].SetActive(true);
     }
     public void DemoSkip()
     {
         mainGame = true;
         GameStart.Stop();
-
-        StartUI.SetActive(false);
-        MainGameUI.SetActive(true);
+        CanvasInit();
+        UI[0].SetActive(true);
+        UI[2].SetActive(true);
     }
     public void Pause()
     {
@@ -86,36 +78,40 @@ public class GameManager : Singleton<GameManager>
         {
             pause = true;
             Time.timeScale = 0;
-            MainGameUI.SetActive(false);
-            PauseUI.SetActive(true);
+            CanvasInit();
+            UI[1].SetActive(true);
+            UI[2].SetActive(true);
             return;
         }
         if(pause)
         {
             pause = false;
             Time.timeScale = 1;
-            PauseUI.SetActive(false);
-            MainGameUI.SetActive(true);
+            CanvasInit();
+            UI[0].SetActive(true);
+            UI[2].SetActive(true);
             return;
         }
     }
 
     void GameClear()
     {
-        MainGameUI.SetActive(false);
-        StartUI.SetActive(false);
-        PauseUI.SetActive(false);
-        GameClearUI.SetActive(true);
         mainGame = false;
+        CanvasInit();
+        UI[4].SetActive(true);
     }
 
     void GameOver()
     {
-        MainGameUI.SetActive(false);
-        StartUI.SetActive(false);
-        PauseUI.SetActive(false);
-        GameOverUI.SetActive(true);
         mainGame = false;
-        
+        CanvasInit();
+        UI[5].SetActive(true);
+    }
+    public void CanvasInit()
+    {
+        for(int i = 0; i < UI.Length; i++)
+        {
+            UI[i].SetActive(false);
+        }
     }
 }

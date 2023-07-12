@@ -28,13 +28,8 @@ public class EnemyAddObject : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if(GameManager.Instance.mainGame)
         {
-            
-            
-
-            // GameObjectを上記で決まったランダムな場所に生成
-
             EnemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
             if (EnemyCountMax > EnemyCount)
@@ -51,17 +46,15 @@ public class EnemyAddObject : MonoBehaviour
                     Instantiate(EnemyObject[Enemynum], new Vector3(x, y, z), Quaternion.identity);
                 }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
+            if (Input.GetKeyDown(KeyCode.T))
+           {
                 GameObject[] Enemys = GameObject.FindGameObjectsWithTag("Enemy");
 
                 foreach (GameObject EnemyObjects in Enemys)
                 {
                     Destroy(EnemyObjects);
                 }
-     
-             
+            }
         }
     }
 
