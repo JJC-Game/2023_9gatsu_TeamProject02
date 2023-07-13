@@ -9,7 +9,7 @@ public class Calculation : MonoBehaviour
     public int num1;
     public int num2;
     int ansnum;
-    int goalnum;
+    int goalnum = 10;
     float lagTime;
     float timer;
 
@@ -84,17 +84,17 @@ public class Calculation : MonoBehaviour
     void Challenge()
     {
         challenge = true;
-        goalnum = Random.Range(2, 40);
+        goalnum = Random.Range(4, 40);
         goalNum.text = goalnum.ToString("0");
     }
     void Judgement()  //合否の判定
     {
-        if(goalnum == num1 || goalnum == ansnum)
+        if(goalnum == ansnum)
         {
             NumInit();
             challenge = false;
             calculation = false;
-            GameManager.Instance.qCurrent =+ 1;
+            GameManager.Instance.qCurrent += 1;
         }
         if(goalnum < num1 || goalnum < ansnum)
         {
