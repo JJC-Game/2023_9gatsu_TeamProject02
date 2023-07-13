@@ -43,7 +43,7 @@ public class EnemyAddObject : MonoBehaviour
                     // rangeAとrangeBのz座標の範囲内でランダムな数値を作成
                     float z = Random.Range(rangeA.position.z, rangeB.position.z);
                     Enemynum = Random.Range(0, EnemyObject.Length);
-                    Instantiate(EnemyObject[Enemynum], new Vector3(x, y, z), Quaternion.identity);
+                    Instantiate(EnemyObject[Enemynum], new Vector3(x, y, z), Quaternion.Euler(0,180,0));
                 }
             }
             if (Input.GetKeyDown(KeyCode.T))

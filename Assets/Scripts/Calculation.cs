@@ -33,30 +33,39 @@ public class Calculation : MonoBehaviour
 
     void Update()
     {
+        Judgement();
+
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            if (aimcon.firstHit && aimcon.secondHit)
+           {
+                calculation = true;
+                aimcon.secondHit = false;
+                ansnum = num1 + num2;
+                ansNum.text = ansnum.ToString("0");
+                num1 = ansnum;
+                firNum.text = num1.ToString("0");
+                secNum.text = ("0");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            NumReset();
+        }
+
         if (GameManager.Instance.mainGame && !challenge)
         {
             Challenge();
         }
 
        if (aimcon.hitEnemy)
-        {
+      {
             NumUpdate();
             aimcon.hitEnemy = false;
-        }
-
-        if (aimcon.firstHit && aimcon.secondHit)
-        {
-            calculation = true;
-            aimcon.secondHit = false;
-            ansnum = num1 + num2;
-            ansNum.text = ansnum.ToString("0");
-            num1 = ansnum;
-            firNum.text = num1.ToString("0");
-            Judgement();
-        }
+       }
     }
 
-    public void NumUpdate()
+    void NumUpdate()
     {
         if (!starthit && aimcon.firstHit && !aimcon.secondHit)
         {
@@ -72,21 +81,29 @@ public class Calculation : MonoBehaviour
             return;
         }
     }
-    public void Challenge()
+    void Challenge()
     {
         challenge = true;
-        goalnum = Random.Range(2, 100);
+        goalnum = Random.Range(2, 40);
         goalNum.text = goalnum.ToString("0");
     }
-    public void Judgement()  //合否の判定
+    void Judgement()  //合否の判定
     {
-        if(goalnum == ansnum)
+        if(goalnum == num1 || goalnum == ansnum)
         {
             NumInit();
             challenge = false;
+            calculation = false;
+            GameManager.Instance.qCurrent =+ 1;
+        }
+        if(goalnum < num1 || goalnum < ansnum)
+        {
+            NumInit();
+            challenge = false;
+            calculation = false;
         }
     }
-    public void NumInit() //数値初期化
+    void NumInit() //数値初期化
     {
         num1 = 0;
         num2 = 0;
@@ -97,5 +114,18 @@ public class Calculation : MonoBehaviour
         aimcon.firstHit = false;
         aimcon.secondHit = false;
         starthit = false;
+    }
+    void  NumReset()
+    {
+        if (!calculation)
+        {
+            num1 = 0;
+            firNum.text = num1.ToString("0");
+            aimcon.firstHit = false;
+            starthit = false;
+        }
+        num2 = 0;
+        secNum.text = num2.ToString("0");
+        aimcon.secondHit = false;
     }
 }
