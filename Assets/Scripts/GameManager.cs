@@ -21,9 +21,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] GameObject[] UI;
 
     [Header("問題に必要な変数")]
-    int qCurrent = 0;
+    public int qCurrent = 0;
     public int qMax = 5;
-    int errorCurrent = 0;
+    public int errorCurrent = 0;
     public int errorMax = 3;
 
     void Awake()
@@ -47,11 +47,11 @@ public class GameManager : Singleton<GameManager>
         {
             Pause();
         }
-        if(gameClear)
+        if(qMax == qCurrent)
         {
             GameClear();
         }
-        if(gameOver)
+        if(errorMax == errorCurrent)
         {
             GameOver();
         }
@@ -97,6 +97,7 @@ public class GameManager : Singleton<GameManager>
     void GameClear()
     {
         mainGame = false;
+        gameClear = true;
         CanvasInit();
         UI[4].SetActive(true);
     }
@@ -104,6 +105,7 @@ public class GameManager : Singleton<GameManager>
     void GameOver()
     {
         mainGame = false;
+        gameOver = true;
         CanvasInit();
         UI[5].SetActive(true);
     }
