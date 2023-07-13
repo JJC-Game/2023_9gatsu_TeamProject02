@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     float hor;
     Vector3 moveDirection;
     Vector3 gravityDirection;
+    Vector3 cameraForward;
 
     void Start()
     {
@@ -58,6 +59,10 @@ public class PlayerController : MonoBehaviour
         {
             gravityDirection.y = -0.1f;
         }
+    }
+    void Direction()
+    {
+       
     }
     public void Squat()
     {
