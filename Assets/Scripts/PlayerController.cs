@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     float hor;
     Vector3 moveDirection;
     Vector3 gravityDirection;
-    Vector3 cameraForward;
 
     void Start()
     {
@@ -27,6 +26,7 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             Gravity();
+            //Squat();
         }
        
     }
@@ -64,11 +64,15 @@ public class PlayerController : MonoBehaviour
     {
        
     }
-    public void Squat()
+    /*public void Squat()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.C))
         {
-
+            Transform transform = this.gameObject.transform;
+            Vector3 pos = transform.position;
+            pos.y -= 0.5f;
+            this.gameObject.transform.position = pos;
         }
-    }
+        
+    }*/
 }
