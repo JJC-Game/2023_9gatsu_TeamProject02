@@ -33,6 +33,8 @@ public class Calculation : MonoBehaviour
 
     void Update()
     {
+        Judgement();
+
         if (GameManager.Instance.mainGame && !challenge)
         {
             Challenge();
@@ -52,7 +54,6 @@ public class Calculation : MonoBehaviour
             ansNum.text = ansnum.ToString("0");
             num1 = ansnum;
             firNum.text = num1.ToString("0");
-            Judgement();
         }
     }
 
@@ -75,12 +76,12 @@ public class Calculation : MonoBehaviour
     public void Challenge()
     {
         challenge = true;
-        goalnum = Random.Range(2, 100);
+        goalnum = Random.Range(2, 40);
         goalNum.text = goalnum.ToString("0");
     }
     public void Judgement()  //合否の判定
     {
-        if(goalnum == ansnum)
+        if(goalnum == num1 || goalnum == ansnum)
         {
             NumInit();
             challenge = false;

@@ -5390,7 +5390,7 @@ MonoBehaviour:
   - {fileID: 241817071}
   - {fileID: 280270128}
   - {fileID: 843103599}
-  EnemyCountMax: 3
+  EnemyCountMax: 5
   EnemyCount: 0
   rangeA: {fileID: 638909962}
   rangeB: {fileID: 54138453}
