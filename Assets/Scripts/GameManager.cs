@@ -47,13 +47,15 @@ public class GameManager : Singleton<GameManager>
         {
             Pause();
         }
-        if(qMax == qCurrent)
+        if(qMax == qCurrent || Input.GetKeyDown(KeyCode.F1))
         {
             GameClear();
+            Debug.Log("ゲームクリアした");
         }
-        if(errorMax == errorCurrent)
+        if(errorMax == errorCurrent || Input.GetKeyDown(KeyCode.F2))
         {
             GameOver();
+            Debug.Log("ゲームオーバー");
         }
     }
 
