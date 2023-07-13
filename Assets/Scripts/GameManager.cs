@@ -15,7 +15,9 @@ public class GameManager : Singleton<GameManager>
     public bool pause = false;           //一時停止
 
     [Header("PlayableDirector")]
-    [SerializeField] PlayableDirector GameStart;
+    [SerializeField] PlayableDirector GameStartTimeline;
+    [SerializeField] PlayableDirector GameClearTimeline;
+    [SerializeField] PlayableDirector GameOverTimeline;
 
     [Header("Canvas( 0:main, 1:pause, 2:time, 3:start, 4:clear, 5:over)")]
     [SerializeField] GameObject[] UI;
@@ -30,15 +32,17 @@ public class GameManager : Singleton<GameManager>
     {
         CanvasInit();
         UI[3].SetActive(true);
+        
     }
     void Start()
     {
-       GameStart.Play();
+        
+       GameStartTimeline.Play();
     }
 
     void Update()
     {
-        if(GameStart.state == PlayState.Playing && Input.GetKeyDown(KeyCode.Space))
+        if(GameStartTimeline.state == PlayState.Playing && Input.GetKeyDown(KeyCode.Space))
         {
             DemoSkip();
         }
@@ -49,11 +53,13 @@ public class GameManager : Singleton<GameManager>
         }
         if(qMax == qCurrent || Input.GetKeyDown(KeyCode.F1))
         {
+            GameClearTimeline.Play();
             GameClear();
             Debug.Log("ゲームクリアした");
         }
         if(errorMax == errorCurrent || Input.GetKeyDown(KeyCode.F2))
         {
+            GameOverTimeline.Play();
             GameOver();
             Debug.Log("ゲームオーバー");
         }
@@ -69,7 +75,7 @@ public class GameManager : Singleton<GameManager>
     public void DemoSkip()
     {
         mainGame = true;
-        GameStart.Stop();
+        GameStartTimeline.Stop();
         CanvasInit();
         UI[0].SetActive(true);
         UI[2].SetActive(true);

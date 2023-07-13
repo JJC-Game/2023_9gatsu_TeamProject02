@@ -94,7 +94,7 @@ public class Calculation : MonoBehaviour
             NumInit();
             challenge = false;
             calculation = false;
-            GameManager.Instance.qCurrent++;
+            GameManager.Instance.qCurrent =+ 1;
         }
         if(goalnum < num1 || goalnum < ansnum)
         {
