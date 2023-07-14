@@ -55,7 +55,7 @@ public class GameManager : Singleton<GameManager>
         {
             GameClearTimeline.Play();
             GameClear();
-            Debug.Log("ゲームクリアした");
+            Debug.Log("ゲームクリア");
         }
         if(errorMax == errorCurrent || Input.GetKeyDown(KeyCode.F2))
         {

@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
     Vector3 gravityDirection;
 
+    [SerializeField] Transform target;
+
     void Start()
     {
         characon = GetComponent<CharacterController>();
+        rig = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             Gravity();
+            Rotation();
             //Squat();
         }
        
@@ -45,10 +49,13 @@ public class PlayerController : MonoBehaviour
     public void Move()
     {
         hor = Input.GetAxis("Horizontal");
-
         moveDirection.x = hor * moveSpeed;
-
-        characon.Move(moveDirection * Time.deltaTime);
+        Vector3 ver = gameObject.transform.rotation * moveDirection;
+        characon.Move(ver * Time.deltaTime);
+    }
+    void Rotation()
+    {
+        transform.LookAt(target);
     }
     void Gravity()
     {
@@ -60,19 +67,10 @@ public class PlayerController : MonoBehaviour
             gravityDirection.y = -0.1f;
         }
     }
-    void Direction()
-    {
-       
-    }
     /*public void Squat()
     {
         if(Input.GetKeyDown(KeyCode.C))
         {
-            Transform transform = this.gameObject.transform;
-            Vector3 pos = transform.position;
-            pos.y -= 0.5f;
-            this.gameObject.transform.position = pos;
         }
-        
     }*/
 }
