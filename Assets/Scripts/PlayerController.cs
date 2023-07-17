@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = 10;
 
     CharacterController characon;
+    Rigidbody rig;
     float hor;
     Vector3 moveDirection;
     Vector3 gravityDirection;
