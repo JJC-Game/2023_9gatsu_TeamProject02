@@ -10,6 +10,8 @@ public class Calculation : MonoBehaviour
     public int num2;
     int ansnum;
     int goalnum = 10;
+    public int rangeLow;
+    public int rangeHight;
     float lagTime;
     float timer;
 
@@ -84,7 +86,7 @@ public class Calculation : MonoBehaviour
     void Challenge()
     {
         challenge = true;
-        goalnum = Random.Range(4, 40);
+        goalnum = Random.Range(rangeLow, rangeHight);
         goalNum.text = goalnum.ToString("0");
     }
     void Judgement()  //合否の判定

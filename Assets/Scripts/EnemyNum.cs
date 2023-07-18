@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class EnemyNum : MonoBehaviour
 {
-
+    GameObject playerObj;
+    Transform playerTransform;
     public int num;
 
     Calculation calc;
@@ -13,10 +14,13 @@ public class EnemyNum : MonoBehaviour
     void Start()
     {
         calc = GameObject.FindWithTag("CalculationManager").GetComponent<Calculation>();
+        playerObj = GameObject.FindWithTag("Player");
+        playerTransform = playerObj.transform;
     }
 
     void Update()
     {
+        transform.LookAt(playerTransform);
     }
     void OnDestroy()
     {

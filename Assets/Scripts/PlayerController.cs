@@ -51,8 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         hor = Input.GetAxis("Horizontal");
         moveDirection.x = hor * moveSpeed;
-        Vector3 ver = gameObject.transform.rotation * moveDirection;
-        characon.Move(ver * Time.deltaTime);
+        characon.Move(moveDirection * Time.deltaTime);
     }
     void Rotation()
     {
