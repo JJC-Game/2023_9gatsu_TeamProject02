@@ -1,31 +1,45 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
 
-    public float bullSpeed = 10;
-
-    Rigidbody bulletRig;
+    AimController aimcon;
 
     void Start()
     {
-        bulletRig = GetComponent<Rigidbody>();
-
-        bulletRig.AddForce(bulletRig.mass * Vector3.forward * bullSpeed, ForceMode.Impulse);
+        aimcon = GameObject.FindWithTag("AimController").GetComponent<AimController>();
     }
-
     void Update()
     {
-        Destroy(this.gameObject, 2f);
+        Destroy(this.gameObject, 2.0f);
+        if (aimcon.hitEnemy) { Destroy(this.gameObject); }
     }
 
-    private void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject)
+        switch (other.gameObject.tag)
         {
-            Destroy(this.gameObject);
+            case "Enemy":
+                if (!aimcon.firstHit)
+                {
+                    Destroy(other.gameObject);
+                    aimcon.firstHit = true;
+                    aimcon.hitEnemy = true;
+                    break;
+                }
+                if (!aimcon.secondHit)
+                {
+                    Destroy(other.gameObject);
+                    aimcon.secondHit = true;
+                    aimcon.hitEnemy = true;
+                    break;
+                }
+                break;
+            case "+":
+                Destroy(other.gameObject);
+                break;
         }
     }
 }

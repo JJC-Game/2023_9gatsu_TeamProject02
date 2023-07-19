@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
     Vector3 gravityDirection;
 
-    [SerializeField] Transform target;
-
     void Start()
     {
         characon = GetComponent<CharacterController>();
@@ -30,8 +28,7 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             Gravity();
-            Rotation();
-            //Squat();
+            //Rotation();
         }
        
     }
@@ -55,7 +52,7 @@ public class PlayerController : MonoBehaviour
     }
     void Rotation()
     {
-        transform.LookAt(target);
+        transform.LookAt(Input.mousePosition);
     }
     void Gravity()
     {
@@ -67,10 +64,4 @@ public class PlayerController : MonoBehaviour
             gravityDirection.y = -0.1f;
         }
     }
-    /*public void Squat()
-    {
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-        }
-    }*/
 }
