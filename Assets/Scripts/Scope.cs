@@ -8,8 +8,8 @@ public class Scope : MonoBehaviour
 
     [SerializeField] CinemachineVirtualCamera vcame;
 
-    [SerializeField] float beFOV = 90;
-    [SerializeField] float stFOV = 10;
+    [SerializeField] float maxFOV = 90;
+    [SerializeField] float minFOV = 10;
 
     void Start()
     {
@@ -18,13 +18,13 @@ public class Scope : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButtonDown("Fire2"))
         {
-            vcame.m_Lens.FieldOfView = stFOV;
+            vcame.m_Lens.FieldOfView = minFOV;
         }
         if(Input.GetButtonUp("Fire2"))
         {
-            vcame.m_Lens.FieldOfView = beFOV;
+            vcame.m_Lens.FieldOfView = maxFOV;
         }
     }
     
