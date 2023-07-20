@@ -9,7 +9,7 @@ public class Calculation : MonoBehaviour
     public int num1;
     public int num2;
     int ansnum;
-    int goalnum = 10;
+    int judgenum;
     public int rangeLow;
     public int rangeHight;
     float lagTime;
@@ -18,10 +18,7 @@ public class Calculation : MonoBehaviour
     public TextMeshProUGUI firNum;
     public TextMeshProUGUI secNum;
     public TextMeshProUGUI ansNum;
-    public TextMeshProUGUI goalNum;
 
-    public bool calculation = false;
-    public bool starthit = false;
     bool challenge = false;      //問題挑戦中
     public bool error = false;            //制限時間を超えたかを判定する
 
@@ -31,30 +28,26 @@ public class Calculation : MonoBehaviour
     {
         lagTime = 1.5f;
         timer = 0f;
+        Challenge();
     }
 
     void Update()
     {
-        Judgement();
-
         if(Input.GetKeyDown(KeyCode.Return))
         {
             if (aimcon.firstHit && aimcon.secondHit)
            {
-                calculation = true;
                 aimcon.secondHit = false;
-                ansnum = num1 + num2;
-                ansNum.text = ansnum.ToString("0");
-                num1 = ansnum;
-                firNum.text = num1.ToString("0");
+                judgenum = num1 + num2;
+                firNum.text = ("0");
                 secNum.text = ("0");
+                Judgement();
             }
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            NumReset();
+            NumInit();
         }
-
         if (GameManager.Instance.mainGame && !challenge)
         {
             Challenge();
@@ -69,9 +62,8 @@ public class Calculation : MonoBehaviour
 
     void NumUpdate()
     {
-        if (!starthit && aimcon.firstHit && !aimcon.secondHit)
+        if ( aimcon.firstHit && !aimcon.secondHit)
         {
-            starthit = true;
             num1 = receiveNum;
             firNum.text = num1.ToString("0");
             return;
@@ -86,48 +78,30 @@ public class Calculation : MonoBehaviour
     void Challenge()
     {
         challenge = true;
-        goalnum = Random.Range(rangeLow, rangeHight);
-        goalNum.text = goalnum.ToString("0");
+        ansnum = Random.Range(rangeLow, rangeHight);
+        ansNum.text = ansnum.ToString("0");
     }
     void Judgement()  //合否の判定
     {
-        if(goalnum == ansnum)
+        if(num1 == ansnum || judgenum == ansnum)
         {
             NumInit();
             challenge = false;
-            calculation = false;
             GameManager.Instance.qCurrent += 1;
         }
-        if(goalnum < num1 || goalnum < ansnum)
+        if(ansnum < num1 || ansnum < judgenum)
         {
             NumInit();
             challenge = false;
-            calculation = false;
         }
     }
     void NumInit() //数値初期化
     {
         num1 = 0;
         num2 = 0;
-        ansnum = 0;
         firNum.text = num1.ToString("0");
         secNum.text = num2.ToString("0");
-        ansNum.text = ansnum.ToString("0");
         aimcon.firstHit = false;
-        aimcon.secondHit = false;
-        starthit = false;
-    }
-    void  NumReset()
-    {
-        if (!calculation)
-        {
-            num1 = 0;
-            firNum.text = num1.ToString("0");
-            aimcon.firstHit = false;
-            starthit = false;
-        }
-        num2 = 0;
-        secNum.text = num2.ToString("0");
         aimcon.secondHit = false;
     }
 }
