@@ -6,13 +6,22 @@ using UnityEngine.UI;
 //指定した位置に三体の敵オブジェクトを配置する
 public class EnemyAddObject : MonoBehaviour
 {
-    public GameObject[] EnemyObject;
+    public GameObject[] EnemyObject;    
+    /* 
+     * COMMENT_KUWABARA　敵キャラクターのプレハブを納めておくためのリストなので、変数名を修正してほしいです.
+     * １．Objectという単語だと、インスタンスをさしているのか、プレハブをさしているのかわからない.
+     * ２．EnemyObjectと書いてあると、１つのオブジェクトを格納した変数だと思われるが、実態はリスト.
+    */
 
     public int Enemynum;
+    // COMMENT_KUWABARA おそらく意味合いとしては、numではなくて、idか、indexだと思います。また、この変数はパブリックにしておく意味がありますか？.
 
     public Transform[] Enemyposition;
+    // COMMENT_KUWABARA 敵の何の座標？敵が湧く座標なら、EnemySpawnPositionです。また、これもListという名前にしてください.
+
     public int EnemyCountMax;
     public int EnemyCount;
+    // COMMENT_KUWABARA　これも、パブリックの意味が薄いと感じます.
     [SerializeField]
     [Tooltip("生成する範囲A")]
     private Transform rangeA;
