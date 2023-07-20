@@ -21,6 +21,7 @@ public class Calculation : MonoBehaviour
 
     bool challenge = false;      //問題挑戦中
     public bool error = false;            //制限時間を超えたかを判定する
+    // COMMENT_KUWABARA　エラー判定は今後いろいろ出てくると思うので、何のエラーか、も変数名に情報として含めてください.
 
     public AimController aimcon;
 

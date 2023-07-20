@@ -12,6 +12,7 @@ public class AimController : MonoBehaviour
     [SerializeField] float shotSpeed;
 
     public GameObject bulletPre;
+    // COMMENT_KUWABARA Pre、は、プレハブ（Prefab）と、前（Previous）の二つの意味があるため、略称として使うと混乱を生じます.略さないでください.
 
     void Start()
     {
