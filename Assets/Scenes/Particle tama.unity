@@ -819,8 +819,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vcame: {fileID: 1462890256}
-  beFOV: 90
-  stFOV: 10
+  dot: {fileID: 0}
+  croos: {fileID: 0}
+  maxFOV: 90
+  minFOV: 40
 --- !u!136 &154778989
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3440,9 +3442,6 @@ MonoBehaviour:
   firNum: {fileID: 884288382}
   secNum: {fileID: 366105816}
   ansNum: {fileID: 51990207}
-  goalNum: {fileID: 1936028482}
-  calculation: 0
-  starthit: 0
   error: 0
   aimcon: {fileID: 1344240326}
 --- !u!1 &1063367799
@@ -4387,7 +4386,8 @@ MonoBehaviour:
   secondHit: 0
   hitEnemy: 0
   shotSpeed: 50
-  bulletPre: {fileID: 7716800560424425846, guid: 2a7473f90b1623d4c87d538eaac2aa8d, type: 3}
+  bulletPrefab: {fileID: 0}
+  effectPos: {fileID: 0}
 --- !u!4 &1344240327
 Transform:
   m_ObjectHideFlags: 0

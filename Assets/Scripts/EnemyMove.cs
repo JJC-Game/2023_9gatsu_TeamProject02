@@ -4,67 +4,60 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    [Header("敵のパラメータ")]
-    public float moveSpeed;//移動スピード
-    public float StopTime;//停止時間
-    Vector3 StrafeDirection = new Vector3(2, 0, 0);//移動する方向
+    private Rigidbody rb;
+    private float EnemyMoveSpeed = 2f;
+    Vector3 startpos;
 
-    Vector3 StartPos;　//初期位置
-
-
-    enum MoveType
+    [SerializeField] Vector3 movedistans = new Vector3(2, 0, 0);
+    enum MoveTypelist
     {
         左右移動,
         上下移動,
         ルート移動,
 
     }
-    [SerializeField] MoveType movetype;
+    [SerializeField] MoveTypelist movetype;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartPos = transform.position;
-        
+        int randompostion = Random.Range(3, 30);
+        startpos = new Vector3(0, 0.5f, randompostion);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.Instance.mainGame == true )
-        {
-            switch(movetype)
+            switch (movetype)
             {
-                case MoveType.左右移動:
+                case MoveTypelist.左右移動:
                     rerere();
                     break;
 
-                case MoveType.上下移動:
+                case MoveTypelist.上下移動:
                     jouge();
                     break;
 
-                case MoveType.ルート移動:
+                case MoveTypelist.ルート移動:
                     route();
                     break;
-                    
-                   
+
+
             }
-        }
+        
 
     }
-
-    void  rerere()
+    void rerere()
     {
-       
+        float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
+        transform.position = startpos + (movedistans * sin);
     }
-
-    void jouge()
-    {
-
-    }
-
     void route()
     {
 
     }
+    void jouge()
+    {
+    }
+     
 }
