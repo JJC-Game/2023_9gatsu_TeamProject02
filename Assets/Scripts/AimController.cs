@@ -11,8 +11,8 @@ public class AimController : MonoBehaviour
 
     [SerializeField] float shotSpeed;
 
-    public GameObject bulletPre;
-    // COMMENT_KUWABARA Pre、は、プレハブ（Prefab）と、前（Previous）の二つの意味があるため、略称として使うと混乱を生じます.略さないでください.
+    public GameObject bulletPrefab;
+    public Transform effectPos;
 
     void Start()
     {
@@ -37,8 +37,10 @@ public class AimController : MonoBehaviour
     }
     void Fire()
     {
-        GameObject bullet = Instantiate(bulletPre, transform.position,Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
+        GameObject bullet = Instantiate(bulletPrefab, transform.position,Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+        GameObject shotEffect = Instantiate(EffectManager.Instance.playerFX[0], effectPos.position, Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
+        Destroy(shotEffect, 0.3f);
         bulletRb.AddForce(transform.forward * shotSpeed,ForceMode.Impulse);
     }
-    }
+}
