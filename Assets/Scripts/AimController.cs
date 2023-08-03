@@ -8,6 +8,11 @@ public class AimController : MonoBehaviour
     public bool firstHit = false;
     public bool secondHit = false;
     public bool hitEnemy = false;
+    public bool hitPlus = false;
+    public bool hitMinus = false;
+    public bool hitAsterisk = false;
+    public bool hitSlash = false;
+    public bool hitSign = false;
 
     [SerializeField] float shotSpeed;
 

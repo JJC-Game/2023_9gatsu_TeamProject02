@@ -6,41 +6,40 @@ public class Bullet : MonoBehaviour
 {
 
     AimController aimcon;
+    float timer = 2.0f;
+
 
     void Start()
     {
         aimcon = GameObject.FindWithTag("AimController").GetComponent<AimController>();
-        Destroy(this.gameObject, 2.0f);
     }
     void Update()
     {
-        Destroy(this.gameObject, 2.0f);
-        // COMMENT_KUWABARA 毎フレーム呼んでしまっています.
-        // Destroyを2重に読んでほしくないので、弾丸の寿命をタイマーで設定しておいて、タイマーが条件を満たすか、あるいは、ヒットするか、どちらかが起きたら、Destroyをするようにしてください.
-        /*
-         * bool destroyFlag = false;
-         * if(timer > 0){
-         *      timer -= Time.deltaTime;
-         *      if(timer <= 0){
-         *          destroyFlag = true;
-         *      }
-         *  }
-         *  if (aimcon.hitEnemy) {
-         *      destroyFlag = true;
-         *  }
-         *  
-         *  if(destroyFlag){
-         *      Destroy(this.gameObject);
-         *  }
-         */
-
-        if (aimcon.hitEnemy) { Destroy(this.gameObject); }
+        bool destroyFlag = false;
+         if (timer > 0)
+         {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                destroyFlag = true;
+            }
+         }
+          if (aimcon.hitEnemy)
+          {
+            destroyFlag = true;
+          }
+        
+          if (destroyFlag)
+          {
+            Destroy(this.gameObject);
+          }
+        
 
         // COMMENT_KUWABARA 弾丸にインパルスで力を与えて飛ばした場合に、射程距離が正確にわからなくなってしまうため.
         // Time.deltaTimeと、bulletSpeed変数を用いて、少しずつ動かすことで、弾丸を飛ばしてほしいです.
     }
 
-    void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         switch (other.gameObject.tag)
         {
@@ -62,6 +61,23 @@ public class Bullet : MonoBehaviour
                 break;
             case "+":
                 Destroy(other.gameObject);
+                aimcon.hitPlus = true;
+                aimcon.hitSign = true;
+                break;
+            case "-":
+                Destroy(other.gameObject);
+                aimcon.hitMinus = true;
+                aimcon.hitSign = true;
+                break;
+            case "*":
+                Destroy(other.gameObject);
+                aimcon.hitAsterisk = true;
+                aimcon.hitSign = true;
+                break;
+            case "÷":
+                Destroy(other.gameObject);
+                aimcon.hitSlash = true;
+                aimcon.hitSign = true;
                 break;
         }
     }

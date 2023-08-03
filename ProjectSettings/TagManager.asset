@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - CalculationManager
   - AimController
+  - +
+  - '-'
+  - '*'
   layers:
   - Default
   - TransparentFX
