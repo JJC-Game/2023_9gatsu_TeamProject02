@@ -620,6 +620,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99499394}
   m_CullTransparentMesh: 1
+--- !u!4 &147403539 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8237977139238950207, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+  m_PrefabInstance: {fileID: 906247002}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &169760208
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +713,37 @@ PlayableDirector:
     value: {fileID: 1422881308}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &200785610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200785611}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &200785611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200785610}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.316, y: 0.495, z: 0.219}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 147403539}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &241817070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,12 +1474,15 @@ MonoBehaviour:
   receiveNum: 0
   num1: 0
   num2: 0
+  judgenum: 0
   rangeLow: 5
   rangeHight: 17
+  signType: 0
   firNum: {fileID: 547674454}
   secNum: {fileID: 816119266}
   ansNum: {fileID: 379801185}
-  error: 0
+  signNum: {fileID: 0}
+  timeover: 0
   aimcon: {fileID: 1346569243}
 --- !u!4 &301131905
 Transform:
@@ -5924,7 +5963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
       propertyPath: movetype
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
       propertyPath: moveSpeed
@@ -5933,6 +5972,18 @@ PrefabInstance:
     - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
       propertyPath: movedistans.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+      propertyPath: HukugoDistans.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+      propertyPath: HukugoDistans.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+      propertyPath: HukugoDistans.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
       propertyPath: RoutePoints.Array.size
@@ -6861,6 +6912,11 @@ MonoBehaviour:
   firstHit: 0
   secondHit: 0
   hitEnemy: 0
+  hitPlus: 0
+  hitMinus: 0
+  hitAsterisk: 0
+  hitSlash: 0
+  hitSign: 0
   shotSpeed: 50
   bulletPrefab: {fileID: 7716800560424425846, guid: 2a7473f90b1623d4c87d538eaac2aa8d, type: 3}
   effectPos: {fileID: 472103136}
