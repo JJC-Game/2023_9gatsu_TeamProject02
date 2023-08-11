@@ -8,11 +8,11 @@ public class Calculation : MonoBehaviour
     public int receiveNum;
     public int num1;
     public int num2;
-    public string sign; 
     int ansnum;
-    int judgenum;
+    public int judgenum;
     public int rangeLow;
     public int rangeHight;
+    public int signType; //符号のタイプ
     float lagTime;
     float timer;
 
@@ -82,56 +82,94 @@ public class Calculation : MonoBehaviour
         {
             SignInit();
             aimcon.hitPlus = true;
-            signNum.text = ("＋");
+            signType = 0;
+            signNum.text = ("+");
+            return;
         }
         if (aimcon.hitMinus)
         {
             SignInit();
             aimcon.hitMinus = true;
+            signType = 1;
             signNum.text = ("−");
+            return;
         }
         if (aimcon.hitAsterisk)
         {
             SignInit();
             aimcon.hitAsterisk = true;
+            signType = 2;
             signNum.text = ("×");
+            return;
         }
         if (aimcon.hitSlash)
         {
             SignInit();
             aimcon.hitSlash = true;
+            signType = 3;
             signNum.text = ("÷");
+            return;
         }
     }
     void CalculationStart()
     {
         if (aimcon.firstHit && aimcon.secondHit)
         {
-            aimcon.secondHit = false;
-            judgenum = num1 + num2;
-            firNum.text = ("0");
-            secNum.text = ("0");
-            Judgement();
+            switch (signType)
+            {
+                case 0:
+                    aimcon.secondHit = false;
+                    judgenum = num1 + num2;
+                    firNum.text = ("0");
+                    secNum.text = ("0");
+                    Judgement();
+                    break;
+                case 1:
+                    aimcon.secondHit = false;
+                    judgenum = num1 - num2;
+                    firNum.text = ("0");
+                    secNum.text = ("0");
+                    Judgement();
+                    break;
+                case 2:
+                    aimcon.secondHit = false;
+                    judgenum = num1 * num2;
+                    firNum.text = ("0");
+                    secNum.text = ("0");
+                    Judgement();
+                    break;
+                case 3:
+                    aimcon.secondHit = false;
+                    judgenum = num1 / num2;
+                    firNum.text = ("0");
+                    secNum.text = ("0");
+                    Judgement();
+                    break;
+            }
             return;
         }
         if(aimcon.hitPlus)
         {
-
+            judgenum = num1 + num2;
+            Judgement();
             return;
         }
         if (aimcon.hitMinus)
         {
-
+            judgenum = num1 - num2;
+            Judgement();
             return;
         }
         if (aimcon.hitAsterisk)
         {
-
+            judgenum = num1 * num2;
+            Judgement();
             return;
         }
         if (aimcon.hitSlash)
         {
-
+            judgenum = num1 / num2;
+            Judgement();
             return;
         }
     }

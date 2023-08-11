@@ -10,6 +10,7 @@ TagManager:
   - +
   - '-'
   - '*'
+  - "\xF7"
   layers:
   - Default
   - TransparentFX

@@ -27,7 +27,7 @@ public class EnemyMove : MonoBehaviour
 
     [SerializeField] Vector3 LeftRightDistans = new Vector3(2, 0, 0);
     [SerializeField] Vector3 UpDownDistans = new Vector3(0, 1, 0);
-    [SerializeField] Vector3 HukugoDistans = new Vector3(2, 1, 0);
+    [SerializeField] Vector3 HukugoDistans = new Vector3(0, 0, 2);
     enum MoveTypelist
     {
         左右移動,
