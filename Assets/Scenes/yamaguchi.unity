@@ -1438,12 +1438,14 @@ MonoBehaviour:
   receiveNum: 0
   num1: 0
   num2: 0
+  sign: 
   rangeLow: 5
   rangeHight: 17
   firNum: {fileID: 547674454}
   secNum: {fileID: 816119266}
   ansNum: {fileID: 379801185}
-  error: 0
+  signNum: {fileID: 0}
+  timeover: 0
   aimcon: {fileID: 1346569243}
 --- !u!4 &301131905
 Transform:
@@ -5923,8 +5925,12 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+      propertyPath: interval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
       propertyPath: movetype
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
       propertyPath: moveSpeed
@@ -5935,6 +5941,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+      propertyPath: pointmoveTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+      propertyPath: routePoint.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
       propertyPath: RoutePoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5942,6 +5956,14 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+      propertyPath: routePoint.Array.data[0]
+      value: 
+      objectReference: {fileID: 1035020452}
+    - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+      propertyPath: routePoint.Array.data[1]
+      value: 
+      objectReference: {fileID: 465295942}
     - target: {fileID: 3206664587729529877, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
       propertyPath: RoutePoints.Array.data[0]
       value: 
@@ -6861,6 +6883,11 @@ MonoBehaviour:
   firstHit: 0
   secondHit: 0
   hitEnemy: 0
+  hitPlus: 0
+  hitMinus: 0
+  hitAsterisk: 0
+  hitSlash: 0
+  hitSign: 0
   shotSpeed: 50
   bulletPrefab: {fileID: 7716800560424425846, guid: 2a7473f90b1623d4c87d538eaac2aa8d, type: 3}
   effectPos: {fileID: 472103136}

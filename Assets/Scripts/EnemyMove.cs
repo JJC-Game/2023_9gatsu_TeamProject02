@@ -9,6 +9,22 @@ public class EnemyMove : MonoBehaviour
     Vector3 UpDownstartpos;
     Vector3 Hukugostartpos;
 
+    [SerializeField] float pointmoveTime;
+    [SerializeField] float interval;
+
+    [SerializeField] GameObject[] routePoint;
+
+    Rigidbody rig;
+
+    int current = 0;
+    int next = 1;
+
+    Vector3 currentPos;
+    Vector3 nextPos;
+
+    float timer;
+    Vector3 vel;
+
     [SerializeField] Vector3 LeftRightDistans = new Vector3(2, 0, 0);
     [SerializeField] Vector3 UpDownDistans = new Vector3(0, 1, 0);
     [SerializeField] Vector3 HukugoDistans = new Vector3(2, 1, 0);
@@ -22,11 +38,12 @@ public class EnemyMove : MonoBehaviour
     }
     [SerializeField] MoveTypelist movetype;
 
-    public List<GameObject> RoutePoints = new List<GameObject>();
+
     private int RouteCount = 0;
     // Start is called before the first frame update
     void Start()
     {
+        rig = GetComponent<Rigidbody>();
         int Zrandompostion = Random.Range(3, 30);
         int xrandompostion = Random.Range(-18, 18);
         LeftRightstartpos = new Vector3(0, 0.5f, Zrandompostion);
@@ -52,6 +69,7 @@ public class EnemyMove : MonoBehaviour
                 break;
 
             case MoveTypelist.左右上下移動:
+                
                 hukugou();
                 break;
 
@@ -67,16 +85,18 @@ public class EnemyMove : MonoBehaviour
     }
     void route()
     {
-        if (RoutePoints.Count == 0)
-            return;
-
-        Vector3 TartgetPosition = RoutePoints[RouteCount].transform.position;
-        Vector3 moveDirection = (TartgetPosition - transform.position).normalized;
-        transform.position += moveDirection * EnemyMoveSpeed * Time.deltaTime;
-
-        if (Vector3.Distance(transform.position, TartgetPosition) < 0.1f)
+        if(timer <= pointmoveTime)
         {
-            RouteCount = (RouteCount + 1) % RoutePoints.Count;
+            timer += Time.fixedDeltaTime;
+
+            currentPos = routePoint[current].transform.position;
+            nextPos = routePoint[next].transform.position;
+            rig.MovePosition(Vector3.Lerp(currentPos, nextPos, timer / pointmoveTime));
+
+        }
+        else
+        {
+            Pause();
         }
     }
     void jouge()
@@ -85,9 +105,23 @@ public class EnemyMove : MonoBehaviour
         transform.position = UpDownstartpos + (UpDownDistans * sin);
     }
 
-    void hukugou()
+    private void hukugou()
     {
-        float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
-        transform.position = Hukugostartpos + (HukugoDistans * sin);
+        HukugoDistans = new Vector3(Random.Range(-18f, 18f), Random.Range(0.5f, 1.5f), Random.Range(3f, 30f));
+        transform.position = Vector3.Lerp(transform.position, HukugoDistans, 1);
+    }
+
+    private void Pause()
+    { 
+        if(timer <= pointmoveTime + interval)
+        {
+            timer += Time.fixedDeltaTime;
+        }
+        else
+        {
+            current = next;
+            next = (next + 1) % routePoint.Length;
+            timer = 0;
+        }
     }
 }
