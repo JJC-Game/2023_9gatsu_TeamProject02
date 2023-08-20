@@ -25,5 +25,13 @@ public class ChangeScene : MonoBehaviour
             // 文字列で入力すると、シーン名が変動した場合にはエラーが起きるので、誤りが存在していることがすぐにわかります.
         }
     }
-    
+    public void TitleScene()
+    {
+        FadeManager.Instance.LoadSceneIndex(0, 1);
+    }
+
+    public void FPSSampleScene()
+    {
+        FadeManager.Instance.LoadSceneIndex(1, 1);
+    }
 }

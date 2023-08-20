@@ -1438,9 +1438,10 @@ MonoBehaviour:
   receiveNum: 0
   num1: 0
   num2: 0
-  sign: 
+  judgenum: 0
   rangeLow: 5
   rangeHight: 17
+  signType: 0
   firNum: {fileID: 547674454}
   secNum: {fileID: 816119266}
   ansNum: {fileID: 379801185}
@@ -5980,6 +5981,10 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 465295942}
+    - target: {fileID: 5978922793567004901, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 30a844e8716208e4a9c4b575ed3b5347, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
 --- !u!1 &963194225
