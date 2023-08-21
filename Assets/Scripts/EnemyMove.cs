@@ -96,7 +96,7 @@ public class EnemyMove : MonoBehaviour
         }
         else
         {
-            Pause();
+            EnemyPause();
         }
     }
     void jouge()
@@ -111,7 +111,7 @@ public class EnemyMove : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, HukugoDistans, 1);
     }
 
-    private void Pause()
+    private void EnemyPause()
     { 
         if(timer <= pointmoveTime + interval)
         {
