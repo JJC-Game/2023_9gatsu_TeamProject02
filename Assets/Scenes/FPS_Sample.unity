@@ -4830,7 +4830,7 @@ GameObject:
   - component: {fileID: 608799314}
   - component: {fileID: 608799313}
   m_Layer: 0
-  m_Name: '-'
+  m_Name: minus
   m_TagString: '-'
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6138,7 +6138,7 @@ GameObject:
   - component: {fileID: 895071593}
   - component: {fileID: 895071592}
   m_Layer: 0
-  m_Name: "\xD7"
+  m_Name: kakeru
   m_TagString: '*'
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7323,7 +7323,7 @@ GameObject:
   - component: {fileID: 1381438433}
   - component: {fileID: 1381438432}
   m_Layer: 0
-  m_Name: "\xF7"
+  m_Name: waru
   m_TagString: "\xF7"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7422,7 +7422,7 @@ GameObject:
   - component: {fileID: 1386783078}
   - component: {fileID: 1386783077}
   m_Layer: 0
-  m_Name: +
+  m_Name: plus
   m_TagString: +
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8905,7 +8905,18 @@ MonoBehaviour:
   - {fileID: 2012511124775126641, guid: ea6de3b5feef0a24e8401b4cc7eca919, type: 3}
   - {fileID: 6640340322137907456, guid: ed9685566d80c094f8d9f707df3d62f1, type: 3}
   - {fileID: 1976272999153799006, guid: bf96decb0dc47ba4b99ea17abac93590, type: 3}
-  EnemySpawnposition: []
+  EnemySpawnposition:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  EnemyCountMax: 10
   rangeA: {fileID: 638909962}
   rangeB: {fileID: 54138453}
 --- !u!4 &2130373435

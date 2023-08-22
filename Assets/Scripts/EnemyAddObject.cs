@@ -14,14 +14,12 @@ public class EnemyAddObject : MonoBehaviour
     */
 
     private int Enemyid;
-    // COMMENT_KUWABARA おそらく意味合いとしては、numではなくて、idか、indexだと思います。また、この変数はパブリックにしておく意味がありますか？.
 
     public Transform[] EnemySpawnposition;
-    // COMMENT_KUWABARA 敵の何の座標？敵が湧く座標なら、EnemySpawnPositionです。また、これもListという名前にしてください.
 
-    private int EnemyCountMax;
-    private int EnemyCount;
-    // COMMENT_KUWABARA　これも、パブリックの意味が薄いと感じます.
+    public int EnemyCountMax = 10; //敵の生成数
+    private int EnemyCount;  //敵の現存数
+
     [SerializeField]
     [Tooltip("生成する範囲A")]
     private Transform rangeA;
@@ -32,7 +30,7 @@ public class EnemyAddObject : MonoBehaviour
 
     void Start()
     {
-     
+
     }
 
     void Update()
