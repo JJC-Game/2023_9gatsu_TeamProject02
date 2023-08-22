@@ -21,28 +21,23 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Canvas( 0:main, 1:pause, 2:time, 3:start, 4:clear, 5:over)")]
     [SerializeField] GameObject[] UI;
-    // COMMENT_KUWABARA これ、数値を直に入れてオブジェクトの識別するのをやめてください.
-    // 列挙型を使用して、次のようにしてみてください.
-    /*
-     * enum UI_ID{
-     *      MAIN = 0,
-     *      PAUSE = 1,
-     *      TIME = 2,
-     *      START = 3,
-     *      CLEAR = 4,
-     *      OVER = 5,
-     * }
-     * 
-     */
 
+    enum UI_ID
+    {
+        MAIN = 0,
+        PAUSE = 1,
+        TIME = 2,
+        START = 3,
+        CLEAR = 4,
+        OVER = 5,
+    }
+    
     [Header("問題に必要な変数")]
     public int qCurrent = 0;
     public int qMax = 5;
     public int errorCurrent = 0;
     public int errorMax = 3;
-    // COMMENT_KUWABARA ゲームを通じて固定して良い値の場合には、constを使用してみてください.
-    // const int errorMax = 3; のように使用します.
-
+    
     void Awake()
     {
         CanvasInit();

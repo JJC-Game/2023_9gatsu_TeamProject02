@@ -80,32 +80,28 @@ public class Calculation : MonoBehaviour
     {
         if(aimcon.hitPlus)
         {
-            SignInit();
-            aimcon.hitPlus = true;
+            aimcon.hitPlus = false;
             signType = 0;
             signNum.text = ("+");
             return;
         }
         if (aimcon.hitMinus)
         {
-            SignInit();
-            aimcon.hitMinus = true;
+            aimcon.hitMinus = false;
             signType = 1;
             signNum.text = ("−");
             return;
         }
         if (aimcon.hitAsterisk)
         {
-            SignInit();
-            aimcon.hitAsterisk = true;
+            aimcon.hitAsterisk = false;
             signType = 2;
             signNum.text = ("×");
             return;
         }
         if (aimcon.hitSlash)
         {
-            SignInit();
-            aimcon.hitSlash = true;
+            aimcon.hitSlash = false;
             signType = 3;
             signNum.text = ("÷");
             return;
@@ -120,29 +116,21 @@ public class Calculation : MonoBehaviour
                 case 0:
                     aimcon.secondHit = false;
                     judgenum = num1 + num2;
-                    firNum.text = ("0");
-                    secNum.text = ("0");
                     Judgement();
                     break;
                 case 1:
                     aimcon.secondHit = false;
                     judgenum = num1 - num2;
-                    firNum.text = ("0");
-                    secNum.text = ("0");
                     Judgement();
                     break;
                 case 2:
                     aimcon.secondHit = false;
                     judgenum = num1 * num2;
-                    firNum.text = ("0");
-                    secNum.text = ("0");
                     Judgement();
                     break;
                 case 3:
                     aimcon.secondHit = false;
                     judgenum = num1 / num2;
-                    firNum.text = ("0");
-                    secNum.text = ("0");
                     Judgement();
                     break;
             }
@@ -197,8 +185,8 @@ public class Calculation : MonoBehaviour
     {
         num1 = 0;
         num2 = 0;
-        firNum.text = num1.ToString("?");
-        secNum.text = num2.ToString("?");
+        firNum.text = ("?");
+        secNum.text = ("?");
         aimcon.firstHit = false;
         aimcon.secondHit = false;
     }
