@@ -9,12 +9,13 @@ public class EnemyMove : MonoBehaviour
     Vector3 UpDownstartpos;
     Vector3 Hukugostartpos;
 
-    [SerializeField] float pointmoveTime;
-    [SerializeField] float interval;
-
-    [SerializeField] GameObject[] routePoint;
-
+    Animator animator;
     Rigidbody rig;
+
+    [SerializeField] float pointmoveTime;
+    [SerializeField] float Routeinterval;
+    [SerializeField] float rerereinterval;
+    [SerializeField] GameObject[] routePoint;
 
     int current = 0;
     int next = 1;
@@ -28,6 +29,8 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] Vector3 LeftRightDistans = new Vector3(2, 0, 0);
     [SerializeField] Vector3 UpDownDistans = new Vector3(0, 1, 0);
     [SerializeField] Vector3 HukugoDistans = new Vector3(0, 0, 2);
+    private bool animationspeedFLG;
+    private bool AnimationWaitFLG;
     enum MoveTypelist
     {
         左右移動,
@@ -37,16 +40,14 @@ public class EnemyMove : MonoBehaviour
 
     }
     [SerializeField] MoveTypelist movetype;
-
-
-    private int RouteCount = 0;
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         int Zrandompostion = Random.Range(3, 30);
         int xrandompostion = Random.Range(-18, 18);
-        LeftRightstartpos = new Vector3(0, 0.5f, Zrandompostion);
+        LeftRightstartpos = new Vector3(0, 0.5f, 5/*Zrandompostion*/);
         UpDownstartpos = new Vector3(xrandompostion, 1.5f, Zrandompostion);
         Hukugostartpos = new Vector3(xrandompostion, 0.5f, Zrandompostion);
     }
@@ -59,29 +60,61 @@ public class EnemyMove : MonoBehaviour
             case MoveTypelist.左右移動:
                 rerere();
                 break;
-
             case MoveTypelist.上下移動:
                 jouge();
                 break;
-
             case MoveTypelist.ルート移動:
                 route();
                 break;
-
-            case MoveTypelist.左右上下移動:
-                
+            case MoveTypelist.左右上下移動:              
                 hukugou();
                 break;
-
-
         }
-
-
     }
     void rerere()
     {
         float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
         transform.position = LeftRightstartpos + (LeftRightDistans * sin);
+
+        if (sin >= 1.75f)
+        {
+            animationspeedFLG = true;
+        }
+            if (sin <= -1.75f)
+        {
+            animationspeedFLG = false;
+        }
+        if(animationspeedFLG == true)
+        {
+            AnimationWaitFLG = true;
+            animator.SetFloat(Animator.StringToHash("Speed"), 1f);
+            animator.SetBool("Run", true);
+            animator.SetBool("Idle", false);
+            Debug.Log("通常再生してほしい所");
+            AnimationWaitFLG = false;
+        }
+        /*
+        if(sin > 0)
+        {
+            animator.SetBool("Idle", true);
+            animator.SetBool("Run", false);
+            Debug.Log("サイン関数がゼロになりました");
+            ]
+        }*/
+        else if (animationspeedFLG == false) 
+        {
+            AnimationWaitFLG = true;
+            animator.SetFloat(Animator.StringToHash("Speed"), -1f);
+            animator.SetBool("Run", true);
+            animator.SetBool("Idle", false);
+            Debug.Log("逆再生してほしいところ");
+            AnimationWaitFLG = false;
+        }
+
+        if(AnimationWaitFLG == true)
+        {
+            StartCoroutine("Waitonetime");
+        }
     }
     void route()
     {
@@ -92,11 +125,14 @@ public class EnemyMove : MonoBehaviour
             currentPos = routePoint[current].transform.position;
             nextPos = routePoint[next].transform.position;
             rig.MovePosition(Vector3.Lerp(currentPos, nextPos, timer / pointmoveTime));
-
+            animator.SetBool("Run", true);
+            animator.SetBool("Idle", false);
         }
         else
         {
             EnemyPause();
+            animator.SetBool("Idle", true);
+            animator.SetBool("Run", false);
         }
     }
     void jouge()
@@ -113,7 +149,7 @@ public class EnemyMove : MonoBehaviour
 
     private void EnemyPause()
     { 
-        if(timer <= pointmoveTime + interval)
+        if(timer <= pointmoveTime + Routeinterval)
         {
             timer += Time.fixedDeltaTime;
         }
@@ -123,5 +159,11 @@ public class EnemyMove : MonoBehaviour
             next = (next + 1) % routePoint.Length;
             timer = 0;
         }
+    }
+    private IEnumerator Waitonetime()
+    {
+        Debug.Log("コルーチン処理のはじめ");
+        yield return new WaitForSeconds(rerereinterval);
+        Debug.Log("コルーチン処理の終わり");
     }
 }
