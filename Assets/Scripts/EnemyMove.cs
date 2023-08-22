@@ -75,7 +75,6 @@ public class EnemyMove : MonoBehaviour
     {
         float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
         transform.position = LeftRightstartpos + (LeftRightDistans * sin);
-
         if (sin >= 1.75f)
         {
             animationspeedFLG = true;
@@ -85,13 +84,11 @@ public class EnemyMove : MonoBehaviour
             animationspeedFLG = false;
         }
         if(animationspeedFLG == true)
-        {
-            AnimationWaitFLG = true;
+        {        
             animator.SetFloat(Animator.StringToHash("Speed"), 1f);
             animator.SetBool("Run", true);
             animator.SetBool("Idle", false);
             Debug.Log("通常再生してほしい所");
-            AnimationWaitFLG = false;
         }
         /*
         if(sin > 0)
@@ -103,17 +100,10 @@ public class EnemyMove : MonoBehaviour
         }*/
         else if (animationspeedFLG == false) 
         {
-            AnimationWaitFLG = true;
             animator.SetFloat(Animator.StringToHash("Speed"), -1f);
             animator.SetBool("Run", true);
             animator.SetBool("Idle", false);
             Debug.Log("逆再生してほしいところ");
-            AnimationWaitFLG = false;
-        }
-
-        if(AnimationWaitFLG == true)
-        {
-            StartCoroutine("Waitonetime");
         }
     }
     void route()
@@ -121,7 +111,6 @@ public class EnemyMove : MonoBehaviour
         if(timer <= pointmoveTime)
         {
             timer += Time.fixedDeltaTime;
-
             currentPos = routePoint[current].transform.position;
             nextPos = routePoint[next].transform.position;
             rig.MovePosition(Vector3.Lerp(currentPos, nextPos, timer / pointmoveTime));
