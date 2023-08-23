@@ -72,7 +72,7 @@ public class AimController : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position,Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-        GameObject shotEffect = Instantiate(EffectManager.Instance.playerFX[0], effectPos.position, Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
+        GameObject shotEffect = Instantiate(EffectManager.Instance.playerFX[0], effectPos.position, Quaternion.Euler(transform.parent.eulerAngles.x - 90, transform.parent.eulerAngles.y, transform.parent.eulerAngles.z));
         Destroy(shotEffect, 0.3f);
         bulletRb.AddForce(transform.forward * shotSpeed,ForceMode.Impulse);
     }
