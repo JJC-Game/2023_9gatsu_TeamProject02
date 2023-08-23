@@ -33,21 +33,30 @@ public class GameManager : Singleton<GameManager>
     }
     
     [Header("問題に必要な変数")]
-    public int qCurrent = 0;
-    public int qMax = 5;
-    public int errorCurrent = 0;
-    public int errorMax = 3;
+    public int CorrectCountCurrent = 0;   //正解数
+    public int InCorrectCountCurrent = 0;  //不正解数
+
+    public int questionCurrent = 0;   //おわった問題数
+    public int CorrectCountMax = 10;  //問題数
+
+    public int InCorrectCountMax = 5; //ゲームオーバーになる不正解数
     
+    public TextMeshProUGUI CorrectCountText;
+    public TextMeshProUGUI InCorrectCountText;
+
+    [Header("テスト用HP")]
+    public int playerHP = 10;
+
     void Awake()
     {
         CanvasInit();
         UI[3].SetActive(true);
-        
     }
     void Start()
     {
-        
        GameStartTimeline.Play();
+       CorrectCountText.text = ("0");
+       InCorrectCountText.text = ("0");
     }
 
     void Update()
@@ -61,13 +70,13 @@ public class GameManager : Singleton<GameManager>
         {
             Pause();
         }
-        if(qMax == qCurrent || Input.GetKeyDown(KeyCode.F1))
+        if(CorrectCountMax == questionCurrent || Input.GetKeyDown(KeyCode.F1))
         {
             GameClearTimeline.Play();
             GameClear();
             Debug.Log("ゲームクリア");
         }
-        if(errorMax == errorCurrent || Input.GetKeyDown(KeyCode.F2))
+        if(InCorrectCountMax == InCorrectCountCurrent || Input.GetKeyDown(KeyCode.F2))
         {
             GameOverTimeline.Play();
             GameOver();
@@ -94,6 +103,7 @@ public class GameManager : Singleton<GameManager>
     {
         if(!pause && mainGame)
         {
+            mainGame = false;
             pause = true;
             Time.timeScale = 0;
             CanvasInit();
@@ -103,6 +113,7 @@ public class GameManager : Singleton<GameManager>
         }
         if(pause)
         {
+            mainGame = true;
             pause = false;
             Time.timeScale = 1;
             CanvasInit();

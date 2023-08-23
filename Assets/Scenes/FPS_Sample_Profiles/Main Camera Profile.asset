@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 2941061426705469716}
   - {fileID: 834475959530184799}
   - {fileID: 6687381628513517981}
+  - {fileID: 7688192173856942080}
 --- !u!114 &834475959530184799
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -75,10 +76,10 @@ MonoBehaviour:
     value: 0
   colorFilter:
     overrideState: 1
-    value: {r: 0.7610622, g: 0.8488771, b: 0.7903338, a: 1}
+    value: {r: 0.9433962, g: 0.85795814, b: 0.7609469, a: 1}
   hueShift:
-    overrideState: 1
-    value: -15
+    overrideState: 0
+    value: 0
   saturation:
     overrideState: 0
     value: 0
@@ -86,8 +87,8 @@ MonoBehaviour:
     overrideState: 1
     value: -5
   postExposure:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -0.7
   contrast:
     overrideState: 0
     value: 0
@@ -111,13 +112,13 @@ MonoBehaviour:
     value: 0
   mixerBlueOutRedIn:
     overrideState: 0
-    value: 0
+    value: -40
   mixerBlueOutGreenIn:
     overrideState: 0
-    value: 0
+    value: 15
   mixerBlueOutBlueIn:
     overrideState: 0
-    value: 100
+    value: 110
   lift:
     overrideState: 0
     value: {x: 1, y: 1, z: 1, w: 0}
@@ -1345,35 +1346,35 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 6
+    value: 7
   threshold:
     overrideState: 1
-    value: 0.8
+    value: 0.7
   softKnee:
     overrideState: 1
     value: 0.8
   clamp:
     overrideState: 1
-    value: 5
+    value: 0.6
   diffusion:
     overrideState: 1
-    value: 5
+    value: 6
   anamorphicRatio:
     overrideState: 0
     value: 0
   color:
     overrideState: 0
-    value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    value: {r: 0.5283019, g: 0.29156286, b: 0.29156286, a: 1}
   fastMode:
     overrideState: 1
     value: 1
   dirtTexture:
     overrideState: 0
-    value: {fileID: 2800000, guid: 4a11d65ce13d5f542a0ff136cc2f3fba, type: 3}
+    value: {fileID: 0}
     defaultState: 1
   dirtIntensity:
     overrideState: 0
-    value: 0
+    value: 2
 --- !u!114 &6687381628513517981
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1394,5 +1395,54 @@ MonoBehaviour:
     overrideState: 1
     value: 200
   sampleCount:
+    overrideState: 1
+    value: 4
+--- !u!114 &7688192173856942080
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
+  m_Name: AmbientOcclusion
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  mode:
+    overrideState: 1
+    value: 0
+  intensity:
+    overrideState: 1
+    value: 2
+  color:
     overrideState: 0
-    value: 20
+    value: {r: 0, g: 0, b: 0, a: 1}
+  ambientOnly:
+    overrideState: 0
+    value: 1
+  noiseFilterTolerance:
+    overrideState: 0
+    value: 0
+  blurTolerance:
+    overrideState: 0
+    value: -4.6
+  upsampleTolerance:
+    overrideState: 0
+    value: -12
+  thicknessModifier:
+    overrideState: 0
+    value: 1
+  directLightingStrength:
+    overrideState: 0
+    value: 0
+  radius:
+    overrideState: 0
+    value: 0.25
+  quality:
+    overrideState: 0
+    value: 2
