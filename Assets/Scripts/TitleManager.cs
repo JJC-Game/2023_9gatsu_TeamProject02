@@ -21,8 +21,9 @@ public class TitleManager : MonoBehaviour
         CanvasInIt();
         //SoundManager.Instance.PlayBGM(2);
         canvas[0].SetActive(true);
-
+        CanvasCheck();
         EventSystem.current.SetSelectedGameObject(focusobject[0]);
+       // InvokeRepeating("CanvasCheck", 0 , 5);
     }
 
     // Update is called once per frame
@@ -77,7 +78,17 @@ public class TitleManager : MonoBehaviour
         previousFocus = EventSystem.current.currentSelectedGameObject;
     }
 
-
+    public void CanvasCheck()
+    {
+        if (WorldID.Instance.SceneID >= 1)
+        {
+            for (int i = 0; i < canvas.Length; i++)
+            {
+                canvas[i].SetActive(false);
+            }
+            canvas[1].SetActive(true);
+        }
+    }
     //ゲーム終了の処理
     public void Quit()
     {

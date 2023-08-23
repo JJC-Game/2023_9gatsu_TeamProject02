@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class WorldID : MonoBehaviour
+public class WorldID : Singleton<WorldID>
 {
     public float SceneID;
 
-    /*public void Awake()
+    public void Awake()
     {
         //もし他のオブジェクトの子であれば、親子関係を解除
         if (gameObject.transform.parent != null) gameObject.transform.parent = null;
@@ -18,16 +18,21 @@ public class WorldID : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);  //このスクリプトはシーン遷移しても削除しない
-    }*/
+    }
     // Start is called before the first frame update
     void Start()
     {
-        SceneID = SceneManager.GetActiveScene().buildIndex;
+        InvokeRepeating("IDUpdate", 0, 5);       
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void IDUpdate()
+    {
+        SceneID = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log("保持しているIDは" + SceneID);
     }
 }

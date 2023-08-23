@@ -4962,7 +4962,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4981,7 +4981,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 463018035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 467589029}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: yamaguchiScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &463018035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5180,7 +5192,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.51271516, g: 0.7924528, b: 0.31772873, a: 1}
+    m_SelectedColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -5199,7 +5211,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 470190413}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 467589029}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: TitleScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &470190413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7287,7 +7311,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7306,7 +7330,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1058315038}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1926953728}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1058315038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7444,7 +7480,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFX:
   - {fileID: 4350224894576258655, guid: 1211abe7767baf04d99c97d5872e8f60, type: 3}
-  StageFX: []
+  StageFX:
+  - {fileID: 0}
+  - {fileID: 4605672810734679366, guid: 9873e8f4961d96f44b523d91699f31b0, type: 3}
   otherFX: []
 --- !u!1 &1216698975
 GameObject:
@@ -8016,6 +8054,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297853981}
   m_CullTransparentMesh: 1
+--- !u!1 &1313678839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1313678840}
+  m_Layer: 0
+  m_Name: EnemyPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1313678840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313678839}
+  m_LocalRotation: {x: -0, y: -0, z: 0.4393513, w: 0.8983153}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1561535511}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1346569241
 GameObject:
   m_ObjectHideFlags: 0
@@ -8425,6 +8494,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554383577}
   m_CullTransparentMesh: 1
+--- !u!4 &1561535511 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8703766681286905937, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+  m_PrefabInstance: {fileID: 906247002}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1592848047
 GameObject:
   m_ObjectHideFlags: 0
@@ -9062,7 +9136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1934075776
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9407,6 +9481,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &2073479730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 515289923063417249, guid: 493992ad9a598344fac7cec2f17b5f9e, type: 3}
+  m_PrefabInstance: {fileID: 906247002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2073479731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073479730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee88d4b1e6140841ae507a3ba760927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AtackType: 0
 --- !u!1 &2127136038
 GameObject:
   m_ObjectHideFlags: 0
@@ -9544,6 +9636,7 @@ MonoBehaviour:
   - {fileID: 6640340322137907456, guid: ed9685566d80c094f8d9f707df3d62f1, type: 3}
   - {fileID: 1976272999153799006, guid: bf96decb0dc47ba4b99ea17abac93590, type: 3}
   EnemySpawnposition: []
+  EnemyCountMax: 10
   rangeA: {fileID: 638909962}
   rangeB: {fileID: 54138453}
 --- !u!4 &2130373435

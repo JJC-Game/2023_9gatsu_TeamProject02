@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FPS_Sample.unity
     guid: 8be32bc163a0a4d468459548821f2d2f
+  - enabled: 1
+    path: Assets/Scenes/yamaguchi.unity
+    guid: 81fd7724720f3694b80f6998b5aa7ac3
   m_configObjects: {}
