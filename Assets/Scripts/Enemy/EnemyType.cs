@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyType : MonoBehaviour
 {
+    [SerializeField] GameObject EnemyBulletPrefab;
+    [SerializeField] private float EnemyshotDelay;
+    [SerializeField] private float EnemyshotSpeed;
+    [SerializeField] private Transform Enemypos;
     enum EnemyAtackType
     {
         通常型,
@@ -17,7 +21,7 @@ public class EnemyType : MonoBehaviour
         switch(AtackType)
         {
             case EnemyAtackType.通常型:
-                InvokeRepeating("Normal",0, 5);
+                InvokeRepeating("Normal", 0, EnemyshotDelay);
                 break;
             case EnemyAtackType.防御型:
                 Defense();
@@ -38,7 +42,10 @@ public class EnemyType : MonoBehaviour
 
     private void Normal()
     {
-        
+        GameObject Laser = Instantiate(EnemyBulletPrefab, Enemypos.position, Enemypos.rotation);  //④弾の生成
+
+        Laser.GetComponent<Rigidbody>().AddForce(EnemyBulletPrefab.transform.up * EnemyshotSpeed);    //⑤弾の速度  
+        Destroy(Laser, 1f);
     }
 
     private void Defense()
