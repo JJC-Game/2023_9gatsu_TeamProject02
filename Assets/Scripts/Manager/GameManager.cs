@@ -33,11 +33,14 @@ public class GameManager : Singleton<GameManager>
     }
     
     [Header("問題に必要な変数")]
-    public int CorrectCountCurrent = 0;
-    public int CorrectCountMax = 5;
-    public int InCorrectCountCurrent = 0;
-    public int InCorrectCountMax = 3;
+    public int CorrectCountCurrent = 0;   //正解数
+    public int InCorrectCountCurrent = 0;  //不正解数
 
+    public int questionCurrent = 0;   //おわった問題数
+    public int CorrectCountMax = 10;  //問題数
+
+    public int InCorrectCountMax = 5; //ゲームオーバーになる不正解数
+    
     public TextMeshProUGUI CorrectCountText;
     public TextMeshProUGUI InCorrectCountText;
 
@@ -64,7 +67,7 @@ public class GameManager : Singleton<GameManager>
         {
             Pause();
         }
-        if(CorrectCountMax == CorrectCountCurrent || Input.GetKeyDown(KeyCode.F1))
+        if(CorrectCountMax == questionCurrent || Input.GetKeyDown(KeyCode.F1))
         {
             GameClearTimeline.Play();
             GameClear();

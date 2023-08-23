@@ -173,16 +173,18 @@ public class Calculation : MonoBehaviour
         {
             NumInit();
             challenge = false;
-            GameManager.Instance.CorrectCountCurrent += 1;
+            GameManager.Instance.CorrectCountCurrent++;
             GameManager.Instance.CorrectCountText.text = GameManager.Instance.CorrectCountCurrent.ToString("0");
+            GameManager.Instance.questionCurrent++;
             return;
         }
         if(ansnum != num1 || ansnum != judgenum)
         {
             NumInit();
             challenge = false;
-            GameManager.Instance.InCorrectCountCurrent += 1;
+            GameManager.Instance.InCorrectCountCurrent++;
             GameManager.Instance.InCorrectCountText.text = GameManager.Instance.InCorrectCountCurrent.ToString("0");
+            GameManager.Instance.questionCurrent++;
             return;
         }
     }
