@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     AimController aimcon;
-    float timer = 2.0f;
+    float timer = 1.5f;
 
 
     void Start()
@@ -15,26 +15,24 @@ public class Bullet : MonoBehaviour
     }
     void Update()
     {
-        bool destroyFlag = false;
+        bool destroyFlg = false;
          if (timer > 0)
          {
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                destroyFlag = true;
+                destroyFlg = true;
             }
          }
           if (aimcon.hitEnemy)
           {
-            destroyFlag = true;
+            destroyFlg = true;
           }
-        
-          if (destroyFlag)
+
+          if (destroyFlg)
           {
             Destroy(this.gameObject);
           }
-        
-
         // COMMENT_KUWABARA 弾丸にインパルスで力を与えて飛ばした場合に、射程距離が正確にわからなくなってしまうため.
         // Time.deltaTimeと、bulletSpeed変数を用いて、少しずつ動かすことで、弾丸を飛ばしてほしいです.
     }
