@@ -575,7 +575,7 @@ RectTransform:
   m_Children:
   - {fileID: 1235092440}
   m_Father: {fileID: 288221729}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 288221731}
   - component: {fileID: 288221730}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Num
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1287,8 +1287,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 59124243}
-  - {fileID: 99499395}
   - {fileID: 879499529}
+  - {fileID: 99499395}
   - {fileID: 859054524}
   - {fileID: 2145991068}
   m_Father: {fileID: 1676963707}
@@ -1439,11 +1439,10 @@ MonoBehaviour:
   num1: 0
   num2: 0
   judgenum: 0
-  rangeLow: 5
-  rangeHight: 17
+  difficulty: 0
   signType: 0
-  firNum: {fileID: 547674454}
-  secNum: {fileID: 816119266}
+  Num1: {fileID: 547674454}
+  Num2: {fileID: 816119266}
   ansNum: {fileID: 379801185}
   signNum: {fileID: 1235092441}
   timeover: 0
@@ -4952,7 +4951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &608799313
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5025,7 +5024,7 @@ Transform:
   m_GameObject: {fileID: 608799312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2, y: 3, z: 7}
-  m_LocalScale: {x: 1, y: 0.4, z: 0.5}
+  m_LocalScale: {x: 1, y: 0.4, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6117,7 +6116,7 @@ RectTransform:
   m_Children:
   - {fileID: 816119265}
   m_Father: {fileID: 288221729}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6260,7 +6259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &895071592
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6333,7 +6332,7 @@ Transform:
   m_GameObject: {fileID: 895071591}
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 2, y: 3, z: 7}
-  m_LocalScale: {x: 1, y: 0.3, z: 0.5}
+  m_LocalScale: {x: 1, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 714543171}
@@ -7366,10 +7365,6 @@ MonoBehaviour:
   firstHit: 0
   secondHit: 0
   hitEnemy: 0
-  hitPlus: 0
-  hitMinus: 0
-  hitAsterisk: 0
-  hitSlash: 0
   hitSign: 0
   shotSpeed: 50
   bulletPrefab: {fileID: 7716800560424425846, guid: 2a7473f90b1623d4c87d538eaac2aa8d, type: 3}
@@ -7527,7 +7522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1381438432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7600,7 +7595,7 @@ Transform:
   m_GameObject: {fileID: 1381438431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7, y: 3, z: 7}
-  m_LocalScale: {x: 1, y: 0.3, z: 0.5}
+  m_LocalScale: {x: 1, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 716056263}
@@ -7626,7 +7621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1386783077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7699,7 +7694,7 @@ Transform:
   m_GameObject: {fileID: 1386783076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7, y: 3, z: 7}
-  m_LocalScale: {x: 0.3, y: 1, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 1, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2013260047}
@@ -8618,6 +8613,7 @@ MonoBehaviour:
   InCorrectCountMax: 3
   CorrectCountText: {fileID: 476634538}
   InCorrectCountText: {fileID: 1898360878}
+  playerHP: 10
 --- !u!4 &1926953729
 Transform:
   m_ObjectHideFlags: 0

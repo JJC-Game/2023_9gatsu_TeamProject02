@@ -6,14 +6,7 @@ using Cinemachine;
 
 public class AimController : MonoBehaviour
 {
-    public bool firstHit = false;
-    public bool secondHit = false;
     public bool hitEnemy = false;
-
-    public bool hitPlus = false;    //+符号
-    public bool hitMinus = false; //－符号
-    public bool hitAsterisk = false; //×符号
-    public bool hitSlash = false;  //÷符号
 
     public bool hitSign = false;
 
@@ -40,7 +33,7 @@ public class AimController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        if (GameManager.Instance.pause)
+        if (!GameManager.Instance.mainGame)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -52,7 +45,6 @@ public class AimController : MonoBehaviour
             {
                 Fire();
             }
-
             if (Input.GetButtonDown("Fire2"))
             {
                 vcame.m_Lens.FieldOfView = minFOV;

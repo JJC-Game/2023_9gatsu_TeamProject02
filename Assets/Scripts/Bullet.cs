@@ -39,44 +39,10 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        switch (other.gameObject.tag)
+        if(other.gameObject.tag == "Enemy")
         {
-            case "Enemy":
-                if (!aimcon.firstHit)
-                {
-                    Destroy(other.gameObject);
-                    aimcon.firstHit = true;
-                    aimcon.hitEnemy = true;
-                    break;
-                }
-                if (!aimcon.secondHit)
-                {
-                    Destroy(other.gameObject);
-                    aimcon.secondHit = true;
-                    aimcon.hitEnemy = true;
-                    break;
-                }
-                break;
-            case "+":
-                Destroy(other.gameObject);
-                aimcon.hitPlus = true;
-                aimcon.hitSign = true;
-                break;
-            case "-":
-                Destroy(other.gameObject);
-                aimcon.hitMinus = true;
-                aimcon.hitSign = true;
-                break;
-            case "*":
-                Destroy(other.gameObject);
-                aimcon.hitAsterisk = true;
-                aimcon.hitSign = true;
-                break;
-            case "÷":
-                Destroy(other.gameObject);
-                aimcon.hitSlash = true;
-                aimcon.hitSign = true;
-                break;
+            Destroy(other.gameObject);
+            aimcon.hitEnemy = true;
         }
     }
 }

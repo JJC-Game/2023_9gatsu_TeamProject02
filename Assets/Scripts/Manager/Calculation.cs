@@ -8,16 +8,29 @@ public class Calculation : MonoBehaviour
     public int receiveNum;
     public int num1;
     public int num2;
+    int adjustmentNum;
     int ansnum;
     public int judgenum;
-    public int rangeLow;
-    public int rangeHight;
-    public int signType; //符号のタイプ
-    float lagTime;
-    float timer;
 
-    public TextMeshProUGUI firNum;
-    public TextMeshProUGUI secNum;
+    enum DifficultyType
+    {
+        Eaey,
+        Normal,
+        Hard,
+    }
+    [SerializeField] DifficultyType difficulty;
+
+    enum SignType
+    {
+        足し算,
+        引き算,
+        掛け算,
+        割り算,
+    }
+    [SerializeField] SignType signType;
+
+    public TextMeshProUGUI Num1;
+    public TextMeshProUGUI Num2;
     public TextMeshProUGUI ansNum;
     public TextMeshProUGUI signNum;
 
@@ -28,8 +41,21 @@ public class Calculation : MonoBehaviour
 
     void Start()
     {
-        lagTime = 1.5f;
-        timer = 0f;
+        switch(signType)
+        {
+            case SignType.足し算:
+                signNum.text = ("+");
+                break;
+            case SignType.引き算:
+                signNum.text = ("−");
+                break;
+            case SignType.掛け算:
+                signNum.text = ("×");
+                break;
+            case SignType.割り算:
+                signNum.text = ("÷");
+                break;
+        }
         Challenge();
     }
 
@@ -42,134 +68,95 @@ public class Calculation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             NumInit();
-            SignInit();
         }
         if (GameManager.Instance.mainGame && !challenge)
         {
             Challenge();
         }
-
        if (aimcon.hitEnemy)
        {
             NumUpdate();
             aimcon.hitEnemy = false;
        }
-       if(aimcon.hitSign)
-        {
-            SignUpdate();
-            aimcon.hitSign = false;
-        }
     }
 
     void NumUpdate()
     {
-        if ( aimcon.firstHit && !aimcon.secondHit)
+        switch(difficulty)
         {
-            num1 = receiveNum;
-            firNum.text = num1.ToString("0");
-            return;
-        }
-        if (aimcon.firstHit && aimcon.secondHit)
-        {
-            num2 = receiveNum;
-            secNum.text = num2.ToString("0");
-            return;
-        }
-    }
-    void SignUpdate()
-    {
-        if(aimcon.hitPlus)
-        {
-            aimcon.hitPlus = false;
-            signType = 0;
-            signNum.text = ("+");
-            return;
-        }
-        if (aimcon.hitMinus)
-        {
-            aimcon.hitMinus = false;
-            signType = 1;
-            signNum.text = ("−");
-            return;
-        }
-        if (aimcon.hitAsterisk)
-        {
-            aimcon.hitAsterisk = false;
-            signType = 2;
-            signNum.text = ("×");
-            return;
-        }
-        if (aimcon.hitSlash)
-        {
-            aimcon.hitSlash = false;
-            signType = 3;
-            signNum.text = ("÷");
-            return;
+            case DifficultyType.Eaey:
+                num2 = receiveNum;
+                Num2.text = num2.ToString("0");
+                break;
+            case DifficultyType.Normal:
+
+                break;
+            case DifficultyType.Hard:
+
+                break;
         }
     }
+   
     void CalculationStart()
     {
-        if (aimcon.firstHit && aimcon.secondHit)
+        switch (signType)
         {
-            switch (signType)
-            {
-                case 0:
-                    aimcon.secondHit = false;
-                    judgenum = num1 + num2;
-                    Judgement();
-                    break;
-                case 1:
-                    aimcon.secondHit = false;
-                    judgenum = num1 - num2;
-                    Judgement();
-                    break;
-                case 2:
-                    aimcon.secondHit = false;
-                    judgenum = num1 * num2;
-                    Judgement();
-                    break;
-                case 3:
-                    aimcon.secondHit = false;
-                    judgenum = num1 / num2;
-                    Judgement();
-                    break;
-            }
-            return;
-        }
-        if(aimcon.hitPlus)
-        {
-            judgenum = num1 + num2;
-            Judgement();
-            return;
-        }
-        if (aimcon.hitMinus)
-        {
-            judgenum = num1 - num2;
-            Judgement();
-            return;
-        }
-        if (aimcon.hitAsterisk)
-        {
-            judgenum = num1 * num2;
-            Judgement();
-            return;
-        }
-        if (aimcon.hitSlash)
-        {
-            judgenum = num1 / num2;
-            Judgement();
-            return;
+            case SignType.足し算:
+                judgenum = num1 + num2;
+                Judgement();
+                break;
+            case SignType.引き算:
+                judgenum = num1 - num2;
+                Judgement();
+                break;
+            case SignType.掛け算:
+                judgenum = num1 * num2;
+                Judgement();
+                break;
+            case SignType.割り算:
+                judgenum = num1 / num2;
+                Judgement();
+                break;
         }
     }
     void Challenge()
     {
         challenge = true;
-        ansnum = Random.Range(rangeLow, rangeHight);
-        ansNum.text = ansnum.ToString("0");
+        switch (signType)
+        {
+            case SignType.足し算:
+                switch (difficulty)
+                {
+                    case DifficultyType.Eaey:
+                        ansnum = Random.Range(1, 15);
+                        ansNum.text = ansnum.ToString("0");
+                        adjustmentNum = Random.Range(0, 3);
+                        num1 = ansnum / 2;
+                        if (num1 > adjustmentNum) { num1 = num1 - adjustmentNum; }
+                        Num1.text = num1.ToString("0");
+                        break;
+                    case DifficultyType.Normal:
+
+                        break;
+                    case DifficultyType.Hard:
+
+                        break;
+                }
+                break;
+            case SignType.引き算:
+               
+                break;
+            case SignType.掛け算:
+               
+                break;
+            case SignType.割り算:
+               
+                break;
+        }
     }
     void Judgement()  //合否の判定
     {
-        if(num1 == ansnum || judgenum == ansnum)
+        if(judgenum == ansnum)
         {
             NumInit();
             challenge = false;
@@ -178,7 +165,7 @@ public class Calculation : MonoBehaviour
             GameManager.Instance.questionCurrent++;
             return;
         }
-        if(ansnum != num1 || ansnum != judgenum)
+        if(ansnum != judgenum)
         {
             NumInit();
             challenge = false;
@@ -190,19 +177,7 @@ public class Calculation : MonoBehaviour
     }
     void NumInit() //数値初期化
     {
-        num1 = 0;
         num2 = 0;
-        firNum.text = ("?");
-        secNum.text = ("?");
-        aimcon.firstHit = false;
-        aimcon.secondHit = false;
-    }
-    void SignInit()
-    {
-        signNum.text = ("?");
-        aimcon.hitPlus = false;
-        aimcon.hitMinus = false;
-        aimcon.hitAsterisk = false;
-        aimcon.hitSlash = false;
+        Num2.text = ("?");
     }
 }
