@@ -15,10 +15,11 @@ public class EnemyType : MonoBehaviour
         ドローン型,
     }
     [SerializeField] EnemyAtackType AtackType;
+    Rigidbody rig;
     // Start is called before the first frame update
     void Start()
     {
-        switch(AtackType)
+        switch (AtackType)
         {
             case EnemyAtackType.通常型:
                 InvokeRepeating("Normal", 0, EnemyshotDelay);
@@ -37,15 +38,17 @@ public class EnemyType : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void Normal()
     {
-        GameObject Laser = Instantiate(EnemyBulletPrefab, Enemypos.position, Enemypos.rotation);  //④弾の生成
+        GameObject shell = Instantiate(EnemyBulletPrefab, Enemypos.transform.position, Quaternion.Euler(90,0,0));
+        Rigidbody shellRb = shell.GetComponent<Rigidbody>();
 
-        Laser.GetComponent<Rigidbody>().AddForce(EnemyBulletPrefab.transform.up * EnemyshotSpeed);    //⑤弾の速度  
-        Destroy(Laser, 1f);
+        // 弾速は自由に設定
+        shellRb.AddForce(transform.forward * EnemyshotSpeed ,ForceMode.Impulse);
+
     }
 
     private void Defense()
