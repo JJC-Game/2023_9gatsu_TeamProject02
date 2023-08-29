@@ -9,11 +9,11 @@ public class TitleManager : MonoBehaviour
     [Header("必要なキャンバス")]
     [SerializeField] GameObject[] canvas;
 
-    [Header("各メニューの初期カーソル対象")]
+    /*[Header("各メニューの初期カーソル対象")]
     [SerializeField] GameObject[] focusobject;
 
     GameObject currentFocus; //現在選択している対象
-    GameObject previousFocus; //前フレームに選択していた対象
+    GameObject previousFocus; //前フレームに選択していた対象*/
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +22,14 @@ public class TitleManager : MonoBehaviour
         //SoundManager.Instance.PlayBGM(2);
         canvas[0].SetActive(true);
         CanvasCheck();
-        EventSystem.current.SetSelectedGameObject(focusobject[0]);
+        //EventSystem.current.SetSelectedGameObject(focusobject[0]);
        // InvokeRepeating("CanvasCheck", 0 , 5);
     }
 
     // Update is called once per frame
     void Update()
     {
-        FocusCheck();
+        //FocusCheck();
 
     }
 
@@ -50,13 +50,13 @@ public class TitleManager : MonoBehaviour
 
         canvas[nextMenu].SetActive(true);//次のメニューを表示
 
-        EventSystem.current.SetSelectedGameObject(focusobject[nextMenu]);//次のメニューの初期カーソル位置
+        //EventSystem.current.SetSelectedGameObject(focusobject[nextMenu]);//次のメニューの初期カーソル位置
 
         //SoundManager.Instance.PlaySE_Sys(1);
 
     }
     //フォーカス対象のチェック
-    void FocusCheck()
+    /*void FocusCheck()
     {
         currentFocus = EventSystem.current.currentSelectedGameObject;//現在のフォーカスの項目の格納
 
@@ -76,7 +76,7 @@ public class TitleManager : MonoBehaviour
         //残された条件からフォーカスしている項目が存在するのが確定
         //前フレームの対象を更新する
         previousFocus = EventSystem.current.currentSelectedGameObject;
-    }
+    }*/
 
     public void CanvasCheck()
     {
