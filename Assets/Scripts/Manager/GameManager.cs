@@ -76,7 +76,7 @@ public class GameManager : Singleton<GameManager>
             GameClear();
             Debug.Log("ゲームクリア");
         }
-        if(InCorrectCountMax == InCorrectCountCurrent || Input.GetKeyDown(KeyCode.F2))
+        if(InCorrectCountMax == InCorrectCountCurrent || Input.GetKeyDown(KeyCode.F2) || playerHP <= 0)
         {
             GameOverTimeline.Play();
             GameOver();
@@ -144,5 +144,15 @@ public class GameManager : Singleton<GameManager>
         {
             UI[i].SetActive(false);
         }
+    }
+    public void Pauseclick()
+    {
+        mainGame = true;
+        pause = false;
+        Time.timeScale = 1;
+        CanvasInit();
+        UI[0].SetActive(true);
+        UI[2].SetActive(true);
+        
     }
 }
