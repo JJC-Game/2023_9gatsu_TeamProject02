@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyType : MonoBehaviour
 {
     [SerializeField] GameObject EnemyBulletPrefab;
-    [SerializeField] private float EnemyshotDelay;
+    private float EnemyshotDelay;
     [SerializeField] private float EnemyshotSpeed;
     [SerializeField] private Transform Enemypos;
     enum EnemyAtackType
@@ -19,6 +19,7 @@ public class EnemyType : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EnemyshotDelay = Random.Range(4, 9);
         switch (AtackType)
         {
             case EnemyAtackType.通常型:

@@ -270,6 +270,7 @@ public class Calculation : MonoBehaviour
             NumInit();
             challenge = false;
             if (computable) { computable = false; }
+            GameManager.Instance.CorrectCountCurrent++;
             GameManager.Instance.CorrectCountText.text = GameManager.Instance.CorrectCountCurrent.ToString("0");
             GameManager.Instance.questionCurrent++;
             return;
@@ -279,7 +280,8 @@ public class Calculation : MonoBehaviour
             NumInit();
             challenge = false;
             if (computable) { computable = false; }
-            GameManager.Instance.InCorrectCountText.text = GameManager.Instance.InCorrectCountCurrent++.ToString("0");
+            GameManager.Instance.InCorrectCountCurrent++;
+            GameManager.Instance.InCorrectCountText.text = GameManager.Instance.InCorrectCountCurrent.ToString("0");
             GameManager.Instance.questionCurrent++.ToString("0");
             return;
         }

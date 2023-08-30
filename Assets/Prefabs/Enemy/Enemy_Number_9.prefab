@@ -653,7 +653,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -697,12 +697,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64802150265092c4688f2cf250323074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rangeA: {fileID: 1594818463883275621, guid: ab68a5c4549cb094eb355a7d2da3b8e8, type: 3}
+  rangeB: {fileID: 5841884941547761388, guid: 80772c8419cfced45abae09f3a16f646, type: 3}
   pointmoveTime: 10
   Routeinterval: 2
   rerereinterval: 2
   routePoint: []
   LeftRightDistans: {x: -2, y: 0, z: 0}
-  UpDownDistans: {x: 0, y: 1, z: 0}
+  UpDownDistans: {x: 0, y: 2, z: 0}
   HukugoDistans: {x: 0, y: 0, z: 2}
   movetype: 0
 --- !u!114 &6324691030874643261
@@ -718,7 +720,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyBulletPrefab: {fileID: 4375224723279601010, guid: 012507185ece1ea42a8a010c1a1718e2, type: 3}
-  EnemyshotDelay: 3
   EnemyshotSpeed: 10
   Enemypos: {fileID: 3349761612638630283}
   AtackType: 0

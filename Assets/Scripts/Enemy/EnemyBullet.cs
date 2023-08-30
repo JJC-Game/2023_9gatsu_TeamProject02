@@ -29,13 +29,16 @@ public class EnemyBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.tag == ("Player"))
+         if(collision.gameObject.tag == ("Player"))
         {
-            GameManager.Instance.playerHP--;
+            //GameManager.Instance.playerHP--;
             DestroyFLG = true;
-
+        }
+         if(collision.gameObject)
+        {
+            DestroyFLG = true;
         }
     }
 }

@@ -9,6 +9,14 @@ public class EnemyMove : MonoBehaviour
     Vector3 UpDownstartpos;
     Vector3 Hukugostartpos;
 
+    [SerializeField]
+    [Tooltip("生成する範囲A")]
+    private Transform rangeA;
+
+    [SerializeField]
+    [Tooltip("生成する範囲B")]
+
+    private Transform rangeB;
     Animator animator;
     Rigidbody rig;
 
@@ -45,11 +53,15 @@ public class EnemyMove : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        int Zrandompostion = Random.Range(3, 30);
-        int xrandompostion = Random.Range(-18, 18);
-        LeftRightstartpos = new Vector3(xrandompostion, 0.5f, Zrandompostion);
-        UpDownstartpos = new Vector3(xrandompostion, 1.5f, Zrandompostion);
-        Hukugostartpos = new Vector3(xrandompostion, 0.5f, Zrandompostion);
+        // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
+        float x = Random.Range(rangeA.position.x, rangeB.position.x);
+        // rangeAとrangeBのy座標の範囲内でランダムな数値を作成
+        float y = Random.Range(rangeA.position.y, rangeB.position.y);
+        // rangeAとrangeBのz座標の範囲内でランダムな数値を作成
+        float z = Random.Range(rangeA.position.z, rangeB.position.z);
+        LeftRightstartpos = new Vector3(x, y, z);
+        UpDownstartpos = new Vector3(x, y, z);
+        Hukugostartpos = new Vector3(x, y, z);
     }
 
     // Update is called once per frame

@@ -1734,13 +1734,16 @@ MonoBehaviour:
   num1: 0
   num2: 0
   judgenum: 0
+  timer: 0
   difficulty: 0
   signType: 0
   Num1: {fileID: 0}
   Num2: {fileID: 0}
   ansNum: {fileID: 379801185}
   signNum: {fileID: 0}
+  timerText: {fileID: 0}
   timeover: 0
+  computable: 0
   aimcon: {fileID: 1346569243}
 --- !u!1 &298233330
 GameObject:
@@ -5328,8 +5331,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B4\u30FC\uFF01"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8553,8 +8556,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30EC\u30C7\u30A3"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
