@@ -39,4 +39,16 @@ public class ChangeScene : MonoBehaviour
         //GameManager.Instance.Pause();
         FadeManager.Instance.LoadSceneIndex(2,1);
     }
+    public void Stage1Scene()
+    {
+        FadeManager.Instance.LoadSceneIndex(3, 1);
+    }
+    public void Stage2Scene()
+    {
+        FadeManager.Instance.LoadSceneIndex(4, 1);
+    }
+    public void Stage3Scene()
+    {
+        FadeManager.Instance.LoadSceneIndex(5, 1);
+    }
 }
