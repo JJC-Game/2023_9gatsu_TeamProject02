@@ -136,21 +136,83 @@ public class Calculation : MonoBehaviour
                         Num1.text = num1.ToString("0");
                         break;
                     case DifficultyType.Normal:
-
+                        num1 = Random.Range(5, 26);
+                        num2 = Random.Range(5, 26);
+                        Num1.text = num1.ToString("0");
+                        Num2.text = num2.ToString("0");
                         break;
                     case DifficultyType.Hard:
-
+                        num1 = Random.Range(10, 51);
+                        num2 = Random.Range(10, 50);
+                        Num1.text = num1.ToString("0");
+                        Num2.text = num2.ToString("0");
                         break;
                 }
                 break;
             case SignType.引き算:
-               
+                switch (difficulty)
+                {
+                    case DifficultyType.Eaey:
+                        num1 = Random.Range(1, 15);
+                        Num1.text = num1.ToString("0");
+                        adjustmentNum = Random.Range(0, 3);
+                        ansnum = num1 / 2;
+                        if (ansnum > adjustmentNum) { ansnum = ansnum - adjustmentNum; }
+                        ansNum.text = ansnum.ToString("0");
+                        break;
+                    case DifficultyType.Normal:
+                        num1 = Random.Range(10, 51);
+                        num2 = Random.Range(1, num1);
+                        Num1.text = num1.ToString("0");
+                        Num2.text = num2.ToString("0");
+                        break;
+                    case DifficultyType.Hard:
+                        num1 = Random.Range(20, 101);
+                        num2 = Random.Range(1, num1);
+                        Num1.text = num1.ToString("0");
+                        Num2.text = num2.ToString("0");
+                        break;
+                }
                 break;
             case SignType.掛け算:
-               
+                switch (difficulty)
+                {
+                    case DifficultyType.Eaey:
+                        num1 = Random.Range(1, 10);
+                        ansnum = num1 * Random.Range(1, 6);
+                        Num1.text = num1.ToString("0");
+                        ansNum.text = ansnum.ToString("0");
+                        break;
+                    case DifficultyType.Normal:
+                        num1 = Random.Range(1, 10);
+                        num2 = Random.Range(1, 10 );
+                        Num1.text = num1.ToString("0");
+                        Num2.text = num2.ToString("0");
+                        break;
+                    case DifficultyType.Hard:
+                        num1 = Random.Range(3,16);
+                        num2 = Random.Range(3,16);
+                        Num1.text = num1.ToString("0");
+                        Num2.text = num2.ToString("0");
+                        break;
+                }
                 break;
             case SignType.割り算:
-               
+                switch (difficulty)
+                {
+                    case DifficultyType.Eaey:
+                        ansNum.text = ansnum.ToString("0");
+                        Num1.text = num1.ToString("0");
+                        break;
+                    case DifficultyType.Normal:
+                        Num1.text = num1.ToString("0");
+                        Num2.text = num2.ToString("0");
+                        break;
+                    case DifficultyType.Hard:
+                        Num1.text = num1.ToString("0");
+                        Num2.text = num2.ToString("0");
+                        break;
+                }
                 break;
         }
     }
