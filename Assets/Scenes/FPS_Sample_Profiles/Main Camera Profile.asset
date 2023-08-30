@@ -35,7 +35,7 @@ MonoBehaviour:
     value: 1
   gradingMode:
     overrideState: 1
-    value: 1
+    value: 0
   externalLut:
     overrideState: 0
     value: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
     value: 0
   brightness:
     overrideState: 1
-    value: -5
+    value: -10
   postExposure:
     overrideState: 1
     value: -0.7
@@ -121,13 +121,13 @@ MonoBehaviour:
     value: 110
   lift:
     overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.9560408, y: 1, z: 0.98776543, w: 0}
   gamma:
     overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.9472422, y: 1, z: 0.97484326, w: 0}
   gain:
     overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 0.6605365, y: 1, z: 0.73971605, w: 0}
   masterCurve:
     overrideState: 0
     value:

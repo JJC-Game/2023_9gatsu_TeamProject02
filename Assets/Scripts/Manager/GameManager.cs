@@ -19,24 +19,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] PlayableDirector GameClearTimeline;
     [SerializeField] PlayableDirector GameOverTimeline;
 
-    [Header("Canvas( 0:main, 1:pause, 2:time, 3:start, 4:clear, 5:over)")]
+    [Header("Canvas( 0:main, 1:pause, 2:start, 3:clear, 4:over)")]
     [SerializeField] GameObject[] UI;
 
-    enum UI_ID
-    {
-        MAIN = 0,
-        PAUSE = 1,
-        TIME = 2,
-        START = 3,
-        CLEAR = 4,
-        OVER = 5,
-    }
-    
     [Header("問題に必要な変数")]
     public int CorrectCountCurrent = 0;   //正解数
     public int InCorrectCountCurrent = 0;  //不正解数
 
-    public int questionCurrent = 0;   //おわった問題数
+    public int questionCurrent = 0;   //解答数
     public int CorrectCountMax = 10;  //問題数
 
     public int InCorrectCountMax = 5; //ゲームオーバーになる不正解数
@@ -50,7 +40,7 @@ public class GameManager : Singleton<GameManager>
     void Awake()
     {
         CanvasInit();
-        UI[3].SetActive(true);
+        UI[2].SetActive(true);
     }
     void Start()
     {
@@ -89,7 +79,6 @@ public class GameManager : Singleton<GameManager>
         mainGame = true;
         CanvasInit();
         UI[0].SetActive(true);
-        UI[2].SetActive(true);
     }
     public void DemoSkip()
     {
@@ -97,7 +86,6 @@ public class GameManager : Singleton<GameManager>
         GameStartTimeline.Stop();
         CanvasInit();
         UI[0].SetActive(true);
-        UI[2].SetActive(true);
     }
     public void Pause()
     {
@@ -108,7 +96,6 @@ public class GameManager : Singleton<GameManager>
             Time.timeScale = 0;
             CanvasInit();
             UI[1].SetActive(true);
-            UI[2].SetActive(true);
             return;
         }
         if(pause)
@@ -118,7 +105,6 @@ public class GameManager : Singleton<GameManager>
             Time.timeScale = 1;
             CanvasInit();
             UI[0].SetActive(true);
-            UI[2].SetActive(true);
             return;
         }
     }
@@ -128,7 +114,7 @@ public class GameManager : Singleton<GameManager>
         mainGame = false;
         gameClear = true;
         CanvasInit();
-        UI[4].SetActive(true);
+        UI[3].SetActive(true);
     }
 
     void GameOver()
@@ -136,7 +122,7 @@ public class GameManager : Singleton<GameManager>
         mainGame = false;
         gameOver = true;
         CanvasInit();
-        UI[5].SetActive(true);
+        UI[4].SetActive(true);
     }
     public void CanvasInit()
     {
@@ -152,7 +138,6 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
         CanvasInit();
         UI[0].SetActive(true);
-        UI[2].SetActive(true);
         
     }
 }

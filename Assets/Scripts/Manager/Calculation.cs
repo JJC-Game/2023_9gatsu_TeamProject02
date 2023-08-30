@@ -12,6 +12,9 @@ public class Calculation : MonoBehaviour
     int ansnum;
     public int judgenum;
 
+    public float timer;
+    float timerMax = 35;
+
     enum DifficultyType
     {
         Eaey,
@@ -33,9 +36,12 @@ public class Calculation : MonoBehaviour
     public TextMeshProUGUI Num2;
     public TextMeshProUGUI ansNum;
     public TextMeshProUGUI signNum;
+    public TextMeshProUGUI timerText;
 
     bool challenge = false;      //問題挑戦中
     public bool timeover = false;  //制限時間を超えたかを判定する
+
+    public bool computable = false; //割り算が計算可能か判別する
 
     public AimController aimcon;
 
@@ -56,19 +62,20 @@ public class Calculation : MonoBehaviour
                 signNum.text = ("÷");
                 break;
         }
-        Challenge();
+        timer = timerMax;
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.Return) || timeover)
         {
+            timeover = false;
             CalculationStart();
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        /*if (Input.GetKeyDown(KeyCode.R))
         {
             NumInit();
-        }
+        }*/
         if (GameManager.Instance.mainGame && !challenge)
         {
             Challenge();
@@ -78,6 +85,11 @@ public class Calculation : MonoBehaviour
             NumUpdate();
             aimcon.hitEnemy = false;
        }
+        timer = Mathf.Clamp(timer,0f, timerMax);
+       if(challenge)
+        {
+            ChallengeTimer();
+        }
     }
 
     void NumUpdate()
@@ -89,10 +101,12 @@ public class Calculation : MonoBehaviour
                 Num2.text = num2.ToString("0");
                 break;
             case DifficultyType.Normal:
-
+                ansnum = receiveNum;
+                ansNum.text = ansnum.ToString("0");
                 break;
             case DifficultyType.Hard:
-
+                ansnum = receiveNum;
+                ansNum.text = ansnum.ToString("0");
                 break;
         }
     }
@@ -201,14 +215,47 @@ public class Calculation : MonoBehaviour
                 switch (difficulty)
                 {
                     case DifficultyType.Eaey:
-                        ansNum.text = ansnum.ToString("0");
+                        while(!computable)
+                        {
+                            if (computable) { break; }
+                            num1 = Random.Range(6, 31);
+                            NumFix();
+                        }
+                        ansnum = Random.Range(2, num1 + 1);
+                        while (num1 % ansnum != 0)
+                        {
+                            ansnum = Random.Range(2, num1+1);
+                        }
                         Num1.text = num1.ToString("0");
+                        ansNum.text = ansnum.ToString("0");
                         break;
                     case DifficultyType.Normal:
+                        while (!computable)
+                        {
+                            if (computable) { break; }
+                            num1 = Random.Range(6, 61);
+                            NumFix();
+                        }
+                        num2 = Random.Range(2, num1 + 1);
+                        while (num1 % num2 != 0)
+                        {
+                            num2 = Random.Range(2, num1 + 1);
+                        }
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
                         break;
                     case DifficultyType.Hard:
+                        while (!computable)
+                        {
+                            if (computable) { break; }
+                            num1 = Random.Range(6, 101);
+                            NumFix();
+                        }
+                        num2 = Random.Range(2, num1 + 1);
+                        while (num1 % num2 != 0)
+                        {
+                            num2 = Random.Range(2, num1 + 1);
+                        }
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
                         break;
@@ -222,24 +269,71 @@ public class Calculation : MonoBehaviour
         {
             NumInit();
             challenge = false;
-            GameManager.Instance.CorrectCountCurrent++;
+            if (computable) { computable = false; }
             GameManager.Instance.CorrectCountText.text = GameManager.Instance.CorrectCountCurrent.ToString("0");
             GameManager.Instance.questionCurrent++;
             return;
         }
-        if(ansnum != judgenum)
+        if(judgenum != ansnum)
         {
             NumInit();
             challenge = false;
-            GameManager.Instance.InCorrectCountCurrent++;
-            GameManager.Instance.InCorrectCountText.text = GameManager.Instance.InCorrectCountCurrent.ToString("0");
-            GameManager.Instance.questionCurrent++;
+            if (computable) { computable = false; }
+            GameManager.Instance.InCorrectCountText.text = GameManager.Instance.InCorrectCountCurrent++.ToString("0");
+            GameManager.Instance.questionCurrent++.ToString("0");
             return;
+        }
+    }
+    void ChallengeTimer()
+    {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            timerText.text = timer.ToString("0.0");
+            if (timer <= 0)
+            {
+                timeover = true;
+            }
         }
     }
     void NumInit() //数値初期化
     {
         num2 = 0;
         Num2.text = ("?");
+        ansnum = 0;
+        ansNum.text = ("?");
+        timer = timerMax;
+    }
+    void NumFix() //割り算で素数判定するためのもの
+    {
+        if (num1 < 2)
+        {
+            computable = true;
+            return;
+        }
+        if (num1 == 2 || num1 == 3)
+        {
+            computable = false;
+            return;
+        }
+        if (num1 % 2 == 0)
+        {
+            computable = true;
+            return;
+        }
+
+        double sqrtX = Mathf.Sqrt(num1);
+        for (long i = 3; i < sqrtX; i += 2)
+        {
+            if (num1 % i == 0)
+            {
+                computable = true;
+                return;
+            }
+
+            if (num1 / i <= i) break;
+        }
+        computable = false;
+        return;
     }
 }
