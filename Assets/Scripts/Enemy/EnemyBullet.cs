@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public bool DestroyFLG;
-    float timer = 1.5f;
+    float timer = 5f;
     // Start is called before the first frame update
     void Start()
     {

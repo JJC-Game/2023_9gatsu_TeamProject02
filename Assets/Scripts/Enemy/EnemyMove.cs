@@ -25,7 +25,7 @@ public class EnemyMove : MonoBehaviour
 
     float timer;
     Vector3 vel;
-
+    
     [SerializeField] Vector3 LeftRightDistans = new Vector3(2, 0, 0);
     [SerializeField] Vector3 UpDownDistans = new Vector3(0, 1, 0);
     [SerializeField] Vector3 HukugoDistans = new Vector3(0, 0, 2);
@@ -47,7 +47,7 @@ public class EnemyMove : MonoBehaviour
         animator = GetComponent<Animator>();
         int Zrandompostion = Random.Range(3, 30);
         int xrandompostion = Random.Range(-18, 18);
-        LeftRightstartpos = new Vector3(0, 0.5f, 5/*Zrandompostion*/);
+        LeftRightstartpos = new Vector3(xrandompostion, 0.5f, Zrandompostion);
         UpDownstartpos = new Vector3(xrandompostion, 1.5f, Zrandompostion);
         Hukugostartpos = new Vector3(xrandompostion, 0.5f, Zrandompostion);
     }
