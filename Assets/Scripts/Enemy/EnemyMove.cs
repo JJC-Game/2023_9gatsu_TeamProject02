@@ -24,6 +24,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] float Routeinterval;
     [SerializeField] float rerereinterval;
     [SerializeField] GameObject[] routePoint;
+    [SerializeField] Transform[] hukugouMovePoint;
 
     [SerializeField] float Hukugointerval;
     int current = 0;
@@ -31,6 +32,9 @@ public class EnemyMove : MonoBehaviour
 
     Vector3 currentPos;
     Vector3 nextPos;
+
+    Vector3 moveX;
+    Vector3 moveZ;
 
     float timer;
     Vector3 vel;
@@ -53,7 +57,7 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rig = GetComponent<Rigidbody>();
+    rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
         float x = Random.Range(rangeA.position.x, rangeB.position.x);
@@ -86,6 +90,12 @@ public class EnemyMove : MonoBehaviour
         {
             movetype = MoveTypelist.左右上下移動;
         }
+        switch (movetype)
+        {
+            case MoveTypelist.左右上下移動:
+                InvokeRepeating("hukugou", 0, 5);
+                break;
+        }
     }
 
 
@@ -103,9 +113,9 @@ public class EnemyMove : MonoBehaviour
             case MoveTypelist.ルート移動:
                 route();
                 break;
-            case MoveTypelist.左右上下移動:
-                InvokeRepeating("hukugou",0, 5);
-                break;
+            /*case MoveTypelist.左右上下移動:
+                InvokeRepeating("hukugou", 0, 5);
+                break;*/
             case MoveTypelist.停止:
                 teisi();
                 break;
@@ -128,7 +138,7 @@ public class EnemyMove : MonoBehaviour
             animator.SetFloat(Animator.StringToHash("Speed"), 1f);
             animator.SetBool("Run", true);
             animator.SetBool("Idle", false);
-            Debug.Log("通常再生してほしい所");
+            //Debug.Log("通常再生してほしい所");
         }
         /*
         if(sin > 0)
@@ -143,7 +153,7 @@ public class EnemyMove : MonoBehaviour
             animator.SetFloat(Animator.StringToHash("Speed"), -1f);
             animator.SetBool("Run", true);
             animator.SetBool("Idle", false);
-            Debug.Log("逆再生してほしいところ");
+            //Debug.Log("逆再生してほしいところ");
         }
     }
     private void route()
@@ -154,12 +164,14 @@ public class EnemyMove : MonoBehaviour
             currentPos = routePoint[current].transform.position;
             nextPos = routePoint[next].transform.position;
             rig.MovePosition(Vector3.Lerp(currentPos, nextPos, timer / pointmoveTime));
+
             animator.SetBool("Run", true);
             animator.SetBool("Idle", false);
         }
         else
         {
             EnemyPause();
+
             animator.SetBool("Idle", true);
             animator.SetBool("Run", false);
         }
@@ -174,7 +186,10 @@ public class EnemyMove : MonoBehaviour
     {
         float hukugoX = Random.Range(1, 3);
         float hukugoZ = Random.Range(1, 3);
-       
+        HukugoDistans = new Vector3(hukugoX, 0, hukugoZ);
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>(); // ゲームオブジェクトのRigidbodyコンポーネントを取得
+        rb.MovePosition(HukugoDistans);
+        Debug.Log("五秒に一回処理してね");
     }
 
     private void teisi()
