@@ -25,6 +25,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] float rerereinterval;
     [SerializeField] GameObject[] routePoint;
 
+    [SerializeField] float Hukugointerval;
     int current = 0;
     int next = 1;
 
@@ -103,7 +104,7 @@ public class EnemyMove : MonoBehaviour
                 route();
                 break;
             case MoveTypelist.左右上下移動:
-                InvokeRepeating("hukugou",1, 5);
+                InvokeRepeating("hukugou",0, 5);
                 break;
             case MoveTypelist.停止:
                 teisi();
@@ -171,9 +172,9 @@ public class EnemyMove : MonoBehaviour
 
     private void hukugou()
     {
-        float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
-        HukugoDistans = new Vector3(Random.Range(sin, 18f), Random.Range(0.5f, 1.5f), Random.Range(3f, sin));
-        transform.position = Vector3.Lerp(transform.position, HukugoDistans, 1);
+        float hukugoX = Random.Range(1, 3);
+        float hukugoZ = Random.Range(1, 3);
+       
     }
 
     private void teisi()
