@@ -7,11 +7,8 @@ TagManager:
   - Enemy
   - CalculationManager
   - AimController
-  - +
-  - '-'
-  - '*'
-  - "\xF7"
   - EnemyAdd
+  - Bullet
   layers:
   - Default
   - TransparentFX

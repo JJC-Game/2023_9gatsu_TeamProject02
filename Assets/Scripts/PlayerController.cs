@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     bool inputOK = false;
+    
+
     [Header("Playerのステータス")]
     public float moveSpeed = 10;   //移動スピード
     public float gravity = 10;
@@ -28,14 +31,13 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             Gravity();
-            //Rotation();
         }
        
     }
 
     public void InputCheck()
     {
-        if(GameManager.Instance.mainGame)
+        if(GameManager.Instance.mainGame && !GameManager.Instance.stun)
         {
             inputOK = true;
         }
