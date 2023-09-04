@@ -44,6 +44,7 @@ public class Calculation : MonoBehaviour
     public bool computable = false; //割り算が計算可能か判別する
 
     public AimController aimcon;
+    Bullet bullet;
 
     void Start()
     {
@@ -63,6 +64,7 @@ public class Calculation : MonoBehaviour
                 break;
         }
         timer = timerMax;
+        bullet = GameObject.FindWithTag("Bullet").GetComponent<Bullet>();
     }
 
     void Update()
@@ -103,10 +105,26 @@ public class Calculation : MonoBehaviour
             case DifficultyType.Normal:
                 ansnum = receiveNum;
                 ansNum.text = ansnum.ToString("0");
+                if (bullet.secondhit)
+                {
+                    ansnum = ansnum*10 + receiveNum;
+                    ansNum.text = ansnum.ToString("0");
+                }
                 break;
             case DifficultyType.Hard:
                 ansnum = receiveNum;
                 ansNum.text = ansnum.ToString("0");
+                if (bullet.secondhit)
+                {
+                    ansnum = ansnum * 10 + receiveNum;
+                    ansNum.text = ansnum.ToString("0");
+                }
+                if (bullet.thirdhit)
+                {
+                    ansnum = ansnum * 10 + receiveNum;
+                    ansNum.text = ansnum.ToString("0");
+                }
+
                 break;
         }
     }
@@ -199,13 +217,13 @@ public class Calculation : MonoBehaviour
                         break;
                     case DifficultyType.Normal:
                         num1 = Random.Range(1, 10);
-                        num2 = Random.Range(1, 10 );
+                        num2 = Random.Range(1, 10);
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
                         break;
                     case DifficultyType.Hard:
                         num1 = Random.Range(3,16);
-                        num2 = Random.Range(3,16);
+                        num2 = Random.Range(3,11);
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
                         break;

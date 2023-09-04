@@ -16,7 +16,6 @@ public class AimController : MonoBehaviour
     public Transform effectPos;
 
     [SerializeField] CinemachineVirtualCamera vcame;
-
     [SerializeField] GameObject dot, croos;
 
     [SerializeField] float maxFOV = 90;
@@ -41,7 +40,7 @@ public class AimController : MonoBehaviour
 
         if(GameManager.Instance.mainGame)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !GameManager.Instance.stun)
             {
                 Fire();
             }

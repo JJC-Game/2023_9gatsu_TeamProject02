@@ -34,6 +34,8 @@ public class GameManager : Singleton<GameManager>
     public TextMeshProUGUI CorrectCountText;
     public TextMeshProUGUI InCorrectCountText;
 
+    float stunTime;
+    public float stunTimeMax = 3f;
     [Header("テスト用HP")]
     public float playerHP = 10;
 
@@ -47,6 +49,7 @@ public class GameManager : Singleton<GameManager>
        GameStartTimeline.Play();
        CorrectCountText.text = ("0");
        InCorrectCountText.text = ("0");
+        stunTime = stunTimeMax;
     }
 
     void Update()
@@ -55,7 +58,6 @@ public class GameManager : Singleton<GameManager>
         {
             DemoSkip();
         }
-
         if(Input.GetKeyDown(KeyCode.P))
         {
             Pause();
@@ -71,6 +73,18 @@ public class GameManager : Singleton<GameManager>
             GameOverTimeline.Play();
             GameOver();
             Debug.Log("ゲームオーバー");
+        }
+        if (stun)
+        {
+          if(stunTime > 0)
+            {
+                stunTime -= Time.deltaTime;
+                if (stunTime <= 0)
+                {
+                    stun = false;
+                    stunTime = stunTimeMax;
+                }
+            }
         }
     }
 
@@ -138,6 +152,5 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
         CanvasInit();
         UI[0].SetActive(true);
-        
     }
 }

@@ -7,11 +7,6 @@ using UnityEngine.UI;
 public class EnemyAddObject : MonoBehaviour
 {
     public GameObject[] EnemyObject;    
-    /* 
-     * COMMENT_KUWABARA　敵キャラクターのプレハブを納めておくためのリストなので、変数名を修正してほしいです.
-     * １．Objectという単語だと、インスタンスをさしているのか、プレハブをさしているのかわからない.
-     * ２．EnemyObjectと書いてあると、１つのオブジェクトを格納した変数だと思われるが、実態はリスト.
-    */
 
     private int Enemyid;
 
@@ -35,11 +30,11 @@ public class EnemyAddObject : MonoBehaviour
         if(GameManager.Instance.mainGame)
         {
             EnemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-            if(Enemyid >= EnemyObject.Length) { Enemyid = 0; }
             if (EnemyCountMax > EnemyCount)
             {
                 while(EnemyCount < EnemyCountMax)
                 {
+                    if (Enemyid >= EnemyObject.Length) { Enemyid = 0; }
                     // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
                     float x = Random.Range(rangeA.position.x, rangeB.position.x);
                     // rangeAとrangeBのy座標の範囲内でランダムな数値を作成
