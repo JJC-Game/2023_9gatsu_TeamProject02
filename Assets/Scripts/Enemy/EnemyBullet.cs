@@ -33,7 +33,7 @@ public class EnemyBullet : MonoBehaviour
     {
          if(collision.gameObject.tag == ("Player"))
         {
-            //GameManager.Instance.playerHP--;
+            GameManager.Instance.playerHP -= 0.5f;
             DestroyFLG = true;
         }
          if(collision.gameObject)

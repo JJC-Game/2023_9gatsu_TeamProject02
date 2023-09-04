@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
     public TextMeshProUGUI InCorrectCountText;
 
     [Header("テスト用HP")]
-    public int playerHP = 10;
+    public float playerHP = 10;
 
     void Awake()
     {
