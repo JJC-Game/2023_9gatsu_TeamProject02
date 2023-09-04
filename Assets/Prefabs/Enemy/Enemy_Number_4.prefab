@@ -2360,7 +2360,7 @@ MonoBehaviour:
   LeftRightDistans: {x: 2, y: 0, z: 0}
   UpDownDistans: {x: 0, y: 2, z: 0}
   HukugoDistans: {x: 0, y: 0, z: 2}
-  movetype: 0
+  movetype: 4
 --- !u!114 &1705536015723605702
 MonoBehaviour:
   m_ObjectHideFlags: 0

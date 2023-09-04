@@ -8,7 +8,7 @@ public class EnemyMove : MonoBehaviour
     Vector3 LeftRightstartpos;
     Vector3 UpDownstartpos;
     Vector3 Hukugostartpos;
-
+    private float time;
     [SerializeField]
     [Tooltip("生成する範囲A")]
     private Transform rangeA;
@@ -39,15 +39,16 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] Vector3 HukugoDistans = new Vector3(0, 0, 2);
     private bool animationspeedFLG;
     private bool AnimationWaitFLG;
-    enum MoveTypelist
+    public enum MoveTypelist
     {
         左右移動,
         上下移動,
         ルート移動,
         左右上下移動,
-
+        停止,
     }
     [SerializeField] MoveTypelist movetype;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +63,30 @@ public class EnemyMove : MonoBehaviour
         LeftRightstartpos = new Vector3(x, y, z);
         UpDownstartpos = new Vector3(x, y, z);
         Hukugostartpos = new Vector3(x, y, z);
+        float Enemyrandompattern = Random.Range(1, 6);
+
+        if(Enemyrandompattern == 1)
+        {
+            movetype = MoveTypelist.停止;
+        }
+        if(Enemyrandompattern == 2)
+        {
+            movetype = MoveTypelist.左右移動;
+        }
+        if(Enemyrandompattern==3)
+        {
+            movetype = MoveTypelist.上下移動;
+        }
+        if(Enemyrandompattern == 4)
+        {
+            movetype = MoveTypelist.ルート移動;
+        }
+        if(Enemyrandompattern == 5)
+        {
+            movetype = MoveTypelist.左右上下移動;
+        }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -78,8 +102,11 @@ public class EnemyMove : MonoBehaviour
             case MoveTypelist.ルート移動:
                 route();
                 break;
-            case MoveTypelist.左右上下移動:              
-                hukugou();
+            case MoveTypelist.左右上下移動:
+                InvokeRepeating("hukugou",1, 5);
+                break;
+            case MoveTypelist.停止:
+                teisi();
                 break;
         }
     }
@@ -118,7 +145,7 @@ public class EnemyMove : MonoBehaviour
             Debug.Log("逆再生してほしいところ");
         }
     }
-    void route()
+    private void route()
     {
         if(timer <= pointmoveTime)
         {
@@ -136,7 +163,7 @@ public class EnemyMove : MonoBehaviour
             animator.SetBool("Run", false);
         }
     }
-    void jouge()
+    private void jouge()
     {
         float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
         transform.position = UpDownstartpos + (UpDownDistans * sin);
@@ -144,8 +171,14 @@ public class EnemyMove : MonoBehaviour
 
     private void hukugou()
     {
-        HukugoDistans = new Vector3(Random.Range(-18f, 18f), Random.Range(0.5f, 1.5f), Random.Range(3f, 30f));
+        float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
+        HukugoDistans = new Vector3(Random.Range(sin, 18f), Random.Range(0.5f, 1.5f), Random.Range(3f, sin));
         transform.position = Vector3.Lerp(transform.position, HukugoDistans, 1);
+    }
+
+    private void teisi()
+    {
+
     }
 
     private void EnemyPause()
@@ -160,11 +193,5 @@ public class EnemyMove : MonoBehaviour
             next = (next + 1) % routePoint.Length;
             timer = 0;
         }
-    }
-    private IEnumerator Waitonetime()
-    {
-        Debug.Log("コルーチン処理のはじめ");
-        yield return new WaitForSeconds(rerereinterval);
-        Debug.Log("コルーチン処理の終わり");
     }
 }
