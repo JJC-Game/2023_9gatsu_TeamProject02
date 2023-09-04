@@ -1654,7 +1654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyBulletPrefab: {fileID: 4375224723279601010, guid: 012507185ece1ea42a8a010c1a1718e2, type: 3}
-  EnemyshotSpeed: 10
+  EnemyshotDelay: 9
+  EnemyshotSpeed: 5
   Enemypos: {fileID: 4459019199596600981}
   AtackType: 0
 --- !u!1 &4562340229139427805

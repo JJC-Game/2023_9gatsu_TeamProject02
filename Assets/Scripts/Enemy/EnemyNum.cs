@@ -9,12 +9,12 @@ public class EnemyNum : MonoBehaviour
     Transform playerTransform;
     public int num;
 
-    Calculation calc;
+    EnemyAddObject enemyAdd;
 
     void Start()
     {
-        calc = GameObject.FindWithTag("CalculationManager").GetComponent<Calculation>();
         playerObj = GameObject.FindWithTag("Player");
+        enemyAdd = GameObject.FindWithTag("EnemyAdd").GetComponent<EnemyAddObject>();
         playerTransform = playerObj.transform;
     }
 
@@ -24,7 +24,7 @@ public class EnemyNum : MonoBehaviour
     }
     void OnDestroy()
     {
-        calc.receiveNum = num;
+        enemyAdd.DestroyEnemy();
         return;
     }
 }

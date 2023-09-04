@@ -2220,7 +2220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyBulletPrefab: {fileID: 4375224723279601010, guid: 012507185ece1ea42a8a010c1a1718e2, type: 3}
-  EnemyshotSpeed: 10
+  EnemyshotDelay: 0
+  EnemyshotSpeed: 13
   Enemypos: {fileID: 7559016847764018880}
   AtackType: 0
 --- !u!1 &6019909828788413484

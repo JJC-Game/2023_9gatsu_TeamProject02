@@ -15,8 +15,6 @@ public class EnemyAddObject : MonoBehaviour
 
     private int Enemyid;
 
-    public Transform[] EnemySpawnposition;
-
     public int EnemyCountMax = 10; //敵の生成数
     private int EnemyCount;  //敵の現存数
 
@@ -30,7 +28,6 @@ public class EnemyAddObject : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void Update()
@@ -38,10 +35,10 @@ public class EnemyAddObject : MonoBehaviour
         if(GameManager.Instance.mainGame)
         {
             EnemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-
+            if(Enemyid >= EnemyObject.Length) { Enemyid = 0; }
             if (EnemyCountMax > EnemyCount)
             {
-                for (int i = 0; i < EnemySpawnposition.Length; i++)
+                while(EnemyCount < EnemyCountMax)
                 {
                     // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
                     float x = Random.Range(rangeA.position.x, rangeB.position.x);
@@ -49,35 +46,35 @@ public class EnemyAddObject : MonoBehaviour
                     float y = Random.Range(rangeA.position.y, rangeB.position.y);
                     // rangeAとrangeBのz座標の範囲内でランダムな数値を作成
                     float z = Random.Range(rangeA.position.z, rangeB.position.z);
-                    Enemyid = Random.Range(0, EnemyObject.Length);
                     Instantiate(EnemyObject[Enemyid], new Vector3(x, y, z), Quaternion.Euler(0,180,0));
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.T))
-           {
-                GameObject[] Enemys = GameObject.FindGameObjectsWithTag("Enemy");
-
-                foreach (GameObject EnemyObjects in Enemys)
-                {
-                    Destroy(EnemyObjects);
+                    Enemyid++;
+                    EnemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
                 }
             }
         }
     }
+    public void DestroyEnemy()
+    {
+        GameObject[] Enemys = GameObject.FindGameObjectsWithTag("Enemy");
 
-    public void EnemySpown()
+        foreach (GameObject EnemyObjects in Enemys)
+        {
+            Enemyid = 0;
+            Destroy(EnemyObjects);
+        }
+    }
+
+    /*public void EnemySpown()
     {
         EnemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         //Destroy(GameObject.FindWithTag("Enemy"));
         if (EnemyCountMax > EnemyCount)
         {
-            for (int i = 0; i < EnemySpawnposition.Length; i++)
+            for (int i = 0; i < EnemyCountMax; i++)
             {
                 Enemyid = Random.Range(0, EnemyObject.Length);
                 Instantiate(EnemyObject[Enemyid], EnemySpawnposition[i].position, Quaternion.identity);
             }
         }
-    }
-
-
+    }*/
 }

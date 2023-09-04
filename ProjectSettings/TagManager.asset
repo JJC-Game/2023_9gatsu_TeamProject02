@@ -11,6 +11,7 @@ TagManager:
   - '-'
   - '*'
   - "\xF7"
+  - EnemyAdd
   layers:
   - Default
   - TransparentFX
