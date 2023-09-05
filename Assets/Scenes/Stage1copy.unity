@@ -18178,6 +18178,7 @@ MonoBehaviour:
   receiveNum: 0
   num1: 0
   num2: 0
+  ansnum: 0
   judgenum: 0
   timer: 0
   difficulty: 2
@@ -18189,6 +18190,10 @@ MonoBehaviour:
   timerText: {fileID: 7916872660227469667}
   timeover: 0
   computable: 0
+  firsthit: 0
+  secondhit: 0
+  thirdhit: 0
+  updateNum: 1
   aimcon: {fileID: 7679294599593233700}
 --- !u!4 &3925978582494008971
 Transform:
