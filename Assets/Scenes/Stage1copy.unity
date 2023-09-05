@@ -579,8 +579,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6B63\u89E3\u6570"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6e27702c393969a489e6f122b4df2792, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 6e27702c393969a489e6f122b4df2792, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13628,8 +13628,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u4E0D\u6B63\u89E3\u6570"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6e27702c393969a489e6f122b4df2792, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 6e27702c393969a489e6f122b4df2792, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18083,8 +18083,8 @@ MonoBehaviour:
   CorrectCountCurrent: 0
   InCorrectCountCurrent: 0
   questionCurrent: 0
-  CorrectCountMax: 5
-  InCorrectCountMax: 4
+  CorrectCountMax: 10
+  InCorrectCountMax: 5
   CorrectCountText: {fileID: 7916872660111025614}
   InCorrectCountText: {fileID: 7916872660425181258}
   stunTimeMax: 3
@@ -18178,7 +18178,6 @@ MonoBehaviour:
   receiveNum: 0
   num1: 0
   num2: 0
-  ansnum: 0
   judgenum: 0
   timer: 0
   difficulty: 2
@@ -18190,10 +18189,6 @@ MonoBehaviour:
   timerText: {fileID: 7916872660227469667}
   timeover: 0
   computable: 0
-  firsthit: 0
-  secondhit: 0
-  thirdhit: 0
-  updateNum: 1
   aimcon: {fileID: 7679294599593233700}
 --- !u!4 &3925978582494008971
 Transform:

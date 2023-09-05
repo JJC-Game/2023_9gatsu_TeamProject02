@@ -7,8 +7,6 @@ public class EnemyMove : MonoBehaviour
     private float EnemyMoveSpeed = 2f;
     Vector3 LeftRightstartpos;
     Vector3 UpDownstartpos;
-    Vector3 Hukugostartpos;
-    private float time;
     [SerializeField]
     [Tooltip("生成する範囲A")]
     private Transform rangeA;
@@ -22,28 +20,17 @@ public class EnemyMove : MonoBehaviour
 
     [SerializeField] float pointmoveTime;
     [SerializeField] float Routeinterval;
-    [SerializeField] float rerereinterval;
     [SerializeField] GameObject[] routePoint;
-    [SerializeField] Transform[] hukugouMovePoint;
 
-    [SerializeField] float Hukugointerval;
     int current = 0;
     int next = 1;
-
     Vector3 currentPos;
     Vector3 nextPos;
-
-    Vector3 moveX;
-    Vector3 moveZ;
-
     float timer;
-    Vector3 vel;
-    
+    private float random;
     [SerializeField] Vector3 LeftRightDistans = new Vector3(2, 0, 0);
     [SerializeField] Vector3 UpDownDistans = new Vector3(0, 1, 0);
-    [SerializeField] Vector3 HukugoDistans = new Vector3(0, 0, 2);
     private bool animationspeedFLG;
-    private bool AnimationWaitFLG;
     public enum MoveTypelist
     {
         左右移動,
@@ -57,7 +44,8 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    rig = GetComponent<Rigidbody>();
+         random = Random.Range(1, 3);
+        rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
         float x = Random.Range(rangeA.position.x, rangeB.position.x);
@@ -67,7 +55,6 @@ public class EnemyMove : MonoBehaviour
         float z = Random.Range(rangeA.position.z, rangeB.position.z);
         LeftRightstartpos = new Vector3(x, y, z);
         UpDownstartpos = new Vector3(x, y, z);
-        Hukugostartpos = new Vector3(x, y, z);
         float Enemyrandompattern = Random.Range(1, 6);
 
         if(Enemyrandompattern == 1)
@@ -88,14 +75,14 @@ public class EnemyMove : MonoBehaviour
         }
         if(Enemyrandompattern == 5)
         {
-            movetype = MoveTypelist.左右上下移動;
+            movetype = MoveTypelist.左右移動;
         }
-        switch (movetype)
+        /*switch (movetype)
         {
             case MoveTypelist.左右上下移動:
                 InvokeRepeating("hukugou", 0, 5);
                 break;
-        }
+        }*/
     }
 
 
@@ -114,7 +101,7 @@ public class EnemyMove : MonoBehaviour
                 route();
                 break;
             /*case MoveTypelist.左右上下移動:
-                InvokeRepeating("hukugou", 0, 5);
+                hukugou();
                 break;*/
             case MoveTypelist.停止:
                 teisi();
@@ -123,38 +110,82 @@ public class EnemyMove : MonoBehaviour
     }
     void rerere()
     {
-        float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
-        transform.position = LeftRightstartpos + (LeftRightDistans * sin);
-        if (sin >= 1.75f)
+        if (random == 1)
         {
-            animationspeedFLG = true;
+            float cos = Mathf.Cos(Time.time) * EnemyMoveSpeed;
+            transform.position = LeftRightstartpos + (LeftRightDistans * cos);
+            Debug.Log("コサイン移動です");
+            if (cos >= 1.75f)
+            {
+                animationspeedFLG = true;
+            }
+            if (cos <= -1.75f)
+            {
+                animationspeedFLG = false;
+            }
+
+            if (animationspeedFLG == true)
+            {
+                animator.SetFloat(Animator.StringToHash("Speed"), 1f);
+                animator.SetBool("Run", true);
+                animator.SetBool("Idle", false);
+                //Debug.Log("通常再生してほしい所");
+            }
+            /*
+            if(sin > 0)
+            {
+                animator.SetBool("Idle", true);
+                animator.SetBool("Run", false);
+                Debug.Log("サイン関数がゼロになりました");
+                ]
+            }*/
+            else if (animationspeedFLG == false)
+            {
+                animator.SetFloat(Animator.StringToHash("Speed"), -1f);
+                animator.SetBool("Run", true);
+                animator.SetBool("Idle", false);
+                //Debug.Log("逆再生してほしいところ");
+            }
         }
+        if (random == 2)
+        {
+            float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
+            transform.position = LeftRightstartpos + (LeftRightDistans * sin);
+            Debug.Log("サインです");
+            if (sin >= 1.75f)
+            {
+                animationspeedFLG = true;
+            }
             if (sin <= -1.75f)
-        {
-            animationspeedFLG = false;
+            {
+                animationspeedFLG = false;
+            }
+
+            if (animationspeedFLG == true)
+            {
+                animator.SetFloat(Animator.StringToHash("Speed"), 1f);
+                animator.SetBool("Run", true);
+                animator.SetBool("Idle", false);
+                //Debug.Log("通常再生してほしい所");
+            }
+            /*
+            if(sin > 0)
+            {
+                animator.SetBool("Idle", true);
+                animator.SetBool("Run", false);
+                Debug.Log("サイン関数がゼロになりました");
+                ]
+            }*/
+            else if (animationspeedFLG == false)
+            {
+                animator.SetFloat(Animator.StringToHash("Speed"), -1f);
+                animator.SetBool("Run", true);
+                animator.SetBool("Idle", false);
+                //Debug.Log("逆再生してほしいところ");
+            }
         }
-        if(animationspeedFLG == true)
-        {        
-            animator.SetFloat(Animator.StringToHash("Speed"), 1f);
-            animator.SetBool("Run", true);
-            animator.SetBool("Idle", false);
-            //Debug.Log("通常再生してほしい所");
-        }
-        /*
-        if(sin > 0)
-        {
-            animator.SetBool("Idle", true);
-            animator.SetBool("Run", false);
-            Debug.Log("サイン関数がゼロになりました");
-            ]
-        }*/
-        else if (animationspeedFLG == false) 
-        {
-            animator.SetFloat(Animator.StringToHash("Speed"), -1f);
-            animator.SetBool("Run", true);
-            animator.SetBool("Idle", false);
-            //Debug.Log("逆再生してほしいところ");
-        }
+        
+       
     }
     private void route()
     {
@@ -182,16 +213,15 @@ public class EnemyMove : MonoBehaviour
         transform.position = UpDownstartpos + (UpDownDistans * sin);
     }
 
-    private void hukugou()
+    /*private void hukugou()
     {
         float hukugoX = Random.Range(1, 3);
-        float hukugoZ = Random.Range(1, 3);
-        HukugoDistans = new Vector3(hukugoX, 0, hukugoZ);
-        Rigidbody rb = gameObject.GetComponent<Rigidbody>(); // ゲームオブジェクトのRigidbodyコンポーネントを取得
-        rb.MovePosition(HukugoDistans);
+        float hukugoY = Random.Range(1, 3);
+        HukugoDistans = new Vector3(hukugoX, 0, hukugoY);
+        Vector3.MoveTowards(Hukugostartpos, HukugoDistans, 0);
         Debug.Log("五秒に一回処理してね");
     }
-
+    */
     private void teisi()
     {
 

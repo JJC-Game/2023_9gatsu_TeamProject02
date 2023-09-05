@@ -9,9 +9,6 @@ public class Bullet : MonoBehaviour
     Calculation calc;
     float timer = 1.5f;
     bool destroyFlg = false;
-    public bool firsthit = false;
-    public bool secondhit = false;
-    public bool thirdhit = false;
 
     void Start()
     {
@@ -40,26 +37,12 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            aimcon.hitEnemy = true;
-            if (aimcon.hitEnemy)
+            if(!calc.updateNum)
             {
-                if(!firsthit)
-                {
-                    firsthit = true;
-                    return;
-                }
-                if(firsthit && !secondhit)
-                {
-                    secondhit = true;
-                    return;
-                }
-                if(firsthit && secondhit && !thirdhit)
-                {
-                    thirdhit = true;
-                    return;
-                }
+                calc.ansnum -= calc.receiveNum;
             }
             calc.receiveNum = collision.gameObject.GetComponent<EnemyNum>().num;
+            aimcon.hitEnemy = true;
             Destroy(collision.gameObject);
             destroyFlg = true;
         }
