@@ -7,8 +7,6 @@ public class EnemyMove : MonoBehaviour
     private float EnemyMoveSpeed = 2f;
     Vector3 LeftRightstartpos;
     Vector3 UpDownstartpos;
-    Vector3 Hukugostartpos;
-    private float time;
     [SerializeField]
     [Tooltip("生成する範囲A")]
     private Transform rangeA;
@@ -22,28 +20,17 @@ public class EnemyMove : MonoBehaviour
 
     [SerializeField] float pointmoveTime;
     [SerializeField] float Routeinterval;
-    [SerializeField] float rerereinterval;
     [SerializeField] GameObject[] routePoint;
-    [SerializeField] Transform[] hukugouMovePoint;
 
-    [SerializeField] float Hukugointerval;
     int current = 0;
     int next = 1;
-
     Vector3 currentPos;
     Vector3 nextPos;
-
-    Vector3 moveX;
-    Vector3 moveZ;
-
     float timer;
-    Vector3 vel;
     
     [SerializeField] Vector3 LeftRightDistans = new Vector3(2, 0, 0);
     [SerializeField] Vector3 UpDownDistans = new Vector3(0, 1, 0);
-    [SerializeField] Vector3 HukugoDistans = new Vector3(0, 0, 2);
     private bool animationspeedFLG;
-    private bool AnimationWaitFLG;
     public enum MoveTypelist
     {
         左右移動,
@@ -67,7 +54,6 @@ public class EnemyMove : MonoBehaviour
         float z = Random.Range(rangeA.position.z, rangeB.position.z);
         LeftRightstartpos = new Vector3(x, y, z);
         UpDownstartpos = new Vector3(x, y, z);
-        Hukugostartpos = new Vector3(x, y, z);
         float Enemyrandompattern = Random.Range(1, 6);
 
         if(Enemyrandompattern == 1)
@@ -88,14 +74,14 @@ public class EnemyMove : MonoBehaviour
         }
         if(Enemyrandompattern == 5)
         {
-            movetype = MoveTypelist.左右上下移動;
+            movetype = MoveTypelist.左右移動;
         }
-        switch (movetype)
+        /*switch (movetype)
         {
             case MoveTypelist.左右上下移動:
                 InvokeRepeating("hukugou", 0, 5);
                 break;
-        }
+        }*/
     }
 
 
@@ -114,7 +100,7 @@ public class EnemyMove : MonoBehaviour
                 route();
                 break;
             /*case MoveTypelist.左右上下移動:
-                InvokeRepeating("hukugou", 0, 5);
+                hukugou();
                 break;*/
             case MoveTypelist.停止:
                 teisi();
@@ -125,14 +111,16 @@ public class EnemyMove : MonoBehaviour
     {
         float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
         transform.position = LeftRightstartpos + (LeftRightDistans * sin);
+        
         if (sin >= 1.75f)
         {
-            animationspeedFLG = true;
+            animationspeedFLG = true;  
         }
             if (sin <= -1.75f)
         {
             animationspeedFLG = false;
         }
+
         if(animationspeedFLG == true)
         {        
             animator.SetFloat(Animator.StringToHash("Speed"), 1f);
@@ -182,16 +170,15 @@ public class EnemyMove : MonoBehaviour
         transform.position = UpDownstartpos + (UpDownDistans * sin);
     }
 
-    private void hukugou()
+    /*private void hukugou()
     {
         float hukugoX = Random.Range(1, 3);
-        float hukugoZ = Random.Range(1, 3);
-        HukugoDistans = new Vector3(hukugoX, 0, hukugoZ);
-        Rigidbody rb = gameObject.GetComponent<Rigidbody>(); // ゲームオブジェクトのRigidbodyコンポーネントを取得
-        rb.MovePosition(HukugoDistans);
+        float hukugoY = Random.Range(1, 3);
+        HukugoDistans = new Vector3(hukugoX, 0, hukugoY);
+        Vector3.MoveTowards(Hukugostartpos, HukugoDistans, 0);
         Debug.Log("五秒に一回処理してね");
     }
-
+    */
     private void teisi()
     {
 
