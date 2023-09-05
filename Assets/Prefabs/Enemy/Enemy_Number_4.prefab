@@ -2356,7 +2356,11 @@ MonoBehaviour:
   pointmoveTime: 10
   Routeinterval: 2
   rerereinterval: 2
-  routePoint: []
+  routePoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  hukugouMovePoint: []
+  Hukugointerval: 0
   LeftRightDistans: {x: 2, y: 0, z: 0}
   UpDownDistans: {x: 0, y: 2, z: 0}
   HukugoDistans: {x: 0, y: 0, z: 2}

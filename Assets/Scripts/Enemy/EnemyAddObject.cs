@@ -41,7 +41,7 @@ public class EnemyAddObject : MonoBehaviour
                     float y = Random.Range(rangeA.position.y, rangeB.position.y);
                     // rangeAとrangeBのz座標の範囲内でランダムな数値を作成
                     float z = Random.Range(rangeA.position.z, rangeB.position.z);
-                    Instantiate(EnemyObject[Enemyid], new Vector3(x, y, z), Quaternion.Euler(0,180,0));
+                    Instantiate(EnemyObject[Enemyid], new Vector3(0, 0, 0), Quaternion.Euler(0,180,0));
                     Enemyid++;
                     EnemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
                 }

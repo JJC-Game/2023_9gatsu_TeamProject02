@@ -9,7 +9,7 @@ public class Calculation : MonoBehaviour
     public int num1;
     public int num2;
     int adjustmentNum;
-    int ansnum;
+    public int ansnum;
     public int judgenum;
 
     public float timer;
@@ -43,8 +43,12 @@ public class Calculation : MonoBehaviour
 
     public bool computable = false; //割り算が計算可能か判別する
 
+    public bool firsthit = false;
+    public bool secondhit = false;
+    public bool thirdhit = false;
+    public bool updateNum = true;
+
     public AimController aimcon;
-    Bullet bullet;
 
     void Start()
     {
@@ -64,7 +68,6 @@ public class Calculation : MonoBehaviour
                 break;
         }
         timer = timerMax;
-        bullet = GameObject.FindWithTag("Bullet").GetComponent<Bullet>();
     }
 
     void Update()
@@ -74,10 +77,10 @@ public class Calculation : MonoBehaviour
             timeover = false;
             CalculationStart();
         }
-        /*if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            NumInit();
-        }*/
+            AnsReset();
+        }
         if (GameManager.Instance.mainGame && !challenge)
         {
             Challenge();
@@ -103,29 +106,56 @@ public class Calculation : MonoBehaviour
                 Num2.text = num2.ToString("0");
                 break;
             case DifficultyType.Normal:
-                ansnum = receiveNum;
-                ansNum.text = ansnum.ToString("0");
-                if (bullet.secondhit)
+                if(!firsthit && !secondhit)
+                {
+                    ansnum = receiveNum;
+                    ansNum.text = ansnum.ToString("0");
+                    firsthit = true;
+                    return;
+                }
+                if(firsthit && !secondhit)
                 {
                     ansnum = ansnum*10 + receiveNum;
                     ansNum.text = ansnum.ToString("0");
+                    secondhit = true;
+                    updateNum = false;
+                    return;
                 }
-                break;
+                if (firsthit && secondhit && !updateNum)
+                {
+                    ansnum += receiveNum;
+                    ansNum.text = ansnum.ToString("0");
+                }
+                    break;
             case DifficultyType.Hard:
-                ansnum = receiveNum;
-                ansNum.text = ansnum.ToString("0");
-                if (bullet.secondhit)
+                if (!firsthit && !secondhit && !thirdhit)
+                {
+                    ansnum = receiveNum;
+                    ansNum.text = ansnum.ToString("0");
+                    firsthit = true;
+                    return;
+                }
+                if (firsthit && !secondhit && !thirdhit)
                 {
                     ansnum = ansnum * 10 + receiveNum;
                     ansNum.text = ansnum.ToString("0");
+                    secondhit = true;
+                    return;
                 }
-                if (bullet.thirdhit)
+                if(firsthit && secondhit && !thirdhit)
                 {
                     ansnum = ansnum * 10 + receiveNum;
                     ansNum.text = ansnum.ToString("0");
+                    thirdhit = true;
+                    updateNum = false;
+                    return;
                 }
-
-                break;
+                if (firsthit && secondhit && thirdhit && !updateNum)
+                {
+                    ansnum += receiveNum;
+                    ansNum.text = ansnum.ToString("0");
+                }
+                    break;
         }
     }
    
@@ -316,6 +346,31 @@ public class Calculation : MonoBehaviour
             }
         }
     }
+    void AnsReset()
+    {
+        switch(difficulty)
+        {
+            case DifficultyType.Eaey:
+                num2 = 0;
+                Num2.text = ("?");
+                break;
+            case DifficultyType.Normal:
+                ansnum = 0;
+                ansNum.text = ("?");
+                firsthit = false;
+                secondhit = false;
+                updateNum = true;
+                break;
+            case DifficultyType.Hard:
+                ansnum = 0;
+                ansNum.text = ("?");
+                firsthit = false;
+                secondhit = false;
+                thirdhit = false;
+                updateNum = true;
+                break;
+        }
+    }
     void NumInit() //数値初期化
     {
         num2 = 0;
@@ -323,6 +378,10 @@ public class Calculation : MonoBehaviour
         ansnum = 0;
         ansNum.text = ("?");
         timer = timerMax;
+        firsthit = false;
+        secondhit = false;
+        thirdhit = false;
+        updateNum = true;
     }
     void NumFix() //割り算で素数判定するためのもの
     {
