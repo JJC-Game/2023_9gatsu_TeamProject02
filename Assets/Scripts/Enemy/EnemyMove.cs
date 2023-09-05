@@ -27,7 +27,7 @@ public class EnemyMove : MonoBehaviour
     Vector3 currentPos;
     Vector3 nextPos;
     float timer;
-    
+    private float random;
     [SerializeField] Vector3 LeftRightDistans = new Vector3(2, 0, 0);
     [SerializeField] Vector3 UpDownDistans = new Vector3(0, 1, 0);
     private bool animationspeedFLG;
@@ -44,7 +44,8 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    rig = GetComponent<Rigidbody>();
+         random = Random.Range(1, 3);
+        rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
         float x = Random.Range(rangeA.position.x, rangeB.position.x);
@@ -109,40 +110,82 @@ public class EnemyMove : MonoBehaviour
     }
     void rerere()
     {
-        float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
-        transform.position = LeftRightstartpos + (LeftRightDistans * sin);
-        
-        if (sin >= 1.75f)
+        if (random == 1)
         {
-            animationspeedFLG = true;  
-        }
-            if (sin <= -1.75f)
-        {
-            animationspeedFLG = false;
-        }
+            float cos = Mathf.Cos(Time.time) * EnemyMoveSpeed;
+            transform.position = LeftRightstartpos + (LeftRightDistans * cos);
+            Debug.Log("コサイン移動です");
+            if (cos >= 1.75f)
+            {
+                animationspeedFLG = true;
+            }
+            if (cos <= -1.75f)
+            {
+                animationspeedFLG = false;
+            }
 
-        if(animationspeedFLG == true)
-        {        
-            animator.SetFloat(Animator.StringToHash("Speed"), 1f);
-            animator.SetBool("Run", true);
-            animator.SetBool("Idle", false);
-            //Debug.Log("通常再生してほしい所");
+            if (animationspeedFLG == true)
+            {
+                animator.SetFloat(Animator.StringToHash("Speed"), 1f);
+                animator.SetBool("Run", true);
+                animator.SetBool("Idle", false);
+                //Debug.Log("通常再生してほしい所");
+            }
+            /*
+            if(sin > 0)
+            {
+                animator.SetBool("Idle", true);
+                animator.SetBool("Run", false);
+                Debug.Log("サイン関数がゼロになりました");
+                ]
+            }*/
+            else if (animationspeedFLG == false)
+            {
+                animator.SetFloat(Animator.StringToHash("Speed"), -1f);
+                animator.SetBool("Run", true);
+                animator.SetBool("Idle", false);
+                //Debug.Log("逆再生してほしいところ");
+            }
         }
-        /*
-        if(sin > 0)
+        if (random == 2)
         {
-            animator.SetBool("Idle", true);
-            animator.SetBool("Run", false);
-            Debug.Log("サイン関数がゼロになりました");
-            ]
-        }*/
-        else if (animationspeedFLG == false) 
-        {
-            animator.SetFloat(Animator.StringToHash("Speed"), -1f);
-            animator.SetBool("Run", true);
-            animator.SetBool("Idle", false);
-            //Debug.Log("逆再生してほしいところ");
+            float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
+            transform.position = LeftRightstartpos + (LeftRightDistans * sin);
+            Debug.Log("サインです");
+            if (sin >= 1.75f)
+            {
+                animationspeedFLG = true;
+            }
+            if (sin <= -1.75f)
+            {
+                animationspeedFLG = false;
+            }
+
+            if (animationspeedFLG == true)
+            {
+                animator.SetFloat(Animator.StringToHash("Speed"), 1f);
+                animator.SetBool("Run", true);
+                animator.SetBool("Idle", false);
+                //Debug.Log("通常再生してほしい所");
+            }
+            /*
+            if(sin > 0)
+            {
+                animator.SetBool("Idle", true);
+                animator.SetBool("Run", false);
+                Debug.Log("サイン関数がゼロになりました");
+                ]
+            }*/
+            else if (animationspeedFLG == false)
+            {
+                animator.SetFloat(Animator.StringToHash("Speed"), -1f);
+                animator.SetBool("Run", true);
+                animator.SetBool("Idle", false);
+                //Debug.Log("逆再生してほしいところ");
+            }
         }
+        
+       
     }
     private void route()
     {
