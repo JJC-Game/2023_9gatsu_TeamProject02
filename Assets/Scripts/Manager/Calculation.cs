@@ -48,6 +48,8 @@ public class Calculation : MonoBehaviour
     public bool thirdhit = false;
     public bool updateNum = true;
 
+    bool judgement = false;
+
     public AimController aimcon;
 
     void Start()
@@ -72,10 +74,10 @@ public class Calculation : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) || timeover)
+        if(!updateNum || timeover)
         {
             timeover = false;
-            CalculationStart();
+            Judgement();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -158,29 +160,6 @@ public class Calculation : MonoBehaviour
                     break;
         }
     }
-   
-    void CalculationStart()
-    {
-        switch (signType)
-        {
-            case SignType.足し算:
-                judgenum = num1 + num2;
-                Judgement();
-                break;
-            case SignType.引き算:
-                judgenum = num1 - num2;
-                Judgement();
-                break;
-            case SignType.掛け算:
-                judgenum = num1 * num2;
-                Judgement();
-                break;
-            case SignType.割り算:
-                judgenum = num1 / num2;
-                Judgement();
-                break;
-        }
-    }
     void Challenge()
     {
         challenge = true;
@@ -196,18 +175,21 @@ public class Calculation : MonoBehaviour
                         num1 = ansnum / 2;
                         if (num1 > adjustmentNum) { num1 = num1 - adjustmentNum; }
                         Num1.text = num1.ToString("0");
+                        judgenum = num1 + num2;
                         break;
                     case DifficultyType.Normal:
                         num1 = Random.Range(5, 26);
                         num2 = Random.Range(5, 26);
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
+                        judgenum = num1 + num2;
                         break;
                     case DifficultyType.Hard:
                         num1 = Random.Range(10, 51);
-                        num2 = Random.Range(10, 50);
+                        num2 = Random.Range(10, 51);
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
+                        judgenum = num1 + num2;
                         break;
                 }
                 break;
@@ -221,18 +203,21 @@ public class Calculation : MonoBehaviour
                         ansnum = num1 / 2;
                         if (ansnum > adjustmentNum) { ansnum = ansnum - adjustmentNum; }
                         ansNum.text = ansnum.ToString("0");
+                        judgenum = num1 - num2;
                         break;
                     case DifficultyType.Normal:
                         num1 = Random.Range(10, 51);
                         num2 = Random.Range(1, num1);
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
+                        judgenum = num1 - num2;
                         break;
                     case DifficultyType.Hard:
                         num1 = Random.Range(20, 101);
                         num2 = Random.Range(1, num1);
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
+                        judgenum = num1 - num2;
                         break;
                 }
                 break;
@@ -244,18 +229,21 @@ public class Calculation : MonoBehaviour
                         ansnum = num1 * Random.Range(1, 6);
                         Num1.text = num1.ToString("0");
                         ansNum.text = ansnum.ToString("0");
+                        judgenum = num1 * num2;
                         break;
                     case DifficultyType.Normal:
                         num1 = Random.Range(1, 10);
                         num2 = Random.Range(1, 10);
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
+                        judgenum = num1 * num2;
                         break;
                     case DifficultyType.Hard:
                         num1 = Random.Range(3,16);
                         num2 = Random.Range(3,11);
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
+                        judgenum = num1 * num2;
                         break;
                 }
                 break;
@@ -276,6 +264,7 @@ public class Calculation : MonoBehaviour
                         }
                         Num1.text = num1.ToString("0");
                         ansNum.text = ansnum.ToString("0");
+                        judgenum = num1 / num2;
                         break;
                     case DifficultyType.Normal:
                         while (!computable)
@@ -291,6 +280,7 @@ public class Calculation : MonoBehaviour
                         }
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
+                        judgenum = num1 / num2;
                         break;
                     case DifficultyType.Hard:
                         while (!computable)
@@ -306,6 +296,7 @@ public class Calculation : MonoBehaviour
                         }
                         Num1.text = num1.ToString("0");
                         Num2.text = num2.ToString("0");
+                        judgenum = num1 / num2;
                         break;
                 }
                 break;

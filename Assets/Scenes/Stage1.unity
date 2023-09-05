@@ -16161,8 +16161,8 @@ MonoBehaviour:
   CorrectCountCurrent: 0
   InCorrectCountCurrent: 0
   questionCurrent: 0
-  CorrectCountMax: 5
-  InCorrectCountMax: 4
+  CorrectCountMax: 10
+  InCorrectCountMax: 5
   CorrectCountText: {fileID: 7916872660111025614}
   InCorrectCountText: {fileID: 7916872660425181258}
   stunTimeMax: 3
@@ -16260,7 +16260,7 @@ MonoBehaviour:
   judgenum: 0
   timer: 0
   difficulty: 2
-  signType: 2
+  signType: 3
   Num1: {fileID: 7916872659628417330}
   Num2: {fileID: 7916872659359974790}
   ansNum: {fileID: 7916872659997095429}
@@ -26307,7 +26307,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 210, y: 0}
-  m_SizeDelta: {x: 75, y: 75}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &7916872659386210777
 MonoBehaviour:
