@@ -74,9 +74,10 @@ public class Calculation : MonoBehaviour
 
     void Update()
     {
-        if(!updateNum || timeover)
+        if(judgement || !updateNum || timeover)
         {
             timeover = false;
+            judgement = false;
             Judgement();
         }
         if (Input.GetKeyDown(KeyCode.R))
@@ -91,6 +92,7 @@ public class Calculation : MonoBehaviour
        {
             NumUpdate();
             aimcon.hitEnemy = false;
+            Inspection();
        }
         timer = Mathf.Clamp(timer,0f, timerMax);
        if(challenge)
@@ -296,16 +298,19 @@ public class Calculation : MonoBehaviour
         {
             case SignType.足し算:
                 judgenum = num1 + num2;
-                if (judgenum == ansnum) { }
+                if (judgenum == ansnum) { judgement = true; }
                 break;
             case SignType.引き算:
                 judgenum = num1 - num2;
+                if (judgenum == ansnum) { judgement = true; }
                 break;
             case SignType.掛け算:
                 judgenum = num1 * num2;
+                if (judgenum == ansnum) { judgement = true; }
                 break;
             case SignType.割り算:
                 judgenum = num1 / num2;
+                if (judgenum == ansnum) { judgement = true; }
                 break;
         }
     }
