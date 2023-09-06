@@ -112,7 +112,13 @@ public class GameManager : Singleton<GameManager>
             UI[1].SetActive(true);
             return;
         }
-        
+    }
+    public void SceneChange()
+    {
+        mainGame = false;
+        pause = false;
+        Time.timeScale = 1;
+        CanvasInit();
     }
 
     void GameClear()
