@@ -17,6 +17,7 @@ public class EnemyMove : MonoBehaviour
     private Transform rangeB;
     Animator animator;
     Rigidbody rig;
+    EnemyAddObject EA;
 
     [SerializeField] float pointmoveTime;
     [SerializeField] float Routeinterval;
@@ -47,14 +48,9 @@ public class EnemyMove : MonoBehaviour
          random = Random.Range(1, 3);
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
-        float x = Random.Range(rangeA.position.x, rangeB.position.x);
-        // rangeAとrangeBのy座標の範囲内でランダムな数値を作成
-        float y = Random.Range(rangeA.position.y, rangeB.position.y);
-        // rangeAとrangeBのz座標の範囲内でランダムな数値を作成
-        float z = Random.Range(rangeA.position.z, rangeB.position.z);
-        LeftRightstartpos = new Vector3(x, y, z);
-        UpDownstartpos = new Vector3(x, y, z);
+        EA = GameObject.FindWithTag("EnemyAddObject").GetComponent<EnemyAddObject>();
+        /*LeftRightstartpos = new Vector3(x, y, z);
+        UpDownstartpos = new Vector3(x, y, z);*/
         float Enemyrandompattern = Random.Range(1, 6);
 
         if(Enemyrandompattern == 1)
@@ -209,8 +205,16 @@ public class EnemyMove : MonoBehaviour
     }
     private void jouge()
     {
-        float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
-        transform.position = UpDownstartpos + (UpDownDistans * sin);
+        if (random == 1)
+        {
+            float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
+            transform.position = UpDownstartpos + (UpDownDistans * sin);
+        }
+        if(random == 2)
+        {
+            float cos = Mathf.Cos(Time.time) * EnemyMoveSpeed;
+            transform.position = UpDownstartpos + (UpDownDistans * cos);
+        }
     }
 
     /*private void hukugou()

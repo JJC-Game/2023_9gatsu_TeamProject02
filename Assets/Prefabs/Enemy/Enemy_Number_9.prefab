@@ -705,7 +705,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   LeftRightDistans: {x: -1.5, y: 0, z: 0}
-  UpDownDistans: {x: 0, y: 2, z: 0}
+  UpDownDistans: {x: 0, y: -1.5, z: 0}
   movetype: 0
 --- !u!114 &6324691030874643261
 MonoBehaviour:
