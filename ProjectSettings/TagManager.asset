@@ -9,6 +9,9 @@ TagManager:
   - AimController
   - EnemyAdd
   - Bullet
+  - EnemySpownPoint
+  - EnemySpownPointB
+  - EnemyRoute
   layers:
   - Default
   - TransparentFX
