@@ -13,6 +13,10 @@ public class EnemyAddObject : MonoBehaviour
     public int EnemyCountMax = 10; //敵の生成数
     private int EnemyCount;  //敵の現存数
 
+    public float EnemyX;
+    public float EnemyY;
+    public float EnemyZ;
+
     [SerializeField]
     [Tooltip("生成する範囲A")]
     private Transform rangeA;
@@ -41,7 +45,7 @@ public class EnemyAddObject : MonoBehaviour
                     float y = Random.Range(rangeA.position.y, rangeB.position.y);
                     // rangeAとrangeBのz座標の範囲内でランダムな数値を作成
                     float z = Random.Range(rangeA.position.z, rangeB.position.z);
-                    Instantiate(EnemyObject[Enemyid], new Vector3(0, 0, 0), Quaternion.Euler(0,180,0));
+                    Instantiate(EnemyObject[Enemyid], new Vector3(x, y, z), Quaternion.Euler(0,180,0));
                     Enemyid++;
                     EnemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
                 }
