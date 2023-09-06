@@ -22260,7 +22260,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!224 &6909444113884393068
@@ -22946,7 +22946,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3925978582657036172}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: Stage1Scene
+        m_MethodName: GameScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
