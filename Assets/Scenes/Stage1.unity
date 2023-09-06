@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 40fa5696077438a49bbce1aac01eba84, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -14929,7 +14929,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.8207547, g: 0.39321154, b: 0.17421682, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -16221,7 +16221,11 @@ MonoBehaviour:
   - {fileID: 4498911923790565517, guid: ea6de3b5feef0a24e8401b4cc7eca919, type: 3}
   - {fileID: 6559845510719237056, guid: ed9685566d80c094f8d9f707df3d62f1, type: 3}
   - {fileID: 1977282861533788881, guid: bf96decb0dc47ba4b99ea17abac93590, type: 3}
+  Enemyid: 0
   EnemyCountMax: 10
+  EnemyX: []
+  EnemyY: []
+  EnemyZ: []
   rangeA: {fileID: 5056683632929475755}
   rangeB: {fileID: 5056683633551992052}
 --- !u!1 &3925978582494008968
