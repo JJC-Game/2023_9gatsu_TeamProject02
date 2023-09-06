@@ -18143,7 +18143,41 @@ MonoBehaviour:
   - {fileID: 4498911923790565517, guid: ea6de3b5feef0a24e8401b4cc7eca919, type: 3}
   - {fileID: 6559845510719237056, guid: ed9685566d80c094f8d9f707df3d62f1, type: 3}
   - {fileID: 1977282861533788881, guid: bf96decb0dc47ba4b99ea17abac93590, type: 3}
+  Enemyid: 0
   EnemyCountMax: 10
+  EnemyX:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  EnemyY:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  EnemyZ:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   rangeA: {fileID: 5056683632929475755}
   rangeB: {fileID: 5056683633551992052}
 --- !u!1 &3925978582494008968

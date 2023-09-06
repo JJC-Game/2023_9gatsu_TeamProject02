@@ -42,18 +42,15 @@ public class EnemyMove : MonoBehaviour
     }
     [SerializeField] MoveTypelist movetype;
 
-    // Start is called before the first frame update
     void Start()
     {
          random = Random.Range(1, 3);
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        EA = GameObject.FindWithTag("EnemyAddObject").GetComponent<EnemyAddObject>();
-        /*LeftRightstartpos = new Vector3(x, y, z);
-        UpDownstartpos = new Vector3(x, y, z);*/
-        float Enemyrandompattern = Random.Range(1, 6);
+        
 
-        if(Enemyrandompattern == 1)
+        float Enemyrandompattern = Random.Range(1, 6);
+        if (Enemyrandompattern == 1)
         {
             movetype = MoveTypelist.停止;
         }
@@ -80,9 +77,6 @@ public class EnemyMove : MonoBehaviour
                 break;
         }*/
     }
-
-
-    // Update is called once per frame
     void Update()
     {
         switch (movetype)
@@ -102,7 +96,16 @@ public class EnemyMove : MonoBehaviour
             case MoveTypelist.停止:
                 teisi();
                 break;
+                
+                
+
+                
         }
+        LeftRightstartpos = new Vector3(EA.EnemyX[EA.Enemyid], EA.EnemyY[EA.Enemyid], EA.EnemyZ[EA.Enemyid]);
+        UpDownstartpos = new Vector3(EA.EnemyX[EA.Enemyid], EA.EnemyY[EA.Enemyid], EA.EnemyZ[EA.Enemyid]);
+
+        Debug.Log(EA.EnemyX + "Xです" + EA.EnemyY + "Yです" + EA.EnemyZ + " Zです");
+        Debug.Log(EA.Enemyid);
     }
     void rerere()
     {
@@ -110,7 +113,7 @@ public class EnemyMove : MonoBehaviour
         {
             float cos = Mathf.Cos(Time.time) * EnemyMoveSpeed;
             transform.position = LeftRightstartpos + (LeftRightDistans * cos);
-            Debug.Log("コサイン移動です");
+            //Debug.Log(LeftRightstartpos);
             if (cos >= 1.75f)
             {
                 animationspeedFLG = true;
@@ -147,7 +150,7 @@ public class EnemyMove : MonoBehaviour
         {
             float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
             transform.position = LeftRightstartpos + (LeftRightDistans * sin);
-            Debug.Log("サインです");
+            //Debug.Log("サインです");
             if (sin >= 1.75f)
             {
                 animationspeedFLG = true;
