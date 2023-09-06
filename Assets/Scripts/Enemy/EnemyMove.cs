@@ -7,6 +7,7 @@ public class EnemyMove : MonoBehaviour
     private float EnemyMoveSpeed = 2f;
     Vector3 LeftRightstartpos;
     Vector3 UpDownstartpos;
+    Vector3 Hukugostartpos;
     [SerializeField]
     [Tooltip("生成する範囲A")]
     private Transform rangeA;
@@ -17,7 +18,13 @@ public class EnemyMove : MonoBehaviour
     private Transform rangeB;
     Animator animator;
     Rigidbody rig;
-    EnemyAddObject EA;
+    GameObject EnemyPosA;
+    GameObject EnemyPosB;
+    public GameObject[] EnemyRoute;
+
+    private float StartPosX;
+    private float StartPosY;
+    private float StartPosZ;
 
     [SerializeField] float pointmoveTime;
     [SerializeField] float Routeinterval;
@@ -47,8 +54,6 @@ public class EnemyMove : MonoBehaviour
          random = Random.Range(1, 3);
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        
-
         float Enemyrandompattern = Random.Range(1, 6);
         if (Enemyrandompattern == 1)
         {
@@ -76,6 +81,14 @@ public class EnemyMove : MonoBehaviour
                 InvokeRepeating("hukugou", 0, 5);
                 break;
         }*/
+        EnemyPosA = GameObject.FindWithTag("EnemySpownPoint");
+        EnemyPosB = GameObject.FindWithTag("EnemySpownPointB");
+        StartPosX = Random.Range(EnemyPosA.transform.position.x, EnemyPosB.transform.position.x);
+        StartPosY = Random.Range(EnemyPosA.transform.position.y, EnemyPosB.transform.position.y);
+        StartPosZ = Random.Range(EnemyPosA.transform.position.z, EnemyPosB.transform.position.z);
+        LeftRightstartpos = new Vector3(StartPosX, StartPosY, StartPosZ);
+        UpDownstartpos = new Vector3(StartPosX, StartPosY, StartPosZ);
+        routePoint = GameObject.FindGameObjectsWithTag("EnemyRoute");
     }
     void Update()
     {
@@ -101,11 +114,6 @@ public class EnemyMove : MonoBehaviour
 
                 
         }
-        LeftRightstartpos = new Vector3(EA.EnemyX[EA.Enemyid], EA.EnemyY[EA.Enemyid], EA.EnemyZ[EA.Enemyid]);
-        UpDownstartpos = new Vector3(EA.EnemyX[EA.Enemyid], EA.EnemyY[EA.Enemyid], EA.EnemyZ[EA.Enemyid]);
-
-        Debug.Log(EA.EnemyX + "Xです" + EA.EnemyY + "Yです" + EA.EnemyZ + " Zです");
-        Debug.Log(EA.Enemyid);
     }
     void rerere()
     {
@@ -190,9 +198,12 @@ public class EnemyMove : MonoBehaviour
     {
         if(timer <= pointmoveTime)
         {
+            Hukugostartpos = routePoint[1].transform.position;
             timer += Time.fixedDeltaTime;
             currentPos = routePoint[current].transform.position;
+            Debug.Log(currentPos);
             nextPos = routePoint[next].transform.position;
+            Debug.Log(nextPos);
             rig.MovePosition(Vector3.Lerp(currentPos, nextPos, timer / pointmoveTime));
 
             animator.SetBool("Run", true);
