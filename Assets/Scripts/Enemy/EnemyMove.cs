@@ -9,6 +9,7 @@ public class EnemyMove : MonoBehaviour
     Vector3 LeftRightstartpos;
     Vector3 UpDownstartpos;
     Vector3 Hukugostartpos;
+    Vector3 Routestartpos;
     [SerializeField]
     [Tooltip("生成する範囲A")]
     private Transform rangeA;
@@ -92,6 +93,7 @@ public class EnemyMove : MonoBehaviour
         StartPosZ = Random.Range(EnemyPosA.transform.position.z, EnemyPosB.transform.position.z);
         LeftRightstartpos = new Vector3(StartPosX, StartPosY, StartPosZ);
         UpDownstartpos = new Vector3(StartPosX, StartPosY, StartPosZ);
+        Routestartpos = new Vector3(StartPosX, StartPosY, StartPosZ);
         routePoint = GameObject.FindGameObjectsWithTag("EnemyRoute");
     }
     void Update()
@@ -200,8 +202,7 @@ public class EnemyMove : MonoBehaviour
     }
     private void route()
     {
-        //目標地点に近づいたら次の目標地点を設定
-        if (nav.pathPending == false  && nav.remainingDistance <= 0.1f)
+        if (nav.pathPending == false  && nav.remainingDistance <=0.5f)
         {
             //次の地点のポイントを目標に
             nav.destination = routePoint[nextPoint].transform.position;

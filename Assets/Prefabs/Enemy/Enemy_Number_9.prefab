@@ -589,6 +589,7 @@ GameObject:
   - component: {fileID: 6958087495268248573}
   - component: {fileID: 209224999125933067}
   - component: {fileID: 6324691030874643261}
+  - component: {fileID: -7060636491603657115}
   m_Layer: 0
   m_Name: Enemy_Number_9
   m_TagString: Enemy
@@ -723,6 +724,28 @@ MonoBehaviour:
   EnemyshotSpeed: 5
   Enemypos: {fileID: 3349761612638630283}
   AtackType: 0
+--- !u!195 &-7060636491603657115
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977282861533788881}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 5
+  m_Acceleration: 2
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 1
 --- !u!1 &2015477292950611418
 GameObject:
   m_ObjectHideFlags: 0
