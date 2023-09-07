@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    public static int difficultyNum;
+    public static int signType;
     void Start()
     {
         
@@ -35,16 +37,76 @@ public class ChangeScene : MonoBehaviour
     {
         FadeManager.Instance.LoadSceneIndex(2,1);
     }
-    public void Stage1Scene()
+    public void AddEasyScene()
     {
+        difficultyNum = 0;
+        signType = 0;
         FadeManager.Instance.LoadSceneIndex(3, 1);
     }
-    public void Stage2Scene()
+    public void AddNormalScene()
     {
+        difficultyNum = 1;
+        signType = 0;
         FadeManager.Instance.LoadSceneIndex(4, 1);
     }
-    public void Stage3Scene()
+    public void AddHardScene()
     {
+        difficultyNum = 2;
+        signType = 0;
+        FadeManager.Instance.LoadSceneIndex(5, 1);
+    }
+    public void SubEasyScene()
+    {
+        difficultyNum = 0;
+        signType = 1;
+        FadeManager.Instance.LoadSceneIndex(3, 1);
+    }
+    public void SubNormalScene()
+    {
+        difficultyNum = 1;
+        signType = 1;
+        FadeManager.Instance.LoadSceneIndex(4, 1);
+    }
+    public void SubHardScene()
+    {
+        difficultyNum = 2;
+        signType = 1;
+        FadeManager.Instance.LoadSceneIndex(5, 1);
+    }
+    public void MultiEasyScene()
+    {
+        difficultyNum = 0;
+        signType = 2;
+        FadeManager.Instance.LoadSceneIndex(3, 1);
+    }
+    public void MultiNormalScene()
+    {
+        difficultyNum = 1;
+        signType = 2;
+        FadeManager.Instance.LoadSceneIndex(4, 1);
+    }
+    public void MultiHardScene()
+    {
+        difficultyNum = 2;
+        signType = 2;
+        FadeManager.Instance.LoadSceneIndex(5, 1);
+    }
+    public void DivEasyScene()
+    {
+        difficultyNum = 0;
+        signType = 3;
+        FadeManager.Instance.LoadSceneIndex(3, 1);
+    }
+    public void DivNormalScene()
+    {
+        difficultyNum = 1;
+        signType = 3;
+        FadeManager.Instance.LoadSceneIndex(4, 1);
+    }
+    public void DivHardScene()
+    {
+        difficultyNum = 2;
+        signType = 3;
         FadeManager.Instance.LoadSceneIndex(5, 1);
     }
 }
