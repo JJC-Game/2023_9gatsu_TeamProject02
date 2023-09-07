@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class EnemyMove : MonoBehaviour
     GameObject EnemyPosA;
     GameObject EnemyPosB;
     public GameObject[] EnemyRoute;
+    NavMeshAgent nav;
+    int nextPoint;
 
     private float StartPosX;
     private float StartPosY;
@@ -54,6 +57,7 @@ public class EnemyMove : MonoBehaviour
          random = Random.Range(1, 3);
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        nav = GetComponent<NavMeshAgent>();
         float Enemyrandompattern = Random.Range(1, 6);
         if (Enemyrandompattern == 1)
         {
@@ -196,28 +200,16 @@ public class EnemyMove : MonoBehaviour
     }
     private void route()
     {
-        if(timer <= pointmoveTime)
-        {
-            Hukugostartpos = routePoint[1].transform.position;
-            timer += Time.fixedDeltaTime;
-            currentPos = routePoint[current].transform.position;
-            Debug.Log(currentPos);
-            nextPos = routePoint[next].transform.position;
-            Debug.Log(nextPos);
-            rig.MovePosition(Vector3.Lerp(currentPos, nextPos, timer / pointmoveTime));
-
-            animator.SetBool("Run", true);
-            animator.SetBool("Idle", false);
-        }
-        else
-        {
-            EnemyPause();
-
-            animator.SetBool("Idle", true);
-            animator.SetBool("Run", false);
-        }
+        nav.destination = routePoint[nextPoint].transform.position;
+        // 目標地点に近づいたら次の拠点を設定
+        
+            // 次の地点のポイントを目標に
+          
+            // 配列の次の値を設定、次がなければ０に戻る
+            nextPoint = (nextPoint + 1) % routePoint.Length;
+        
     }
-    private void jouge()
+        private void jouge()
     {
         if (random == 1)
         {
