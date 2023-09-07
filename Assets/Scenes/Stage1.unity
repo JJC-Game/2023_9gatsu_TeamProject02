@@ -16809,7 +16809,7 @@ MonoBehaviour:
   CorrectCountMax: 10
   InCorrectCountMax: 5
   CorrectCountText: {fileID: 7916872660111025614}
-  InCorrectCountText: {fileID: 0}
+  InCorrectCountText: {fileID: 1729049818}
   stunTimeMax: 3
   playerHP: 10
 --- !u!1 &3925978582038631184
