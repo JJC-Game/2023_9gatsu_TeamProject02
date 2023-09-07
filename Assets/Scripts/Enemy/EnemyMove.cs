@@ -200,16 +200,24 @@ public class EnemyMove : MonoBehaviour
     }
     private void route()
     {
-        nav.destination = routePoint[nextPoint].transform.position;
-        // 目標地点に近づいたら次の拠点を設定
-        
-            // 次の地点のポイントを目標に
-          
-            // 配列の次の値を設定、次がなければ０に戻る
-            nextPoint = (nextPoint + 1) % routePoint.Length;
-        
+        //目標地点に近づいたら次の目標地点を設定
+        if (nav.pathPending == false  && nav.remainingDistance <= 0.1f)
+        {
+            //次の地点のポイントを目標に
+            nav.destination = routePoint[nextPoint].transform.position;
+
+            //配列の次の値を設定、次がなければ0に戻る
+            nextPoint = (nextPoint + 1) %routePoint.Length;
+        }
     }
-        private void jouge()
+
+    // 次の地点のポイントを目標に
+
+    // 配列の次の値を設定、次がなければ０に戻る
+
+
+
+private void jouge()
     {
         if (random == 1)
         {
