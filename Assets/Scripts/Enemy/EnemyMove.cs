@@ -204,7 +204,7 @@ public class EnemyMove : MonoBehaviour
             Debug.Log(currentPos);
             nextPos = routePoint[next].transform.position;
             Debug.Log(nextPos);
-            transform.position(Vector3.Lerp(currentPos, nextPos, timer / pointmoveTime));
+            rig.MovePosition(Vector3.Lerp(currentPos, nextPos, timer / pointmoveTime));
 
             animator.SetBool("Run", true);
             animator.SetBool("Idle", false);
