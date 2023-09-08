@@ -22,7 +22,7 @@ public class WorldID : Singleton<WorldID>
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("IDUpdate", 0, 5);       
+        InvokeRepeating("IDUpdate", 0, 2);       
     }
 
     // Update is called once per frame
