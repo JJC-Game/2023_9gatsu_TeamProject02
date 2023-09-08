@@ -52,6 +52,82 @@ public class Calculation : MonoBehaviour
 
     public AimController aimcon;
 
+    private void Awake()
+    {
+        if(ChangeScene.difficultyNum == 0)
+        {
+            difficulty = DifficultyType.Eaey;
+            if(ChangeScene.signTypeNum == 0)
+            {
+                signType = SignType.足し算;
+                return;
+            }
+            if (ChangeScene.signTypeNum == 1)
+            {
+                signType = SignType.引き算;
+                return;
+            }
+            if (ChangeScene.signTypeNum == 2)
+            {
+                signType = SignType.掛け算;
+                return;
+            }
+            if (ChangeScene.signTypeNum == 3)
+            {
+                signType = SignType.割り算;
+                return;
+            }
+        }
+        if (ChangeScene.difficultyNum == 1)
+        {
+            difficulty = DifficultyType.Normal;
+            if (ChangeScene.signTypeNum == 0)
+            {
+                signType = SignType.足し算;
+                return;
+            }
+            if (ChangeScene.signTypeNum == 1)
+            {
+                signType = SignType.引き算;
+                return;
+            }
+            if (ChangeScene.signTypeNum == 2)
+            {
+                signType = SignType.掛け算;
+                return;
+            }
+            if (ChangeScene.signTypeNum == 3)
+            {
+                signType = SignType.割り算;
+                return;
+            }
+        }
+        if (ChangeScene.difficultyNum == 2)
+        {
+            difficulty = DifficultyType.Hard;
+            if (ChangeScene.signTypeNum == 0)
+            {
+                signType = SignType.足し算;
+                return;
+            }
+            if (ChangeScene.signTypeNum == 1)
+            {
+                signType = SignType.引き算;
+                return;
+            }
+            if (ChangeScene.signTypeNum == 2)
+            {
+                signType = SignType.掛け算;
+                return;
+            }
+            if (ChangeScene.signTypeNum == 3)
+            {
+                signType = SignType.割り算;
+                return;
+            }
+        }
+    }
+
     void Start()
     {
         switch(signType)
