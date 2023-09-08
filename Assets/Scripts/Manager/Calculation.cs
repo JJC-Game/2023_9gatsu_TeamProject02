@@ -394,6 +394,7 @@ public class Calculation : MonoBehaviour
     {
         if(judgenum == ansnum)
         {
+            SoundManager.Instance.PlaySE_Sys(1);
             NumInit();
             challenge = false;
             if (computable) { computable = false; }
@@ -404,6 +405,7 @@ public class Calculation : MonoBehaviour
         }
         if(judgenum != ansnum)
         {
+            SoundManager.Instance.PlaySE_Sys(2);
             NumInit();
             challenge = false;
             if (computable) { computable = false; }

@@ -43,9 +43,9 @@ public class EnemyType : MonoBehaviour
 
     private void Normal()
     {
+        SoundManager.Instance.PlaySE_Game(1);
         GameObject shell = Instantiate(EnemyBulletPrefab, Enemypos.transform.position, Quaternion.Euler(90,0,0));
         Rigidbody shellRb = shell.GetComponent<Rigidbody>();
-
         // 弾速は自由に設定
         shellRb.AddForce(transform.forward * EnemyshotSpeed ,ForceMode.Impulse);
 

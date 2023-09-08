@@ -50,7 +50,6 @@ public class GameManager : Singleton<GameManager>
        CorrectCountText.text = ("0");
        InCorrectCountText.text = ("0");
        stunTime = stunTimeMax;
-        
     }
 
     void Update()
@@ -79,6 +78,7 @@ public class GameManager : Singleton<GameManager>
         {
             if(!stunEffectOn)
             {
+                SoundManager.Instance.PlaySE_Game(2);
                 stunEffectOn = true;
                 GameObject shotEffect = Instantiate(EffectManager.Instance.StageFX[2], StunEffectpos.transform.position,Quaternion.identity);
                 Destroy(shotEffect,2.2f);
@@ -101,6 +101,7 @@ public class GameManager : Singleton<GameManager>
         mainGame = true;
         CanvasInit();
         UI[0].SetActive(true);
+        SoundManager.Instance.PlayBGM(1);
     }
     public void DemoSkip()
     {
