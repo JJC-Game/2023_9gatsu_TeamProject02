@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: b701ccf8d6f49df48afdd11c80876910, type: 2}
 --- !u!4 &18388905
 Transform:
   m_ObjectHideFlags: 0
@@ -7483,7 +7483,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &1302608326
 MeshFilter:
@@ -11862,8 +11862,8 @@ GameObject:
   m_Name: Bridge_Double_Straight_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1499257350
 MeshRenderer:
@@ -12145,6 +12145,37 @@ Transform:
   - {fileID: 58056699}
   m_Father: {fileID: 2066257474}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1697017574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1697017575}
+  m_Layer: 0
+  m_Name: StunEffectPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1697017575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697017574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7679294598545760698}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710948618
 GameObject:
@@ -16603,6 +16634,7 @@ MonoBehaviour:
   StageFX:
   - {fileID: 4350224894576258655, guid: 7674a923c6251504fae86c43d70f965b, type: 3}
   - {fileID: 4350224894576258655, guid: 7674a923c6251504fae86c43d70f965b, type: 3}
+  - {fileID: 6704660646832706357, guid: 72784139473a00a4299beef96c36d764, type: 3}
   otherFX: []
 --- !u!1 &3925978581296017942
 GameObject:
@@ -16754,6 +16786,7 @@ MonoBehaviour:
   CorrectCountText: {fileID: 7916872660111025614}
   InCorrectCountText: {fileID: 1729049818}
   stunTimeMax: 3
+  StunEffectpos: {fileID: 1697017574}
 --- !u!1 &3925978582038631184
 GameObject:
   m_ObjectHideFlags: 0
@@ -25103,7 +25136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7679294598545760698}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7679294598545760290
 Transform:
@@ -25118,7 +25151,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7679294598545760698}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7679294598545760292
 Transform:
@@ -25133,7 +25166,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7679294598545760698}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7679294598545760294
 Transform:
@@ -25148,7 +25181,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7679294598545760698}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7679294598545760296
 Transform:
@@ -25163,7 +25196,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7679294598545760698}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7679294598545760298
 Transform:
@@ -26061,7 +26094,7 @@ Transform:
   m_Children:
   - {fileID: 7679294598545760300}
   m_Father: {fileID: 7679294598545760698}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7679294598545760698
 Transform:
@@ -26075,6 +26108,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1697017575}
   - {fileID: 7679294599367976846}
   - {fileID: 7679294598545760288}
   - {fileID: 7679294598545760290}
@@ -26244,7 +26278,7 @@ Transform:
   - {fileID: 7679294599616798638}
   - {fileID: 8508450348442129537}
   m_Father: {fileID: 7679294598545760698}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7679294599367976847
 MonoBehaviour:
