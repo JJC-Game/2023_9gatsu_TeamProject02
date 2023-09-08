@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16754,7 +16754,6 @@ MonoBehaviour:
   CorrectCountText: {fileID: 7916872660111025614}
   InCorrectCountText: {fileID: 1729049818}
   stunTimeMax: 3
-  playerHP: 10
 --- !u!1 &3925978582038631184
 GameObject:
   m_ObjectHideFlags: 0
@@ -21998,8 +21997,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30DD\u30FC\u30BA"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
+  m_sharedMaterial: {fileID: 5366587411692547973, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22133,8 +22132,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B9\u30C6\u30FC\u30B8\u305B\u3093\u305F\u304F\u306B\u3082\u3069\u308B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
+  m_sharedMaterial: {fileID: 5366587411692547973, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22404,8 +22403,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
+  m_sharedMaterial: {fileID: 5366587411692547973, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22673,8 +22672,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u306F\u3058\u3081\u304B\u3089\u3084\u308A\u306A\u304A\u3059"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
+  m_sharedMaterial: {fileID: 5366587411692547973, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -27466,7 +27465,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1039994304}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
