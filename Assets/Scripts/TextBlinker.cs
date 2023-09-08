@@ -20,7 +20,14 @@ public class TextBlinker : MonoBehaviour
     }
     private void Update()
     {
-        JOuge();
+        
+        float sin = Mathf.Sin(Time.unscaledTime) * Interbal;
+        //textMeshPro.fontSize = sin + 100;
+        if (sin <= 0)
+        {
+            sin = sin * -1;
+        }
+        textMeshPro.alpha = 00 + sin;
     }
     void JOuge()
     {
