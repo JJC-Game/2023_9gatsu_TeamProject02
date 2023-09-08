@@ -209,6 +209,7 @@ public class EnemyMove : MonoBehaviour
 
             //配列の次の値を設定、次がなければ0に戻る
             nextPoint = (nextPoint + 1) %routePoint.Length;
+            animator.SetBool("Run", true);
         }
     }
 

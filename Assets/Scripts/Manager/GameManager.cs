@@ -36,6 +36,8 @@ public class GameManager : Singleton<GameManager>
 
     float stunTime;
     public float stunTimeMax = 2f;
+    bool stunEffectOn;
+    [SerializeField] GameObject StunEffectpos;
 
     void Awake()
     {
@@ -48,6 +50,7 @@ public class GameManager : Singleton<GameManager>
        CorrectCountText.text = ("0");
        InCorrectCountText.text = ("0");
        stunTime = stunTimeMax;
+        
     }
 
     void Update()
@@ -74,12 +77,19 @@ public class GameManager : Singleton<GameManager>
         }
         if (stun)
         {
-          if(stunTime > 0)
+            if(!stunEffectOn)
+            {
+                stunEffectOn = true;
+                GameObject shotEffect = Instantiate(EffectManager.Instance.StageFX[2], StunEffectpos.transform.position,Quaternion.identity);
+                Destroy(shotEffect,2.2f);
+            }
+            if (stunTime > 0)
             {
                 stunTime -= Time.deltaTime;
                 if (stunTime <= 0)
                 {
                     stun = false;
+                    stunEffectOn = false;
                     stunTime = stunTimeMax;
                 }
             }
