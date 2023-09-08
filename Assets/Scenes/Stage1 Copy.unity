@@ -22115,7 +22115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa5a02dcc2434f47863fe7597f827f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkInterval: 5
+  a: {fileID: 6909444113884393068}
+  X: 0
+  Y: 0
+  Interbal: 1
+  HabaDistans: {x: 0, y: 5, z: 0}
 --- !u!222 &6909444113940718806
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27479,7 +27483,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1039994304}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}

@@ -5,55 +5,35 @@ using TMPro;
 public class TextBlinker : MonoBehaviour
 {
     private TextMeshProUGUI textMeshPro;
-    public float blinkInterval = 1.0f; // 点滅の間隔（秒）
-    private Coroutine blinkCoroutine;
-
+    public RectTransform a;
+    public float X;//480
+    public float Y;//476
+    public float Interbal;
+    [SerializeField] Vector3 HabaDistans = new Vector3(0, 2, 0);
+    Vector3  HabaStartDistans;
     private void Start()
     {
         textMeshPro = GetComponent<TextMeshProUGUI>();
-        StartBlinking();
+        X = this.transform.position.x;
+        Y = this.transform.position.y;
+        HabaStartDistans = new Vector3 (480, 476, 0);
     }
-
-    private void StartBlinking()
-    {
-        if (blinkCoroutine == null)
-        {
-            blinkCoroutine = StartCoroutine(BlinkTextCoroutine());
-        }
-    }
-
-    private void StopBlinking()
-    {
-        if (blinkCoroutine != null)
-        {
-            StopCoroutine(blinkCoroutine);
-            blinkCoroutine = null;
-            textMeshPro.enabled = true; // 点滅停止時にテキストを表示
-        }
-    }
-
-    private IEnumerator BlinkTextCoroutine()
-    {
-        while (true)
-        {
-            // テキストの表示/非表示を切り替える
-            textMeshPro.enabled = !textMeshPro.enabled;
-
-            // 次の点滅まで待つ
-            yield return new WaitForSeconds(blinkInterval);
-        }
-    }
-
     private void Update()
     {
-        if (GameManager.Instance.pause)
+        JOuge();
+    }
+    void JOuge()
+    {
+        if (GameManager.Instance.pause == true)
         {
-            StopBlinking(); // ポーズ中は点滅を停止
-        }
-        else
-        {
-            StartBlinking(); // ポーズ解除時に点滅を再開
+            float sin = Mathf.Sin(Time.unscaledTime) * Interbal;
+            //textMeshPro.fontSize = sin + 100;
+            if(sin <= 0)
+            {
+                sin = sin * -1;
+            }
+            textMeshPro.alpha = 00 + sin; 
+            //a.transform.position = HabaStartDistans + (HabaDistans * sin);
         }
     }
 }
-
