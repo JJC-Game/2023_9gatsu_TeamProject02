@@ -56,7 +56,7 @@ public class GameManager : Singleton<GameManager>
         {
             DemoSkip();
         }
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
             Pause();
         }
