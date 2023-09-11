@@ -131,6 +131,9 @@ public class GameManager : Singleton<GameManager>
 
     void GameClear()
     {
+        SoundManager.Instance.StopBGM();
+        SoundManager.Instance.PlayBGM(2);
+        SoundManager.Instance.PlaySE_Sys(3);
         mainGame = false;
         gameClear = true;
         CanvasInit();
@@ -139,6 +142,9 @@ public class GameManager : Singleton<GameManager>
 
     void GameOver()
     {
+        SoundManager.Instance.StopBGM();
+        SoundManager.Instance.PlayBGM(3);
+        SoundManager.Instance.PlaySE_Sys(4);
         mainGame = false;
         gameOver = true;
         CanvasInit();
