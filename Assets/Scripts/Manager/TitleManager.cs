@@ -46,6 +46,7 @@ public class TitleManager : MonoBehaviour
     //メニューの移動（各メニュー項目のイベントトリガーでキャンバスの番号を指定）
     public void Transition_menu(int nextMenu)
     {
+        SoundManager.Instance.PlaySE_Sys(0);
         CanvasInIt();
 
         canvas[nextMenu].SetActive(true);//次のメニューを表示
@@ -92,6 +93,7 @@ public class TitleManager : MonoBehaviour
     //ゲーム終了の処理
     public void Quit()
     {
+        SoundManager.Instance.PlaySE_Sys(0);
         //unity上
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
