@@ -136,7 +136,7 @@ public class Calculation : MonoBehaviour
                 signNum.text = ("+");
                 break;
             case SignType.引き算:
-                signNum.text = ("−");
+                signNum.text = ("-");
                 break;
             case SignType.掛け算:
                 signNum.text = ("×");
