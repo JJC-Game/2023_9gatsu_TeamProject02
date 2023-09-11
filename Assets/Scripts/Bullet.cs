@@ -43,6 +43,9 @@ public class Bullet : MonoBehaviour
             }
             calc.receiveNum = collision.gameObject.GetComponent<EnemyNum>().num;
             aimcon.hitEnemy = true;
+            Vector3 effectPos = new Vector3(collision.transform.position.x,collision.transform.position.y +1.5f,collision.transform.position.z);
+            GameObject DesEffect = Instantiate(EffectManager.Instance.StageFX[3], effectPos, Quaternion.identity);
+            Destroy(DesEffect, 2f);
             Destroy(collision.gameObject);
             destroyFlg = true;
         }
