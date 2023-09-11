@@ -153,6 +153,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void Pauseclick()
     {
+        SoundManager.Instance.PlaySE_Sys(0);
         mainGame = true;
         pause = false;
         Time.timeScale = 1;
