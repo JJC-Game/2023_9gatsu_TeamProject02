@@ -19,7 +19,7 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         CanvasInIt();
-        //SoundManager.Instance.PlayBGM(2);
+        SoundManager.Instance.PlayBGM(0);
         canvas[0].SetActive(true);
         CanvasCheck();
         //EventSystem.current.SetSelectedGameObject(focusobject[0]);
