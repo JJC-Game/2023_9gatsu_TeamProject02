@@ -152,6 +152,7 @@ public class Calculation : MonoBehaviour
     {
         if(judgement || !updateNum || timeover)
         {
+            Inspection();
             timeover = false;
             judgement = false;
             Judgement();
