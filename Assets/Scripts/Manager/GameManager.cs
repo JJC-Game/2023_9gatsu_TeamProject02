@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     public bool stun = false;             //スタン中
     public bool deadLimit = false;     //ゲームオーバー条件
     public bool pause = false;           //一時停止
+    bool startTimeLine;
 
     [Header("PlayableDirector")]
     [SerializeField] PlayableDirector GameStartTimeline;
@@ -47,6 +48,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
        GameStartTimeline.Play();
+        startTimeLine = true;
        CorrectCountText.text = ("0");
        InCorrectCountText.text = ("0");
        stunTime = stunTimeMax;
@@ -54,7 +56,7 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        if(GameStartTimeline.state == PlayState.Playing && Input.GetKeyDown(KeyCode.Space))
+        if(startTimeLine && Input.GetKeyDown(KeyCode.Space))
         {
             DemoSkip();
         }
@@ -100,6 +102,7 @@ public class GameManager : Singleton<GameManager>
     {
         mainGame = true;
         GameStartTimeline.Stop();
+        startTimeLine = false;
         CanvasInit();
         UI[0].SetActive(true);
         SoundManager.Instance.PlayBGM(1);
@@ -108,6 +111,7 @@ public class GameManager : Singleton<GameManager>
     {
         mainGame = true;
         GameStartTimeline.Stop();
+        startTimeLine = false;
         CanvasInit();
         UI[0].SetActive(true);
     }
