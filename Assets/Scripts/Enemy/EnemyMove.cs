@@ -59,7 +59,7 @@ public class EnemyMove : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
-        float Enemyrandompattern = Random.Range(1, 6);
+        float Enemyrandompattern = Random.Range(1, 5);
         if (Enemyrandompattern == 1)
         {
             movetype = MoveTypelist.停止;
@@ -68,15 +68,15 @@ public class EnemyMove : MonoBehaviour
         {
             movetype = MoveTypelist.左右移動;
         }
-        if(Enemyrandompattern==3)
+        /*if(Enemyrandompattern==3)
         {
             movetype = MoveTypelist.上下移動;
-        }
-        if(Enemyrandompattern == 4)
+        }*/
+        if(Enemyrandompattern == 3)
         {
             movetype = MoveTypelist.ルート移動;
         }
-        if(Enemyrandompattern == 5)
+        if(Enemyrandompattern == 4)
         {
             movetype = MoveTypelist.左右移動;
         }
@@ -103,9 +103,9 @@ public class EnemyMove : MonoBehaviour
             case MoveTypelist.左右移動:
                 rerere();
                 break;
-            case MoveTypelist.上下移動:
+            /*case MoveTypelist.上下移動:
                 jouge();
-                break;
+                break;*/
             case MoveTypelist.ルート移動:
                 route();
                 break;
