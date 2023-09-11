@@ -99,6 +99,7 @@ public class GameManager : Singleton<GameManager>
     public void MainGame()
     {
         mainGame = true;
+        GameStartTimeline.Stop();
         CanvasInit();
         UI[0].SetActive(true);
         SoundManager.Instance.PlayBGM(1);
