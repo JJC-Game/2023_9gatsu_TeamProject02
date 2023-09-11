@@ -92,7 +92,7 @@ public class EnemyMove : MonoBehaviour
         StartPosY = Random.Range(EnemyPosA.transform.position.y, EnemyPosB.transform.position.y);
         StartPosZ = Random.Range(EnemyPosA.transform.position.z, EnemyPosB.transform.position.z);
         LeftRightstartpos = new Vector3(StartPosX, StartPosY, StartPosZ);
-        UpDownstartpos = new Vector3(StartPosX, StartPosY, StartPosZ);
+        UpDownstartpos = new Vector3(StartPosX, 3f, StartPosZ);
         Routestartpos = new Vector3(StartPosX, StartPosY, StartPosZ);
         routePoint = GameObject.FindGameObjectsWithTag("EnemyRoute");
     }

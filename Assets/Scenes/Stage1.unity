@@ -17061,10 +17061,14 @@ MonoBehaviour:
   bgmClip:
   - {fileID: 8300000, guid: fee54c3a462c73741901119e794c735d, type: 3}
   - {fileID: 8300000, guid: 7955c8d5d4b35e748b1997c0966b863e, type: 3}
+  - {fileID: 8300000, guid: c9969b1810979f245b9e4b2f581116ce, type: 3}
+  - {fileID: 8300000, guid: 6817b4e37eecc014093fa89215146b1a, type: 3}
   se_SysClip:
   - {fileID: 8300000, guid: 8b76ef8638126d540ba3be1a4422229c, type: 3}
   - {fileID: 8300000, guid: 31266c59d75343345a823b62b1a8def0, type: 3}
   - {fileID: 8300000, guid: 2e01a6a7b83ad264ab54d50a9aec85cc, type: 3}
+  - {fileID: 8300000, guid: 9428cadb579b7564dbcc203e071a9dfa, type: 3}
+  - {fileID: 8300000, guid: 067779cc7ef30f04e895c789f20190af, type: 3}
   se_GameClip:
   - {fileID: 8300000, guid: 26864a051254b47469bfe4eef3139fb7, type: 3}
   - {fileID: 8300000, guid: ecf1e1fe646bd0b4a89bc24c39fd2e98, type: 3}
