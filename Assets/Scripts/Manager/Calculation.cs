@@ -196,7 +196,7 @@ public class Calculation : MonoBehaviour
                 }
                 if(firsthit && !secondhit)
                 {
-                    ansnum = ansnum*10 + receiveNum;
+                    ansnum = receiveNum * 10 + ansnum;
                     ansNum.text = ansnum.ToString("0");
                     secondhit = true;
                     updateNum = false;
@@ -204,7 +204,7 @@ public class Calculation : MonoBehaviour
                 }
                 if (firsthit && secondhit && !updateNum)
                 {
-                    ansnum += receiveNum;
+                    ansnum += receiveNum * 10;
                     ansNum.text = ansnum.ToString("0");
                 }
                     break;
@@ -218,14 +218,14 @@ public class Calculation : MonoBehaviour
                 }
                 if (firsthit && !secondhit && !thirdhit)
                 {
-                    ansnum = ansnum * 10 + receiveNum;
+                    ansnum = receiveNum * 10 + ansnum;
                     ansNum.text = ansnum.ToString("0");
                     secondhit = true;
                     return;
                 }
                 if(firsthit && secondhit && !thirdhit)
                 {
-                    ansnum = ansnum * 10 + receiveNum;
+                    ansnum = receiveNum * 100 + ansnum;
                     ansNum.text = ansnum.ToString("0");
                     thirdhit = true;
                     updateNum = false;
@@ -233,7 +233,7 @@ public class Calculation : MonoBehaviour
                 }
                 if (firsthit && secondhit && thirdhit && !updateNum)
                 {
-                    ansnum += receiveNum;
+                    ansnum += receiveNum * 100;
                     ansNum.text = ansnum.ToString("0");
                 }
                     break;

@@ -20,6 +20,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] PlayableDirector GameClearTimeline;
     [SerializeField] PlayableDirector GameOverTimeline;
 
+    [SerializeField] GameObject startCam;
+
     [Header("Canvas( 0:main, 1:pause, 2:start, 3:clear, 4:over)")]
     [SerializeField] GameObject[] UI;
 
@@ -106,6 +108,7 @@ public class GameManager : Singleton<GameManager>
         CanvasInit();
         UI[0].SetActive(true);
         SoundManager.Instance.PlayBGM(1);
+        startCam.SetActive(false);
     }
     public void DemoSkip()
     {
@@ -114,6 +117,7 @@ public class GameManager : Singleton<GameManager>
         startTimeLine = false;
         CanvasInit();
         UI[0].SetActive(true);
+        startCam.SetActive(false);
     }
     public void Pause()
     {
@@ -136,6 +140,7 @@ public class GameManager : Singleton<GameManager>
 
     void GameClear()
     {
+        EnemyAddObject.Instance.DestroyEnemy();
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlayBGM(2);
         SoundManager.Instance.PlaySE_Sys(3);
@@ -147,6 +152,7 @@ public class GameManager : Singleton<GameManager>
 
     void GameOver()
     {
+        EnemyAddObject.Instance.DestroyEnemy();
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlayBGM(3);
         SoundManager.Instance.PlaySE_Sys(4);

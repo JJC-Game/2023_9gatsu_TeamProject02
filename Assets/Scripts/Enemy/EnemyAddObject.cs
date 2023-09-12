@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//指定した位置に三体の敵オブジェクトを配置する
 public class EnemyAddObject : Singleton<EnemyAddObject>
 {
     public GameObject[] EnemyObject;

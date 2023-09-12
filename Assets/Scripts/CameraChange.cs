@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -22,7 +22,11 @@ public class CameraChange : MonoBehaviour
     {
         if(GameManager.Instance.mainGame)
         {
-            vcame.Priority = 11;
+            vcame.m_Priority = 11;
+        }
+        else
+        {
+            vcame.m_Priority = 1;
         }
     }
 }
