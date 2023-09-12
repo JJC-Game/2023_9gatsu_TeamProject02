@@ -10,6 +10,8 @@ public class AimController : MonoBehaviour
 
     public bool hitSign = false;
 
+    bool povReset;
+
     [SerializeField] float shotSpeed;
 
     public GameObject bulletPrefab;
@@ -21,6 +23,18 @@ public class AimController : MonoBehaviour
     [SerializeField] float maxFOV = 90;
     [SerializeField] float minFOV = 40;
 
+    CinemachinePOV cinemachinePOV;
+
+    float currentHorSp = 0.5f;
+    float currentVerSp = 0.5f;
+
+    private void Awake()
+    {
+        cinemachinePOV = vcame.GetCinemachineComponent<CinemachinePOV>();
+
+        currentHorSp = cinemachinePOV.m_HorizontalAxis.m_MaxSpeed;
+        currentVerSp = cinemachinePOV.m_VerticalAxis.m_MaxSpeed;
+    }
 
     void Start()
     {
@@ -32,10 +46,19 @@ public class AimController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        if (GameManager.Instance.mainGame && povReset)
+        {
+            cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = currentHorSp;
+            cinemachinePOV.m_VerticalAxis.m_MaxSpeed = currentVerSp;
+            povReset = false;
+        }
         if (!GameManager.Instance.mainGame)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
+            cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
+            povReset = true;
         }
 
         if(GameManager.Instance.mainGame)

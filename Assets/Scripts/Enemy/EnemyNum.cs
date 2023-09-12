@@ -9,12 +9,9 @@ public class EnemyNum : MonoBehaviour
     Transform playerTransform;
     public int num;
 
-    EnemyAddObject enemyAdd;
-
     void Start()
     {
         playerObj = GameObject.FindWithTag("Player");
-        enemyAdd = GameObject.FindWithTag("EnemyAdd").GetComponent<EnemyAddObject>();
         playerTransform = playerObj.transform;
     }
 
@@ -22,9 +19,9 @@ public class EnemyNum : MonoBehaviour
     {
         transform.LookAt(playerTransform);
     }
-    void OnDestroy()
+    public void OnDestroy()
     {
-        enemyAdd.DestroyEnemy();
+        EnemyAddObject.Instance.DestroyEnemy();
         return;
     }
 }

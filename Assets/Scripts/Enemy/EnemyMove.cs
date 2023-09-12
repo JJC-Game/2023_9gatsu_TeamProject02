@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
-    private float EnemyMoveSpeed = 2f;
+    private float EnemyMoveSpeed = 1f;
     Vector3 LeftRightstartpos;
     Vector3 UpDownstartpos;
     Vector3 Hukugostartpos;
@@ -59,7 +59,7 @@ public class EnemyMove : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
-        float Enemyrandompattern = Random.Range(1, 5);
+        float Enemyrandompattern = Random.Range(1, 7);
         if (Enemyrandompattern == 1)
         {
             movetype = MoveTypelist.停止;
@@ -74,7 +74,15 @@ public class EnemyMove : MonoBehaviour
         }
         if(Enemyrandompattern == 4)
         {
-            movetype = MoveTypelist.左右移動;
+            movetype = MoveTypelist.停止;
+        }
+        if (Enemyrandompattern == 5)
+        {
+            movetype = MoveTypelist.停止;
+        }
+        if (Enemyrandompattern == 6)
+        {
+            movetype = MoveTypelist.停止;
         }
 
         EnemyPosA = GameObject.FindWithTag("EnemySpownPoint");
@@ -100,10 +108,6 @@ public class EnemyMove : MonoBehaviour
             case MoveTypelist.停止:
                 teisi();
                 break;
-                
-                
-
-                
         }
     }
     void rerere()
@@ -120,7 +124,6 @@ public class EnemyMove : MonoBehaviour
             {
                 animationspeedFLG = false;
             }
-
             if (animationspeedFLG == true)
             {
                 animator.SetFloat(Animator.StringToHash("Speed"), 1f);

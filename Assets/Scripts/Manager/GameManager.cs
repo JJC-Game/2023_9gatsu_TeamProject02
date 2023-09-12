@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
     public TextMeshProUGUI InCorrectCountText;
 
     float stunTime;
-    public float stunTimeMax = 2f;
+    public float stunTimeMax = 1f;
     bool stunEffectOn;
     [SerializeField] GameObject StunEffectpos;
 

@@ -16,13 +16,30 @@ public class EnemyType : MonoBehaviour
     }
     [SerializeField] EnemyAtackType AtackType;
     Rigidbody rig;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if(ChangeScene.difficultyNum == 0)
+        {
+            AtackType = EnemyAtackType.防御型;
+        }
+        if (ChangeScene.difficultyNum == 1)
+        {
+            AtackType = EnemyAtackType.通常型;
+            EnemyshotDelay = 10f;
+        }
+        if (ChangeScene.difficultyNum == 1)
+        {
+            AtackType = EnemyAtackType.通常型;
+            EnemyshotDelay = Random.Range(6f,11f);
+        }
+    }
     void Start()
     {
         switch (AtackType)
         {
             case EnemyAtackType.通常型:
-                InvokeRepeating("Normal", 0, EnemyshotDelay);
+                InvokeRepeating("Normal", EnemyshotDelay, EnemyshotDelay);
                 break;
             case EnemyAtackType.防御型:
                 Defense();
@@ -32,10 +49,7 @@ public class EnemyType : MonoBehaviour
                 break;
         }
         Rigidbody rig = GetComponent<Rigidbody>();
-       
     }
-
-    // Update is called once per frame
     void Update()
     {
        

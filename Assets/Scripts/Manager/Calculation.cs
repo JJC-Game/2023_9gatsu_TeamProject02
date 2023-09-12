@@ -15,6 +15,9 @@ public class Calculation : MonoBehaviour
     public float timer;
     float timerMax = 35;
 
+    [SerializeField] GameObject CorrentCanvas;
+    [SerializeField] GameObject IncorrentCanvas;
+
     enum DifficultyType
     {
         Eaey,
@@ -130,7 +133,9 @@ public class Calculation : MonoBehaviour
 
     void Start()
     {
-        switch(signType)
+        CanvasOff();
+
+        switch (signType)
         {
             case SignType.足し算:
                 signNum.text = ("+");
@@ -150,31 +155,31 @@ public class Calculation : MonoBehaviour
 
     void Update()
     {
-        if(judgement || !updateNum || timeover)
+        if (GameManager.Instance.mainGame)
         {
-            Inspection();
-            timeover = false;
-            judgement = false;
-            Judgement();
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            AnsReset();
-        }
-        if (GameManager.Instance.mainGame && !challenge)
-        {
-            Challenge();
-        }
-       if (aimcon.hitEnemy)
-       {
-            NumUpdate();
-            aimcon.hitEnemy = false;
-            Inspection();
-       }
-        timer = Mathf.Clamp(timer,0f, timerMax);
-       if(challenge)
-        {
-            ChallengeTimer();
+            if (judgement || !updateNum || timeover)
+            {
+                Inspection();
+                timeover = false;
+                judgement = false;
+                Judgement();
+            }
+            if (GameManager.Instance.mainGame && !challenge)
+            {
+                Challenge();
+                Invoke("CanvasOff", 0.5f);
+            }
+            if (aimcon.hitEnemy)
+            {
+                NumUpdate();
+                aimcon.hitEnemy = false;
+                Inspection();
+            }
+            timer = Mathf.Clamp(timer, 0f, timerMax);
+            if (challenge)
+            {
+                ChallengeTimer();
+            }
         }
     }
 
@@ -185,6 +190,7 @@ public class Calculation : MonoBehaviour
             case DifficultyType.Eaey:
                 num2 = receiveNum;
                 Num2.text = num2.ToString("0");
+                judgement = true;
                 break;
             case DifficultyType.Normal:
                 if(!firsthit && !secondhit)
@@ -395,6 +401,7 @@ public class Calculation : MonoBehaviour
     {
         if(judgenum == ansnum)
         {
+            CorrentCanvas.SetActive(true);
             SoundManager.Instance.PlaySE_Sys(1);
             NumInit();
             challenge = false;
@@ -406,6 +413,7 @@ public class Calculation : MonoBehaviour
         }
         if(judgenum != ansnum)
         {
+            IncorrentCanvas.SetActive(true);
             SoundManager.Instance.PlaySE_Sys(2);
             NumInit();
             challenge = false;
@@ -426,31 +434,6 @@ public class Calculation : MonoBehaviour
             {
                 timeover = true;
             }
-        }
-    }
-    void AnsReset()
-    {
-        switch(difficulty)
-        {
-            case DifficultyType.Eaey:
-                num2 = 0;
-                Num2.text = ("?");
-                break;
-            case DifficultyType.Normal:
-                ansnum = 0;
-                ansNum.text = ("?");
-                firsthit = false;
-                secondhit = false;
-                updateNum = true;
-                break;
-            case DifficultyType.Hard:
-                ansnum = 0;
-                ansNum.text = ("?");
-                firsthit = false;
-                secondhit = false;
-                thirdhit = false;
-                updateNum = true;
-                break;
         }
     }
     void NumInit() //数値初期化
@@ -496,5 +479,10 @@ public class Calculation : MonoBehaviour
         }
         computable = false;
         return;
+    }
+    void CanvasOff()
+    {
+        CorrentCanvas.SetActive(false);
+        IncorrentCanvas.SetActive(false);
     }
 }
