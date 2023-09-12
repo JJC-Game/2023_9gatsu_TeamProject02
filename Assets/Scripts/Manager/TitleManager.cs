@@ -87,7 +87,7 @@ public class TitleManager : MonoBehaviour
             {
                 canvas[i].SetActive(false);
             }
-            canvas[1].SetActive(true);
+            canvas[2].SetActive(true);
         }
     }
     //ゲーム終了の処理
