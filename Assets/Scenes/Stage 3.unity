@@ -3678,8 +3678,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u3082\u3046\u3044\u3061\u3069\u3084\u308B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5203,8 +5203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B9\u30C6\u30FC\u30B8\u305B\u3093\u305F\u304F\u306B\u3082\u3069\u308B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6915,7 +6915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &1580196838974581355
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6946,8 +6946,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30B2\u30FC\u30E0\u30AA\u30FC\u30D0\u30FC\uFF01\uFF01"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
-  m_sharedMaterial: {fileID: 5366587411692547973, guid: 3ca48934b0b6e9b469add5a6e8f83e2c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
+  m_sharedMaterial: {fileID: 5366587411692547973, guid: 7864651d3689e7847ab32bfa17fdeb1c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6971,8 +6971,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 101.3
+  m_fontSizeBase: 101.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7010,7 +7010,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &1580196838974581357
@@ -12037,6 +12037,7 @@ MonoBehaviour:
   GameStartTimeline: {fileID: 8601844720392597139}
   GameClearTimeline: {fileID: 8601844720743205934}
   GameOverTimeline: {fileID: 8601844720671636953}
+  startCam: {fileID: 0}
   UI:
   - {fileID: 4616528976666637189}
   - {fileID: 682567917}
@@ -12823,7 +12824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!223 &4616528976666637192
 Canvas:
   m_ObjectHideFlags: 0
@@ -14764,16 +14765,16 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 8495139972550748719, guid: 11d370762f2d38247b5657f2d2bb2673, type: 2}
     value: {fileID: 1580196838974581359}
-  - key: {fileID: 1064506970002735769, guid: 11d370762f2d38247b5657f2d2bb2673, type: 2}
-    value: {fileID: 1580196838974581357}
   - key: {fileID: -7958487656630679313, guid: 11d370762f2d38247b5657f2d2bb2673, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1344127970}
   - key: {fileID: 5320565309572495106, guid: 11d370762f2d38247b5657f2d2bb2673, type: 2}
+    value: {fileID: 1578105951}
+  - key: {fileID: -628688693649155755, guid: 11d370762f2d38247b5657f2d2bb2673, type: 2}
     value: {fileID: 0}
-  - key: {fileID: 5596140844752830922, guid: 11d370762f2d38247b5657f2d2bb2673, type: 2}
+  - key: {fileID: 7569251872738486217, guid: 11d370762f2d38247b5657f2d2bb2673, type: 2}
     value: {fileID: 0}
-  - key: {fileID: 7127565792282148558, guid: 11d370762f2d38247b5657f2d2bb2673, type: 2}
-    value: {fileID: 0}
+  - key: {fileID: -7615761082354157555, guid: 11d370762f2d38247b5657f2d2bb2673, type: 2}
+    value: {fileID: 1580196838974581357}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &8601844720743205932
@@ -14834,6 +14835,10 @@ PlayableDirector:
   - key: {fileID: 3779294545677839463, guid: 684557b860a4a71429b4a7375e14d136, type: 2}
     value: {fileID: 0}
   - key: {fileID: -3325097908709605818, guid: 684557b860a4a71429b4a7375e14d136, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 2146583808617871234, guid: 684557b860a4a71429b4a7375e14d136, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8818788851525089348, guid: 684557b860a4a71429b4a7375e14d136, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
