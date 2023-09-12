@@ -68,10 +68,6 @@ public class EnemyMove : MonoBehaviour
         {
             movetype = MoveTypelist.左右移動;
         }
-        /*if(Enemyrandompattern==3)
-        {
-            movetype = MoveTypelist.上下移動;
-        }*/
         if(Enemyrandompattern == 3)
         {
             movetype = MoveTypelist.ルート移動;
@@ -80,12 +76,7 @@ public class EnemyMove : MonoBehaviour
         {
             movetype = MoveTypelist.左右移動;
         }
-        /*switch (movetype)
-        {
-            case MoveTypelist.左右上下移動:
-                InvokeRepeating("hukugou", 0, 5);
-                break;
-        }*/
+
         EnemyPosA = GameObject.FindWithTag("EnemySpownPoint");
         EnemyPosB = GameObject.FindWithTag("EnemySpownPointB");
         StartPosX = Random.Range(EnemyPosA.transform.position.x, EnemyPosB.transform.position.x);
@@ -103,15 +94,9 @@ public class EnemyMove : MonoBehaviour
             case MoveTypelist.左右移動:
                 rerere();
                 break;
-            /*case MoveTypelist.上下移動:
-                jouge();
-                break;*/
             case MoveTypelist.ルート移動:
                 route();
                 break;
-            /*case MoveTypelist.左右上下移動:
-                hukugou();
-                break;*/
             case MoveTypelist.停止:
                 teisi();
                 break;
@@ -127,7 +112,6 @@ public class EnemyMove : MonoBehaviour
         {
             float cos = Mathf.Cos(Time.time) * EnemyMoveSpeed;
             transform.position = LeftRightstartpos + (LeftRightDistans * cos);
-            //Debug.Log(LeftRightstartpos);
             if (cos >= 1.75f)
             {
                 animationspeedFLG = true;
@@ -142,22 +126,12 @@ public class EnemyMove : MonoBehaviour
                 animator.SetFloat(Animator.StringToHash("Speed"), 1f);
                 animator.SetBool("Run", true);
                 animator.SetBool("Idle", false);
-                //Debug.Log("通常再生してほしい所");
             }
-            /*
-            if(sin > 0)
-            {
-                animator.SetBool("Idle", true);
-                animator.SetBool("Run", false);
-                Debug.Log("サイン関数がゼロになりました");
-                ]
-            }*/
             else if (animationspeedFLG == false)
             {
                 animator.SetFloat(Animator.StringToHash("Speed"), -1f);
                 animator.SetBool("Run", true);
                 animator.SetBool("Idle", false);
-                //Debug.Log("逆再生してほしいところ");
             }
         }
         if (random == 2)
@@ -181,14 +155,6 @@ public class EnemyMove : MonoBehaviour
                 animator.SetBool("Idle", false);
                 //Debug.Log("通常再生してほしい所");
             }
-            /*
-            if(sin > 0)
-            {
-                animator.SetBool("Idle", true);
-                animator.SetBool("Run", false);
-                Debug.Log("サイン関数がゼロになりました");
-                ]
-            }*/
             else if (animationspeedFLG == false)
             {
                 animator.SetFloat(Animator.StringToHash("Speed"), -1f);
@@ -233,15 +199,6 @@ private void jouge()
         }
     }
 
-    /*private void hukugou()
-    {
-        float hukugoX = Random.Range(1, 3);
-        float hukugoY = Random.Range(1, 3);
-        HukugoDistans = new Vector3(hukugoX, 0, hukugoY);
-        Vector3.MoveTowards(Hukugostartpos, HukugoDistans, 0);
-        Debug.Log("五秒に一回処理してね");
-    }
-    */
     private void teisi()
     {
 

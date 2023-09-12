@@ -125,9 +125,9 @@ public class GameManager : Singleton<GameManager>
         {
             mainGame = false;
             pause = true;
-            Time.timeScale = 0;
             CanvasInit();
             UI[1].SetActive(true);
+            Time.timeScale = 0;
         }
     }
     public void SceneChange()
@@ -142,8 +142,6 @@ public class GameManager : Singleton<GameManager>
     {
         EnemyAddObject.Instance.DestroyEnemy();
         SoundManager.Instance.StopBGM();
-        SoundManager.Instance.PlayBGM(2);
-        SoundManager.Instance.PlaySE_Sys(3);
         mainGame = false;
         gameClear = true;
         CanvasInit();
@@ -154,8 +152,6 @@ public class GameManager : Singleton<GameManager>
     {
         EnemyAddObject.Instance.DestroyEnemy();
         SoundManager.Instance.StopBGM();
-        SoundManager.Instance.PlayBGM(3);
-        SoundManager.Instance.PlaySE_Sys(4);
         mainGame = false;
         gameOver = true;
         CanvasInit();
