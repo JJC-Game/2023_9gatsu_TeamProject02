@@ -159,7 +159,6 @@ public class Calculation : MonoBehaviour
         {
             if (judgement || !updateNum || timeover)
             {
-                Inspection();
                 timeover = false;
                 judgement = false;
                 Judgement();
@@ -202,18 +201,13 @@ public class Calculation : MonoBehaviour
                 }
                 if(firsthit && !secondhit)
                 {
-                    ansnum = receiveNum * 10 + ansnum;
+                    ansnum =   ansnum * 10 + receiveNum;
                     ansNum.text = ansnum.ToString("0");
                     secondhit = true;
                     updateNum = false;
                     return;
                 }
-                if (firsthit && secondhit && !updateNum)
-                {
-                    ansnum += receiveNum * 10;
-                    ansNum.text = ansnum.ToString("0");
-                }
-                    break;
+                break;
             case DifficultyType.Hard:
                 if (!firsthit && !secondhit && !thirdhit)
                 {
@@ -224,23 +218,18 @@ public class Calculation : MonoBehaviour
                 }
                 if (firsthit && !secondhit && !thirdhit)
                 {
-                    ansnum = receiveNum * 10 + ansnum;
+                    ansnum = ansnum * 10 + receiveNum;
                     ansNum.text = ansnum.ToString("0");
                     secondhit = true;
                     return;
                 }
                 if(firsthit && secondhit && !thirdhit)
                 {
-                    ansnum = receiveNum * 100 + ansnum;
+                    ansnum = ansnum * 10 + receiveNum;
                     ansNum.text = ansnum.ToString("0");
                     thirdhit = true;
                     updateNum = false;
                     return;
-                }
-                if (firsthit && secondhit && thirdhit && !updateNum)
-                {
-                    ansnum += receiveNum * 100;
-                    ansNum.text = ansnum.ToString("0");
                 }
                     break;
         }
@@ -330,7 +319,7 @@ public class Calculation : MonoBehaviour
                         while(!computable)
                         {
                             if (computable) { break; }
-                            num1 = Random.Range(6, 31);
+                            num1 = Random.Range(6, 20);
                             NumFix();
                         }
                         ansnum = Random.Range(2, num1 + 1);
@@ -403,24 +392,24 @@ public class Calculation : MonoBehaviour
         {
             CorrentCanvas.SetActive(true);
             SoundManager.Instance.PlaySE_Sys(1);
-            NumInit();
             challenge = false;
             if (computable) { computable = false; }
             GameManager.Instance.CorrectCountCurrent++;
             GameManager.Instance.CorrectCountText.text = GameManager.Instance.CorrectCountCurrent.ToString("0");
             GameManager.Instance.questionCurrent++;
+            NumInit();
             return;
         }
         if(judgenum != ansnum)
         {
             IncorrentCanvas.SetActive(true);
             SoundManager.Instance.PlaySE_Sys(2);
-            NumInit();
             challenge = false;
             if (computable) { computable = false; }
             GameManager.Instance.InCorrectCountCurrent++;
             GameManager.Instance.InCorrectCountText.text = GameManager.Instance.InCorrectCountCurrent.ToString("0");
             GameManager.Instance.questionCurrent++.ToString("0");
+            NumInit();
             return;
         }
     }
