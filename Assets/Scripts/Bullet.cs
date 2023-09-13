@@ -47,6 +47,7 @@ public class Bullet : MonoBehaviour
             GameObject DesEffect = Instantiate(EffectManager.Instance.StageFX[3], effectPos, Quaternion.identity);
             Destroy(DesEffect, 2f);
             Destroy(collision.gameObject);
+            EnemyAddObject.Instance.DestroyEnemy();
             SoundManager.Instance.PlaySE_Game(3);
             destroyFlg = true;
         }

@@ -19,9 +19,4 @@ public class EnemyNum : MonoBehaviour
     {
         transform.LookAt(playerTransform);
     }
-    public void OnDestroy()
-    {
-        EnemyAddObject.Instance.DestroyEnemy();
-        return;
-    }
 }
