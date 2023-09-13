@@ -1456,104 +1456,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347508879}
   m_Mesh: {fileID: 4300000, guid: 510e8b094d51c0c448a1f47f52b71413, type: 3}
---- !u!1 &348477856
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 348477859}
-  - component: {fileID: 348477858}
-  - component: {fileID: 348477857}
-  - component: {fileID: 348477860}
-  m_Layer: 0
-  m_Name: Object011 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
-  m_IsActive: 1
---- !u!23 &348477857
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348477856}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: edb1ae99be84ebf499890ae30747edf9, type: 2}
-  - {fileID: 2100000, guid: 9716a61ea2f137c43b63bad3269fcb4a, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &348477858
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348477856}
-  m_Mesh: {fileID: 4300008, guid: 510e8b094d51c0c448a1f47f52b71413, type: 3}
---- !u!4 &348477859
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348477856}
-  m_LocalRotation: {x: 0.12278774, y: 0.6963643, z: 0.6963643, w: -0.12278774}
-  m_LocalPosition: {x: 67, y: 0, z: 33}
-  m_LocalScale: {x: 5, y: 10, z: 10}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1939848038}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 200}
---- !u!65 &348477860
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348477856}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.1, z: 0.3}
-  m_Center: {x: 0, y: 0, z: 0.12}
 --- !u!1 &370951202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,7 +2139,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3364931522525786364}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: TitleScene
         m_Mode: 1
@@ -3619,7 +3521,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3364931522525786364}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: GameScene
         m_Mode: 1
@@ -8186,7 +8088,6 @@ Transform:
   - {fileID: 649354643}
   - {fileID: 1782455333}
   - {fileID: 1476108185}
-  - {fileID: 348477859}
   m_Father: {fileID: 1580579043}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24174,7 +24075,7 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 0.5
+    m_MaxSpeed: 0.6
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse Y
@@ -24198,7 +24099,7 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 0.5
+    m_MaxSpeed: 0.6
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse X
@@ -28394,21 +28295,17 @@ MonoBehaviour:
   BGMGroup: {fileID: -3542938276952349665, guid: 099cde83482ea1443a343ace8da02b38, type: 2}
   SEGroup: {fileID: -934536182363291255, guid: 099cde83482ea1443a343ace8da02b38, type: 2}
   bgmClip:
-  - {fileID: 8300000, guid: fee54c3a462c73741901119e794c735d, type: 3}
-  - {fileID: 8300000, guid: 7955c8d5d4b35e748b1997c0966b863e, type: 3}
-  - {fileID: 8300000, guid: c9969b1810979f245b9e4b2f581116ce, type: 3}
-  - {fileID: 8300000, guid: 6817b4e37eecc014093fa89215146b1a, type: 3}
+  - {fileID: 8300000, guid: 4d04d78e6d640254e8a02758c9fc3807, type: 3}
+  - {fileID: 8300000, guid: 0d9137b0232d67f44ad0e05ad90f27cb, type: 3}
   se_SysClip:
-  - {fileID: 8300000, guid: 8b76ef8638126d540ba3be1a4422229c, type: 3}
-  - {fileID: 8300000, guid: 31266c59d75343345a823b62b1a8def0, type: 3}
-  - {fileID: 8300000, guid: 2e01a6a7b83ad264ab54d50a9aec85cc, type: 3}
-  - {fileID: 8300000, guid: 9428cadb579b7564dbcc203e071a9dfa, type: 3}
-  - {fileID: 8300000, guid: 067779cc7ef30f04e895c789f20190af, type: 3}
+  - {fileID: 8300000, guid: 437978fe2dacea6408b67578e34e30f2, type: 3}
+  - {fileID: 8300000, guid: 5a6e2d8aecab3074da46832ef463a2a6, type: 3}
+  - {fileID: 8300000, guid: c56bd5550d6f8f84290f55e425a97e68, type: 3}
   se_GameClip:
-  - {fileID: 8300000, guid: 26864a051254b47469bfe4eef3139fb7, type: 3}
-  - {fileID: 8300000, guid: ecf1e1fe646bd0b4a89bc24c39fd2e98, type: 3}
-  - {fileID: 8300000, guid: 3b21ace5c5234cd4586cb0f7fd9c664f, type: 3}
-  - {fileID: 8300000, guid: 00673d8f1ee48984a9d053ab7a3a7266, type: 3}
+  - {fileID: 8300000, guid: 38fcd3dacfc26554cb720bfaf830adcd, type: 3}
+  - {fileID: 8300000, guid: e427ddb4274d0d34fb23e115c798c9bb, type: 3}
+  - {fileID: 8300000, guid: c406c5fc44bd4524187ec81d08a3d4ef, type: 3}
+  - {fileID: 8300000, guid: 9349a5c4478a78f42babaee8f5457cb1, type: 3}
 --- !u!95 &4248419780159594005
 Animator:
   serializedVersion: 5
@@ -28602,7 +28499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4427507502621344456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14, y: 1, z: 22}
+  m_LocalPosition: {x: 14, y: 1, z: 17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
