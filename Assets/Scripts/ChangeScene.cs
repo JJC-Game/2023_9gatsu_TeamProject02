@@ -8,9 +8,10 @@ public class ChangeScene : MonoBehaviour
     public static int difficultyNum;
     public static int signTypeNum;
 
+    bool InputButton = false; //ボタン押した時のフラグ
+
     void Start()
     {
-        
     }
 
     void Update()
@@ -19,6 +20,8 @@ public class ChangeScene : MonoBehaviour
 
     public void GameScene()
     {
+        if (InputButton) return;
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         GameManager.Instance.SceneChange();
         Scene scene = SceneManager.GetActiveScene();
@@ -27,12 +30,16 @@ public class ChangeScene : MonoBehaviour
     }
     public void TitleScene()
     {
+        if (InputButton)  return; 
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         GameManager.Instance.SceneChange();
         FadeManager.Instance.LoadSceneIndex(0, 1);
     }
     public void AddEasyScene()
     {
+        if (InputButton) return;
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 0;
         signTypeNum = 0;
@@ -40,6 +47,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void AddNormalScene()
     {
+        if (InputButton)  return;
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 1;
         signTypeNum = 0;
@@ -47,6 +56,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void AddHardScene()
     {
+        if (InputButton) return; 
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 2;
         signTypeNum = 0;
@@ -54,6 +65,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void SubEasyScene()
     {
+        if (InputButton) return; 
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 0;
         signTypeNum = 1;
@@ -61,6 +74,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void SubNormalScene()
     {
+        if (InputButton) return; 
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 1;
         signTypeNum = 1;
@@ -68,6 +83,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void SubHardScene()
     {
+        if (InputButton) return; 
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 2;
         signTypeNum = 1;
@@ -75,6 +92,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void MultiEasyScene()
     {
+        if (InputButton) return; 
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 0;
         signTypeNum = 2;
@@ -82,6 +101,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void MultiNormalScene()
     {
+        if (InputButton) return;
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 1;
         signTypeNum = 2;
@@ -89,6 +110,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void MultiHardScene()
     {
+        if (InputButton) return;
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 2;
         signTypeNum = 2;
@@ -96,6 +119,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void DivEasyScene()
     {
+        if (InputButton) return;
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 0;
         signTypeNum = 3;
@@ -103,6 +128,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void DivNormalScene()
     {
+        if (InputButton) return;
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 1;
         signTypeNum = 3;
@@ -110,6 +137,8 @@ public class ChangeScene : MonoBehaviour
     }
     public void DivHardScene()
     {
+        if (InputButton) return;
+        InputButton = true;
         SoundManager.Instance.PlaySE_Sys(0);
         difficultyNum = 2;
         signTypeNum = 3;
