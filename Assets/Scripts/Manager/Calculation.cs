@@ -381,6 +381,11 @@ public class Calculation : MonoBehaviour
                 if (judgenum == ansnum) { judgement = true; }
                 break;
             case SignType.割り算:
+                if(num2 == 0)
+                {
+                    judgement = true;
+                    return;
+                }
                 judgenum = num1 / num2;
                 if (judgenum == ansnum) { judgement = true; }
                 break;
