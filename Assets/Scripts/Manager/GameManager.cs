@@ -66,17 +66,15 @@ public class GameManager : Singleton<GameManager>
         {
             Pause();
         }
-        if(CorrectCountMax == questionCurrent || Input.GetKeyDown(KeyCode.F1))
+        if(CorrectCountMax == questionCurrent && !gameClear)
         {
             GameClearTimeline.Play();
             GameClear();
-            Debug.Log("ゲームクリア");
         }
-        if(InCorrectCountMax == InCorrectCountCurrent || Input.GetKeyDown(KeyCode.F2))
+        if(InCorrectCountMax == InCorrectCountCurrent && !gameOver)
         {
             GameOverTimeline.Play();
             GameOver();
-            Debug.Log("ゲームオーバー");
         }
         if (stun)
         {

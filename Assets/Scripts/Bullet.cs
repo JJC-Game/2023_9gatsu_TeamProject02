@@ -30,8 +30,6 @@ public class Bullet : MonoBehaviour
           {
             Destroy(this.gameObject);
           }
-        // COMMENT_KUWABARA 弾丸にインパルスで力を与えて飛ばした場合に、射程距離が正確にわからなくなってしまうため.
-        // Time.deltaTimeと、bulletSpeed変数を用いて、少しずつ動かすことで、弾丸を飛ばしてほしいです.
     }
     private void OnCollisionEnter(Collision collision)
     {

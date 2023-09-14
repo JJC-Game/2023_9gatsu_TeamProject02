@@ -62,7 +62,6 @@ public class EnemyType : MonoBehaviour
         Rigidbody shellRb = shell.GetComponent<Rigidbody>();
         // 弾速は自由に設定
         shellRb.AddForce(transform.forward * EnemyshotSpeed ,ForceMode.Impulse);
-
     }
 
     private void Defense()

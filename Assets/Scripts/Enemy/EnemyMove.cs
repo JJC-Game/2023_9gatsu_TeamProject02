@@ -141,7 +141,6 @@ public class EnemyMove : MonoBehaviour
         {
             float sin = Mathf.Sin(Time.time) * EnemyMoveSpeed;
             transform.position = LeftRightstartpos + (LeftRightDistans * sin);
-            //Debug.Log("サインです");
             if (sin >= 1.75f)
             {
                 animationspeedFLG = true;
@@ -156,14 +155,12 @@ public class EnemyMove : MonoBehaviour
                 animator.SetFloat(Animator.StringToHash("Speed"), 1f);
                 animator.SetBool("Run", true);
                 animator.SetBool("Idle", false);
-                //Debug.Log("通常再生してほしい所");
             }
             else if (animationspeedFLG == false)
             {
                 animator.SetFloat(Animator.StringToHash("Speed"), -1f);
                 animator.SetBool("Run", true);
                 animator.SetBool("Idle", false);
-                //Debug.Log("逆再生してほしいところ");
             }
         }
         

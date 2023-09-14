@@ -12,6 +12,8 @@ public class AimController : MonoBehaviour
 
     bool povReset;
 
+    bool endGame;
+
     [SerializeField] float shotSpeed;
 
     public GameObject bulletPrefab;
@@ -52,13 +54,14 @@ public class AimController : MonoBehaviour
             cinemachinePOV.m_VerticalAxis.m_MaxSpeed = currentVerSp;
             povReset = false;
         }
-        if (!GameManager.Instance.mainGame)
+        if (!GameManager.Instance.mainGame == !endGame)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
             cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
             povReset = true;
+            endGame = false;
         }
 
         if(GameManager.Instance.mainGame)
